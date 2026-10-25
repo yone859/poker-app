@@ -1,0 +1,13 @@
+# 依存パッケージ・ビルド結果（各アプリの .gitignore でも除外している）
+node_modules/
+dist/
+
+# 秘密情報
+.env
+.env.*
+
+# OS・エディタが作るファイル
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+.idea/

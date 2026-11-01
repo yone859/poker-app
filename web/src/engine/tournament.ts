@@ -6,7 +6,8 @@ import {
   syncClock,
   type ClockState,
 } from './clock';
-import { applyAction, createHand, resolveShowdown, RuleError } from './hand';
+import { RuleError } from './errors';
+import { applyAction, createHand, resolveShowdown } from './hand';
 import { TABLE_SIZE } from './pots';
 import { nextPositions } from './positions';
 import type {
@@ -45,7 +46,7 @@ export function createTournament(
   options: { buttonSeat?: number; now: number },
 ): TournamentState {
   if (names.length < 2 || names.length > TABLE_SIZE) {
-    throw new RuleError(`プレイヤーは2〜${TABLE_SIZE}人です`);
+    throw new RuleError('playerCount', { max: TABLE_SIZE });
   }
   return {
     config,
@@ -74,9 +75,9 @@ export function activePlayers(t: TournamentState): Player[] {
 // ---------- ハンドの進行 ----------
 
 export function startHand(state: TournamentState, now: number): TournamentState {
-  if (state.hand) throw new RuleError('前のハンドが終わっていません');
+  if (state.hand) throw new RuleError('handNotFinished');
   const active = activePlayers(state);
-  if (active.length < 2) throw new RuleError('プレイヤーが2人以上必要です');
+  if (active.length < 2) throw new RuleError('notEnoughPlayers');
 
   const t = cloneTournament(state);
   t.clock = syncClock(t.clock, t.config.structure, now);
@@ -98,7 +99,7 @@ export function startHand(state: TournamentState, now: number): TournamentState 
 }
 
 export function act(state: TournamentState, action: Action): TournamentState {
-  if (!state.hand) throw new RuleError('ハンドが始まっていません');
+  if (!state.hand) throw new RuleError('noHand');
   return { ...state, hand: applyAction(state.hand, action) };
 }
 
@@ -106,13 +107,13 @@ export function showdown(
   state: TournamentState,
   winners: (string[] | undefined)[],
 ): TournamentState {
-  if (!state.hand) throw new RuleError('ハンドが始まっていません');
+  if (!state.hand) throw new RuleError('noHand');
   return { ...state, hand: resolveShowdown(state.hand, winners) };
 }
 
 /** 終わったハンドの結果をスタックに反映し、チップが0になった人を脱落させる */
 export function finishHand(state: TournamentState): TournamentState {
-  if (state.hand?.phase !== 'complete') throw new RuleError('ハンドがまだ終わっていません');
+  if (state.hand?.phase !== 'complete') throw new RuleError('handNotComplete');
   const t = cloneTournament(state);
   const hand = t.hand!;
   for (const hp of hand.players) {
@@ -154,7 +155,7 @@ export function canReenter(t: TournamentState, playerId: string, now: number): b
 
 /** チップが0になった人が、満額のスタックで再参加する（Rule 13）。席はそのまま */
 export function reenter(state: TournamentState, playerId: string, now: number): TournamentState {
-  if (!canReenter(state, playerId, now)) throw new RuleError('リエントリーできません');
+  if (!canReenter(state, playerId, now)) throw new RuleError('cannotReenter');
   const t = cloneTournament(state);
   const p = t.players.find((x) => x.id === playerId)!;
   p.isOut = false;
@@ -172,10 +173,10 @@ export function addPlayer(
   seat: number,
   now: number,
 ): TournamentState {
-  if (state.hand) throw new RuleError('ハンドの間は追加できません');
-  if (!registrationOpen(state, now)) throw new RuleError('登録の受付は終わっています');
+  if (state.hand) throw new RuleError('cannotAddDuringHand');
+  if (!registrationOpen(state, now)) throw new RuleError('registrationClosed');
   if (seat < 0 || seat >= TABLE_SIZE || state.players.some((p) => p.seat === seat)) {
-    throw new RuleError('その席は使えません');
+    throw new RuleError('seatUnavailable');
   }
   const t = cloneTournament(state);
   t.players.push({

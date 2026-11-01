@@ -38,18 +38,15 @@ function buildStructure(levelMinutes: number, breakEvery: number, breakMinutes: 
   });
 }
 
+/** 名前と説明は画面側の翻訳ファイル（presets.<id>）に置く */
 export interface Preset {
-  id: string;
-  name: string;
-  description: string;
+  id: 'wsop-standard' | 'wsop-turbo' | 'wsop-deep';
   config: TournamentConfig;
 }
 
 export const PRESETS: Preset[] = [
   {
     id: 'wsop-standard',
-    name: 'WSOP風 スタンダード',
-    description: '25,000点スタート・1レベル20分・4レベルごとに10分休憩（目安 3〜4時間）',
     config: {
       startingStack: 25_000,
       structure: buildStructure(20, 4, 10),
@@ -59,8 +56,6 @@ export const PRESETS: Preset[] = [
   },
   {
     id: 'wsop-turbo',
-    name: 'WSOP風 ターボ',
-    description: '25,000点スタート・1レベル10分・6レベルごとに5分休憩（目安 1.5〜2時間）',
     config: {
       startingStack: 25_000,
       structure: buildStructure(10, 6, 5),
@@ -70,8 +65,6 @@ export const PRESETS: Preset[] = [
   },
   {
     id: 'wsop-deep',
-    name: 'WSOP風 ディープスタック',
-    description: '50,000点スタート・1レベル30分・4レベルごとに15分休憩（じっくり遊ぶ）',
     config: {
       startingStack: 50_000,
       structure: buildStructure(30, 4, 15),

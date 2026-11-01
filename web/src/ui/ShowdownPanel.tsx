@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { HandState, Player } from '../engine';
-import { chips, potLabel, STREET_LABEL } from '../state/format';
+import { chips, potLabel } from '../state/format';
 import type { GameAction } from '../state/gameReducer';
 
 interface Props {
@@ -9,7 +10,11 @@ interface Props {
   dispatch: (action: GameAction) => void;
 }
 
+/** オールインの後に開くのは、フロップ・ターン・リバーのどこからか */
+type RunoutFrom = 'flop' | 'turn' | 'river';
+
 export function ShowdownPanel({ hand, players, dispatch }: Props) {
+  const { t } = useTranslation();
   const nameOf = (id: string) => players.find((p) => p.id === id)!.name;
   const [winners, setWinners] = useState<string[][]>(() => hand.pots.map(() => []));
   const showFirst = hand.players.find((p) => p.seat === hand.showFirstSeat);
@@ -36,25 +41,22 @@ export function ShowdownPanel({ hand, players, dispatch }: Props) {
   return (
     <div className="panel showdown-panel">
       <div className="panel-title">
-        <strong>ショーダウン</strong>
+        <strong>{t('showdown.title')}</strong>
       </div>
       {hand.runout.length > 0 && (
-        <p className="notice">
-          全員の手札を表向きにして（Rule 70）、
-          {hand.runout.map((s) => STREET_LABEL[s]).join('・')}を開いてください
-        </p>
+        <p className="notice">{t(`showdown.runout.${hand.runout[0] as RunoutFrom}`)}</p>
       )}
       {showFirst && hand.runout.length === 0 && (
-        <p className="notice">最初に見せる人：{nameOf(showFirst.playerId)}（Rule 72）</p>
+        <p className="notice">{t('showdown.showFirst', { name: nameOf(showFirst.playerId) })}</p>
       )}
 
       {hand.pots.map((pot, i) => (
         <div key={i} className="pot-choice">
           <div className="pot-choice-title">
-            {potLabel(i, hand.pots.length)} <strong>{chips(pot.amount)}</strong>
+            {potLabel(i, hand.pots.length, t)} <strong>{chips(pot.amount)}</strong>
           </div>
           {pot.eligible.length === 1 ? (
-            <p className="muted">{nameOf(pot.eligible[0])} が受け取ります</p>
+            <p className="muted">{t('showdown.uncontested', { name: nameOf(pot.eligible[0]) })}</p>
           ) : (
             <div className="row gap wrap">
               {pot.eligible.map((id) => (
@@ -68,7 +70,9 @@ export function ShowdownPanel({ hand, players, dispatch }: Props) {
               ))}
             </div>
           )}
-          {winners[i].length > 1 && <p className="hint">引き分け：{winners[i].length}人で分けます</p>}
+          {winners[i].length > 1 && (
+            <p className="hint">{t('showdown.split', { count: winners[i].length })}</p>
+          )}
         </div>
       ))}
 
@@ -77,7 +81,7 @@ export function ShowdownPanel({ hand, players, dispatch }: Props) {
         disabled={!ready}
         onClick={() => dispatch({ type: 'showdown', winners })}
       >
-        勝者を確定
+        {t('showdown.confirm')}
       </button>
     </div>
   );

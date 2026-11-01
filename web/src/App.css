@@ -687,8 +687,13 @@ select {
   color: var(--warn);
 }
 
-.clock-info .sound {
+.clock-toggles {
   margin-left: auto;
+  display: flex;
+  gap: 12px;
+}
+
+.clock-toggles .link {
   min-height: 20px;
   font-size: 13px;
 }
@@ -758,4 +763,9 @@ select {
 .history-award {
   margin-top: 6px;
   color: var(--ok);
+}
+
+/* 言語の選択欄はタイトルに押されて縮まないようにする */
+.language-select {
+  flex-shrink: 0;
 }

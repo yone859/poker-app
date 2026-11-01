@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { currentPlayer, legalActions, totalPot, type HandState, type Player } from '../engine';
 import { chips } from '../state/format';
 import type { GameAction } from '../state/gameReducer';
@@ -14,6 +15,7 @@ interface Props {
  * 金額の初期値はいつもミニマムベット／レイズになる。
  */
 export function ActionPanel({ hand, players, dispatch }: Props) {
+  const { t } = useTranslation();
   const legal = legalActions(hand)!;
   const hp = currentPlayer(hand)!;
   const name = players.find((p) => p.id === hp.playerId)!.name;
@@ -27,36 +29,46 @@ export function ActionPanel({ hand, players, dispatch }: Props) {
   // ポットサイズのレイズ ＝ コールした後のポットの額だけ上乗せ
   const potAfterCall = totalPot(hand) + toCall;
   const quick = [
-    { label: 'Min', to: legal.minTo },
-    { label: '½ポット', to: clamp(roundChip(currentBet + potAfterCall / 2)) },
-    { label: 'ポット', to: clamp(roundChip(currentBet + potAfterCall)) },
-    { label: 'オールイン', to: legal.maxTo },
+    { label: t('action.quickMin'), to: legal.minTo },
+    { label: t('action.quickHalfPot'), to: clamp(roundChip(currentBet + potAfterCall / 2)) },
+    { label: t('action.quickPot'), to: clamp(roundChip(currentBet + potAfterCall)) },
+    { label: t('action.quickAllIn'), to: legal.maxTo },
   ];
 
   const isAllIn = amount === legal.maxTo;
   const valid = amount === legal.maxTo || (amount >= legal.minTo && amount <= legal.maxTo);
-  const verb = legal.isBet ? 'ベット' : 'レイズ';
+  const raiseLabel = isAllIn
+    ? t('action.allIn', { amount: chips(amount) })
+    : legal.isBet
+      ? t('action.bet', { amount: chips(amount) })
+      : t('action.raise', { amount: chips(amount) });
 
   return (
     <div className="panel action-panel">
       <div className="panel-title">
-        <strong>{name}</strong> の番
+        <span>
+          <Trans i18nKey="action.toAct" values={{ name }} components={{ b: <strong /> }} />
+        </span>
         <span className="muted">
-          {toCall > 0 ? ` コール ${chips(legal.callAmount)}` : ' 賭けなし'}・残り {chips(hp.stack)}
+          {toCall > 0
+            ? t('action.facingBet', { toCall: chips(legal.callAmount), stack: chips(hp.stack) })
+            : t('action.noBet', { stack: chips(hp.stack) })}
         </span>
       </div>
 
       <div className="row gap">
         <button className="act fold" onClick={() => dispatch({ type: 'act', action: { type: 'fold' } })}>
-          フォールド
+          {t('action.fold')}
         </button>
         {legal.canCheck ? (
           <button className="act check" onClick={() => dispatch({ type: 'act', action: { type: 'check' } })}>
-            チェック
+            {t('action.check')}
           </button>
         ) : (
           <button className="act call" onClick={() => dispatch({ type: 'act', action: { type: 'call' } })}>
-            {legal.callAmount === hp.stack ? 'オールイン' : 'コール'} {chips(legal.callAmount)}
+            {legal.callAmount === hp.stack
+              ? t('action.callAllIn', { amount: chips(legal.callAmount) })
+              : t('action.call', { amount: chips(legal.callAmount) })}
           </button>
         )}
       </div>
@@ -71,7 +83,7 @@ export function ActionPanel({ hand, players, dispatch }: Props) {
             ))}
           </div>
           <div className="row gap">
-            <button className="icon" aria-label="減らす" onClick={() => setAmount(clamp(amount - hand.level.bigBlind))}>
+            <button className="icon" aria-label={t('action.decrease')} onClick={() => setAmount(clamp(amount - hand.level.bigBlind))}>
               −
             </button>
             <input
@@ -83,7 +95,7 @@ export function ActionPanel({ hand, players, dispatch }: Props) {
               value={amount}
               onChange={(e) => setAmount(Number(e.target.value))}
             />
-            <button className="icon" aria-label="増やす" onClick={() => setAmount(clamp(amount + hand.level.bigBlind))}>
+            <button className="icon" aria-label={t('action.increase')} onClick={() => setAmount(clamp(amount + hand.level.bigBlind))}>
               ＋
             </button>
           </div>
@@ -92,7 +104,7 @@ export function ActionPanel({ hand, players, dispatch }: Props) {
               className="number-field amount"
               type="number"
               inputMode="numeric"
-              aria-label="金額"
+              aria-label={t('action.amount')}
               value={amount}
               step={minChip}
               onChange={(e) => setAmount(Number(e.target.value))}
@@ -102,12 +114,12 @@ export function ActionPanel({ hand, players, dispatch }: Props) {
               disabled={!valid}
               onClick={() => dispatch({ type: 'act', action: { type: 'raise', to: amount } })}
             >
-              {isAllIn ? `オールイン ${chips(amount)}` : `${verb} ${chips(amount)}`}
+              {raiseLabel}
             </button>
           </div>
           {!valid && (
             <p className="hint warn">
-              {chips(legal.minTo)}〜{chips(legal.maxTo)}の範囲で入力してください
+              {t('action.range', { min: chips(legal.minTo), max: chips(legal.maxTo) })}
             </p>
           )}
         </div>

@@ -1,4 +1,5 @@
 import { clone } from './clone';
+import { RuleError } from './errors';
 import { computePots, distanceFromButton, splitPot } from './pots';
 import type {
   Action,
@@ -20,8 +21,6 @@ export interface HandSetup {
   positions: Positions;
   players: { playerId: string; seat: number; stack: number }[];
 }
-
-export class RuleError extends Error {}
 
 // ---------- ハンドの開始 ----------
 
@@ -65,7 +64,7 @@ export function createHand(setup: HandSetup): HandState {
 
   const sb = players.find((p) => p.seat === positions.sbSeat);
   const bb = players.find((p) => p.seat === positions.bbSeat);
-  if (!bb) throw new RuleError('BBの席にプレイヤーがいません');
+  if (!bb) throw new RuleError('noBigBlind');
 
   // SBの席が空いていればSBは払われない（デッドSB。Rule 85）
   if (sb && sb !== bb) post(hand, sb, level.smallBlind, 'sb');
@@ -120,7 +119,7 @@ export function applyAction(state: HandState, action: Action): HandState {
   const hand = clone(state);
   const p = currentPlayer(hand);
   const legal = legalActions(hand);
-  if (!p || !legal) throw new RuleError('アクションできる人がいません');
+  if (!p || !legal) throw new RuleError('noActor');
 
   switch (action.type) {
     case 'fold':
@@ -129,12 +128,12 @@ export function applyAction(state: HandState, action: Action): HandState {
       break;
 
     case 'check':
-      if (!legal.canCheck) throw new RuleError('ベットに直面しているのでチェックできません');
+      if (!legal.canCheck) throw new RuleError('cannotCheck');
       log(hand, p, 'check', 0);
       break;
 
     case 'call': {
-      if (!legal.canCall) throw new RuleError('コールする額がありません');
+      if (!legal.canCall) throw new RuleError('nothingToCall');
       move(p, legal.callAmount);
       log(hand, p, 'call', legal.callAmount);
       break;
@@ -142,11 +141,11 @@ export function applyAction(state: HandState, action: Action): HandState {
 
     case 'raise': {
       const { to } = action;
-      if (!legal.canRaise) throw new RuleError('今はレイズできません');
-      if (to > legal.maxTo) throw new RuleError('スタックを超えています');
+      if (!legal.canRaise) throw new RuleError('cannotRaise');
+      if (to > legal.maxTo) throw new RuleError('exceedsStack');
       // 最低額に届かないのはオールインのときだけ許される
       if (to < legal.minTo && to !== legal.maxTo) {
-        throw new RuleError(`最低でも ${legal.minTo} 必要です`);
+        throw new RuleError('belowMinimum', { min: legal.minTo });
       }
       const increment = to - hand.currentBet;
       // フルレイズのときだけ、次の最低上乗せ額が更新される（ショートオールインでは変わらない）
@@ -283,13 +282,13 @@ export function contestedPots(hand: HandState): number[] {
  * 参加者が1人だけのポットは省略してよい。
  */
 export function resolveShowdown(state: HandState, winners: (string[] | undefined)[]): HandState {
-  if (state.phase !== 'showdown') throw new RuleError('ショーダウンではありません');
+  if (state.phase !== 'showdown') throw new RuleError('notShowdown');
   const hand = clone(state);
   const resolved = hand.pots.map((pot, i) => {
     const w = pot.eligible.length === 1 ? pot.eligible : (winners[i] ?? []);
-    if (w.length === 0) throw new RuleError(`ポット${i + 1}の勝者を選んでください`);
+    if (w.length === 0) throw new RuleError('potNeedsWinner', { pot: i + 1 });
     if (!w.every((id) => pot.eligible.includes(id))) {
-      throw new RuleError(`ポット${i + 1}に参加していない人が選ばれています`);
+      throw new RuleError('winnerNotEligible', { pot: i + 1 });
     }
     return w;
   });

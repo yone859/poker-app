@@ -11,6 +11,8 @@ import {
   startClock,
   startHand,
   type Action,
+  type ErrorParams,
+  type RuleErrorCode,
   type TournamentConfig,
   type TournamentState,
 } from '../engine';
@@ -19,8 +21,8 @@ export interface GameState {
   tournament: TournamentState | null;
   /** Undo用の過去の状態（新しいものが最後） */
   past: TournamentState[];
-  /** ルール上できない操作をしたときのメッセージ */
-  error: string | null;
+  /** ルール上できない操作をしたときのエラー。画面側で errors.<code> を翻訳して表示する */
+  error: { code: RuleErrorCode; params: ErrorParams } | null;
 }
 
 export const UNDO_LIMIT = 50;
@@ -62,7 +64,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         : [...state.past, state.tournament].slice(-UNDO_LIMIT);
     return { tournament, past, error: null };
   } catch (e) {
-    if (e instanceof RuleError) return { ...state, error: e.message };
+    if (e instanceof RuleError) return { ...state, error: { code: e.code, params: e.params } };
     throw e;
   }
 }
@@ -76,7 +78,7 @@ function next(t: TournamentState | null, action: GameAction): TournamentState | 
   }
   if (action.type === 'reset') return null;
   if (action.type === 'dismissError' || action.type === 'undo') return t;
-  if (!t) throw new RuleError('トーナメントが始まっていません');
+  if (!t) throw new RuleError('noTournament');
 
   const { structure } = t.config;
   switch (action.type) {

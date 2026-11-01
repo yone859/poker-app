@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { levelNumber, type StructureItem } from '../engine';
 import { playLevelUpSound, vibrate } from '../platform/web';
 import { blindsText } from '../state/format';
@@ -7,6 +8,7 @@ const SHOW_MS = 15_000;
 
 /** レベルが上がったら音と振動で知らせ、しばらくバナーを出す */
 export function useLevelAlert(index: number, structure: StructureItem[], soundOn: boolean) {
+  const { t } = useTranslation();
   // 最後にバナーで知らせたレベル。index がこれより大きくなったらバナーを出す
   const [seenIndex, setSeenIndex] = useState(index);
   if (index < seenIndex) setSeenIndex(index);
@@ -31,8 +33,8 @@ export function useLevelAlert(index: number, structure: StructureItem[], soundOn
   const message = !showing
     ? null
     : item.type === 'break'
-      ? `休憩です（${item.minutes}分）`
-      : `Level ${levelNumber(structure, index)} になりました：${blindsText(item)}（次のハンドから）`;
+      ? t('levelAlert.break', { minutes: item.minutes })
+      : t('levelAlert.level', { n: levelNumber(structure, index), blinds: blindsText(item, t) });
 
   return { message, dismiss: () => setSeenIndex(index) };
 }

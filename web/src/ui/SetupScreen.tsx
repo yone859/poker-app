@@ -1,19 +1,33 @@
 import { useState } from 'react';
-import { levelNumber, PRESETS, TABLE_SIZE, type StructureItem, type TournamentConfig } from '../engine';
+import { useTranslation } from 'react-i18next';
+import {
+  levelNumber,
+  PRESETS,
+  TABLE_SIZE,
+  type Preset,
+  type StructureItem,
+  type TournamentConfig,
+} from '../engine';
+import type { Language } from '../i18n';
 import { chips } from '../state/format';
 import { validateSetup } from '../state/validateSetup';
 import { NumberField } from './NumberField';
 
 interface Props {
+  language: Language;
+  onChangeLanguage: (language: Language) => void;
   onStart: (config: TournamentConfig, names: string[], buttonSeat: number) => void;
 }
 
 const copy = <T,>(v: T): T => JSON.parse(JSON.stringify(v)) as T;
 
-export function SetupScreen({ onStart }: Props) {
-  const [presetId, setPresetId] = useState(PRESETS[0].id);
+export function SetupScreen({ language, onChangeLanguage, onStart }: Props) {
+  const { t } = useTranslation();
+  const [presetId, setPresetId] = useState<Preset['id']>(PRESETS[0].id);
   const [config, setConfig] = useState<TournamentConfig>(() => copy(PRESETS[0].config));
-  const [names, setNames] = useState(['プレイヤー1', 'プレイヤー2', 'プレイヤー3', 'プレイヤー4']);
+  const [names, setNames] = useState(() =>
+    [1, 2, 3, 4].map((n) => t('setup.defaultPlayerName', { n })),
+  );
   /** -1 はランダム */
   const [buttonSeat, setButtonSeat] = useState(-1);
   const [showStructure, setShowStructure] = useState(false);
@@ -21,7 +35,7 @@ export function SetupScreen({ onStart }: Props) {
   const errors = validateSetup(config, names);
   const update = (patch: Partial<TournamentConfig>) => setConfig({ ...config, ...patch });
 
-  function choosePreset(id: string) {
+  function choosePreset(id: Preset['id']) {
     const preset = PRESETS.find((p) => p.id === id)!;
     setPresetId(id);
     setConfig(copy(preset.config));
@@ -54,10 +68,21 @@ export function SetupScreen({ onStart }: Props) {
 
   return (
     <div className="screen setup">
-      <h1>ホールデム点数付け</h1>
+      <div className="row between gap">
+        <h1>{t('app.title')}</h1>
+        <select
+          className="language-select"
+          aria-label={t('language.label')}
+          value={language}
+          onChange={(e) => onChangeLanguage(e.target.value as Language)}
+        >
+          <option value="ja">日本語</option>
+          <option value="en">English</option>
+        </select>
+      </div>
 
       <section className="card">
-        <h2>ブラインド表</h2>
+        <h2>{t('setup.blindStructure')}</h2>
         <div className="preset-list">
           {PRESETS.map((p) => (
             <button
@@ -65,24 +90,24 @@ export function SetupScreen({ onStart }: Props) {
               className={`preset ${p.id === presetId ? 'selected' : ''}`}
               onClick={() => choosePreset(p.id)}
             >
-              <span className="preset-name">{p.name}</span>
-              <span className="preset-desc">{p.description}</span>
+              <span className="preset-name">{t(`presets.${p.id}.name`)}</span>
+              <span className="preset-desc">{t(`presets.${p.id}.description`)}</span>
             </button>
           ))}
         </div>
 
         <button className="link" onClick={() => setShowStructure(!showStructure)}>
-          {showStructure ? '▲ ブラインド表を閉じる' : '▼ ブラインド表を見る・編集する'}
+          {showStructure ? t('setup.hideStructure') : t('setup.showStructure')}
         </button>
 
         {showStructure && (
           <div className="structure">
             <div className="structure-row header">
-              <span>Lv</span>
+              <span>{t('setup.colLevel')}</span>
               <span>SB</span>
               <span>BB</span>
               <span>BBA</span>
-              <span>分</span>
+              <span>{t('setup.colMinutes')}</span>
               <span />
             </div>
             {config.structure.map((item, i) => {
@@ -95,61 +120,61 @@ export function SetupScreen({ onStart }: Props) {
                     onChange={(v) => updateItem(i, { smallBlind: v })} />
                   <NumberField label="BB" value={item.bigBlind} step={config.minChip}
                     onChange={(v) => updateItem(i, { bigBlind: v })} />
-                  <NumberField label="BBアンティ" value={item.ante} step={config.minChip}
+                  <NumberField label="BBA" value={item.ante} step={config.minChip}
                     onChange={(v) => updateItem(i, { ante: v })} />
-                  <NumberField label="分" value={item.minutes}
+                  <NumberField label={t('setup.colMinutes')} value={item.minutes}
                     onChange={(v) => updateItem(i, { minutes: v })} />
-                  <button className="icon" aria-label="削除" onClick={remove}>×</button>
+                  <button className="icon" aria-label={t('common.remove')} onClick={remove}>×</button>
                 </div>
               ) : (
                 <div className="structure-row break" key={i}>
-                  <span>休</span>
-                  <span className="break-label">休憩</span>
-                  <NumberField label="分" value={item.minutes}
+                  <span>{t('setup.breakShort')}</span>
+                  <span className="break-label">{t('clock.break')}</span>
+                  <NumberField label={t('setup.colMinutes')} value={item.minutes}
                     onChange={(v) => updateItem(i, { minutes: v })} />
-                  <button className="icon" aria-label="削除" onClick={remove}>×</button>
+                  <button className="icon" aria-label={t('common.remove')} onClick={remove}>×</button>
                 </div>
               );
             })}
             <div className="row gap">
-              <button onClick={() => addItem('level')}>＋ レベル</button>
-              <button onClick={() => addItem('break')}>＋ 休憩</button>
+              <button onClick={() => addItem('level')}>{t('setup.addLevel')}</button>
+              <button onClick={() => addItem('break')}>{t('setup.addBreak')}</button>
             </div>
           </div>
         )}
 
         <div className="field-grid">
           <label>
-            初期スタック
+            {t('setup.startingStack')}
             <NumberField value={config.startingStack} step={config.minChip}
               onChange={(v) => update({ startingStack: v })} />
           </label>
           <label>
-            最小チップ
+            {t('setup.minChip')}
             <NumberField value={config.minChip} onChange={(v) => update({ minChip: v })} />
           </label>
         </div>
       </section>
 
       <section className="card">
-        <h2>リエントリー</h2>
+        <h2>{t('setup.reentryTitle')}</h2>
         <label className="check">
           <input
             type="checkbox"
             checked={config.reentry.enabled}
             onChange={(e) => update({ reentry: { ...config.reentry, enabled: e.target.checked } })}
           />
-          リエントリー・途中参加を受け付ける
+          {t('setup.reentryEnabled')}
         </label>
         {config.reentry.enabled && (
           <div className="field-grid">
             <label>
-              締切（このレベルの終わりまで）
+              {t('setup.reentryLastLevel')}
               <NumberField value={config.reentry.lastLevel} min={1}
                 onChange={(v) => update({ reentry: { ...config.reentry, lastLevel: v } })} />
             </label>
             <label>
-              1人の最大エントリー数（0＝無制限）
+              {t('setup.reentryMaxEntries')}
               <NumberField value={config.reentry.maxEntries ?? 0}
                 onChange={(v) =>
                   update({ reentry: { ...config.reentry, maxEntries: v === 0 ? null : v } })
@@ -160,8 +185,8 @@ export function SetupScreen({ onStart }: Props) {
       </section>
 
       <section className="card">
-        <h2>プレイヤー（{names.length}人）</h2>
-        <p className="hint">上から順に時計回りで座ります。</p>
+        <h2>{t('setup.playersTitle', { count: names.length })}</h2>
+        <p className="hint">{t('setup.seatingHint')}</p>
         {names.map((name, i) => (
           <div className="row gap" key={i}>
             <span className="seat-no">{i + 1}</span>
@@ -172,7 +197,7 @@ export function SetupScreen({ onStart }: Props) {
             />
             <button
               className="icon"
-              aria-label="削除"
+              aria-label={t('common.remove')}
               disabled={names.length <= 2}
               onClick={() => {
                 setNames(names.filter((_, j) => j !== i));
@@ -185,18 +210,18 @@ export function SetupScreen({ onStart }: Props) {
         ))}
         <button
           disabled={names.length >= TABLE_SIZE}
-          onClick={() => setNames([...names, `プレイヤー${names.length + 1}`])}
+          onClick={() => setNames([...names, t('setup.defaultPlayerName', { n: names.length + 1 })])}
         >
-          ＋ プレイヤーを追加
+          {t('setup.addPlayer')}
         </button>
 
         <label className="stacked">
-          最初のボタン
+          {t('setup.firstButton')}
           <select value={buttonSeat} onChange={(e) => setButtonSeat(Number(e.target.value))}>
-            <option value={-1}>ランダムに決める</option>
+            <option value={-1}>{t('setup.randomButton')}</option>
             {names.map((n, i) => (
               <option key={i} value={i}>
-                {n || `席${i + 1}`}
+                {n || t('common.seatN', { n: i + 1 })}
               </option>
             ))}
           </select>
@@ -206,13 +231,13 @@ export function SetupScreen({ onStart }: Props) {
       {errors.length > 0 && (
         <ul className="errors">
           {errors.map((e) => (
-            <li key={e}>{e}</li>
+            <li key={`${e.code}-${e.params?.row ?? ''}`}>{t(`validation.${e.code}`, e.params)}</li>
           ))}
         </ul>
       )}
 
       <button className="primary big" disabled={errors.length > 0} onClick={start}>
-        {chips(config.startingStack)}点でスタート
+        {t('setup.start', { stack: chips(config.startingStack) })}
       </button>
     </div>
   );

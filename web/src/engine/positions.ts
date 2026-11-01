@@ -24,7 +24,7 @@ export function nextPositions(
   activeSeats: number[],
   initialButtonSeat: number,
 ): Positions {
-  if (activeSeats.length < 2) throw new Error('プレイヤーが2人以上必要です');
+  if (activeSeats.length < 2) throw new Error('nextPositions requires at least 2 active seats');
   const headsUp = activeSeats.length === 2;
 
   if (!prev) {

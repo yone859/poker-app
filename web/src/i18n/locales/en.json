@@ -1,0 +1,227 @@
+{
+  "app": {
+    "title": "Hold'em Chip Tracker"
+  },
+  "common": {
+    "close": "Close",
+    "remove": "Remove",
+    "listSeparator": ", ",
+    "dot": " · ",
+    "seatN": "Seat {{n}}"
+  },
+  "language": {
+    "label": "Language",
+    "switchTo": "日本語"
+  },
+  "presets": {
+    "wsop-standard": {
+      "name": "WSOP-style Standard",
+      "description": "25,000 chips · 20-minute levels · 10-minute break every 4 levels (about 3–4 hours)"
+    },
+    "wsop-turbo": {
+      "name": "WSOP-style Turbo",
+      "description": "25,000 chips · 10-minute levels · 5-minute break every 6 levels (about 1.5–2 hours)"
+    },
+    "wsop-deep": {
+      "name": "WSOP-style Deep Stack",
+      "description": "50,000 chips · 30-minute levels · 15-minute break every 4 levels (for a longer game)"
+    }
+  },
+  "setup": {
+    "blindStructure": "Blind structure",
+    "hideStructure": "▲ Hide blind structure",
+    "showStructure": "▼ View or edit blind structure",
+    "colLevel": "Lv",
+    "colMinutes": "Min",
+    "breakShort": "—",
+    "addLevel": "+ Level",
+    "addBreak": "+ Break",
+    "startingStack": "Starting stack",
+    "minChip": "Smallest chip",
+    "reentryTitle": "Re-entry",
+    "reentryEnabled": "Allow re-entry and late registration",
+    "reentryLastLevel": "Registration closes after level",
+    "reentryMaxEntries": "Max entries per player (0 = unlimited)",
+    "playersTitle": "Players ({{count}})",
+    "seatingHint": "Players are seated clockwise in this order.",
+    "addPlayer": "+ Add player",
+    "defaultPlayerName": "Player {{n}}",
+    "firstButton": "Starting dealer button",
+    "randomButton": "Random",
+    "start": "Start with {{stack}} chips"
+  },
+  "validation": {
+    "playerCount": "Enter between 2 and {{max}} players.",
+    "emptyName": "Every player needs a name.",
+    "duplicateName": "Each player needs a different name.",
+    "minChip": "The smallest chip must be at least 1.",
+    "startingStack": "The starting stack must be a multiple of the smallest chip.",
+    "noLevels": "The blind structure needs at least one level.",
+    "minutes": "Row {{row}}: each level or break must last at least 1 minute.",
+    "blindOrder": "Row {{row}}: the big blind must be larger than the small blind.",
+    "blindMultiple": "Row {{row}}: blinds and antes must be multiples of the smallest chip ({{chip}}).",
+    "maxEntries": "With re-entry on, max entries must be 2 or more.",
+    "lastLevel": "Registration must stay open through at least level 1."
+  },
+  "errors": {
+    "noBigBlind": "No one is in the big blind seat.",
+    "noActor": "No one can act right now.",
+    "cannotCheck": "You can't check when facing a bet.",
+    "nothingToCall": "There's nothing to call.",
+    "cannotRaise": "Raising isn't allowed here.",
+    "exceedsStack": "That's more than the player has.",
+    "belowMinimum": "The minimum is {{min}}.",
+    "notShowdown": "The hand isn't at showdown.",
+    "potNeedsWinner": "Choose a winner for pot {{pot}}.",
+    "winnerNotEligible": "Someone selected for pot {{pot}} isn't in that pot.",
+    "playerCount": "A tournament needs 2 to {{max}} players.",
+    "handNotFinished": "Finish the current hand first.",
+    "notEnoughPlayers": "At least 2 players are needed.",
+    "noHand": "No hand is in progress.",
+    "handNotComplete": "The hand isn't over yet.",
+    "cannotReenter": "This player can't re-enter.",
+    "cannotAddDuringHand": "Players can't be added during a hand.",
+    "registrationClosed": "Registration is closed.",
+    "seatUnavailable": "That seat isn't available.",
+    "noTournament": "No tournament is running."
+  },
+  "clock": {
+    "level": "Level {{n}}",
+    "break": "Break",
+    "prevLevel": "Previous level",
+    "nextLevel": "Next level",
+    "start": "Start",
+    "pause": "Pause",
+    "pauseLabel": "Pause",
+    "next": "Next: {{blinds}}",
+    "pending": "This hand: {{blinds}} (new level starts next hand)",
+    "registrationOpen": "Re-entry open through Level {{n}}",
+    "registrationClosed": "Registration closed",
+    "soundOn": "Sound: On",
+    "soundOff": "Sound: Off"
+  },
+  "levelAlert": {
+    "level": "Level {{n}}: {{blinds}} — starts next hand",
+    "break": "Break — {{minutes}} minutes"
+  },
+  "streets": {
+    "preflop": "Preflop",
+    "flop": "Flop",
+    "turn": "Turn",
+    "river": "River"
+  },
+  "pot": {
+    "main": "Main pot",
+    "side": "Side pot",
+    "sideN": "Side pot {{n}}"
+  },
+  "table": {
+    "handNo": "Hand #{{n}}",
+    "nextHand": "Next: Hand #{{n}}",
+    "pot": "Pot {{amount}}",
+    "emptySeat": "Empty",
+    "outSeat": "{{name}} (out)",
+    "allIn": "ALL IN",
+    "folded": "FOLD",
+    "onBreak": "On break. Deal the next hand when play resumes.",
+    "oneLeft": "Only one player is left. Re-entries can be made from Standings.",
+    "startHand": "Deal Hand #{{n}}",
+    "undo": "↶ Undo",
+    "history": "History",
+    "standings": "Standings",
+    "end": "End",
+    "confirmEnd": "End this tournament and go back to setup?"
+  },
+  "seatAction": {
+    "sb": "SB",
+    "bb": "BB",
+    "ante": "BB",
+    "fold": "Fold",
+    "check": "Check",
+    "call": "Call",
+    "bet": "Bet",
+    "raise": "Raise"
+  },
+  "action": {
+    "toAct": "<b>{{name}}</b> to act",
+    "facingBet": "{{toCall}} to call · {{stack}} behind",
+    "noBet": "No bet · {{stack}} behind",
+    "fold": "Fold",
+    "check": "Check",
+    "call": "Call {{amount}}",
+    "callAllIn": "Call {{amount}} (all-in)",
+    "quickMin": "Min",
+    "quickHalfPot": "½ Pot",
+    "quickPot": "Pot",
+    "quickAllIn": "All-in",
+    "decrease": "Decrease",
+    "increase": "Increase",
+    "amount": "Amount",
+    "bet": "Bet {{amount}}",
+    "raise": "Raise to {{amount}}",
+    "allIn": "All-in {{amount}}",
+    "range": "Enter an amount between {{min}} and {{max}}."
+  },
+  "showdown": {
+    "title": "Showdown",
+    "runout": {
+      "flop": "All hands face up (Rule 70). Deal the flop, turn and river.",
+      "turn": "All hands face up (Rule 70). Deal the turn and river.",
+      "river": "All hands face up (Rule 70). Deal the river."
+    },
+    "showFirst": "{{name}} shows first (Rule 72)",
+    "uncontested": "Goes to {{name}}",
+    "split": "Split {{count}} ways",
+    "confirm": "Confirm winners"
+  },
+  "result": {
+    "title": "Hand #{{n}} result",
+    "eliminated": "Eliminated: {{names}}",
+    "next": "Next"
+  },
+  "players": {
+    "title": "Players",
+    "entries_one": "{{count}} entry",
+    "entries_other": "{{count}} entries",
+    "reenter": "Re-enter",
+    "eliminatedIn": "Out in Hand #{{n}}",
+    "reenterBetweenHands": "Re-entries can be made between hands.",
+    "lateRegistration": "Late registration",
+    "namePlaceholder": "Name",
+    "add": "Add",
+    "nameTaken": "That name is already taken.",
+    "lateRegistrationStack": "Joins with {{stack}} chips (Rule 14)."
+  },
+  "results": {
+    "title": "Tournament over",
+    "winner": "{{name}} wins!",
+    "hands_one": "{{count}} hand",
+    "hands_other": "{{count}} hands",
+    "entries_one": "{{count}} entry",
+    "entries_other": "{{count}} entries",
+    "entriesNote_one": " ({{count}} entry)",
+    "entriesNote_other": " ({{count}} entries)",
+    "summarySeparator": " · ",
+    "place_ordinal_one": "{{count}}st",
+    "place_ordinal_two": "{{count}}nd",
+    "place_ordinal_few": "{{count}}rd",
+    "place_ordinal_other": "{{count}}th",
+    "champion": "Winner",
+    "newTournament": "New tournament"
+  },
+  "history": {
+    "title": "Hand history",
+    "empty": "No hands played yet.",
+    "inProgress": "In progress",
+    "sb": "Posts SB {{amount}}",
+    "bb": "Posts BB {{amount}}",
+    "ante": "Posts BB ante {{amount}}",
+    "fold": "Folds",
+    "check": "Checks",
+    "call": "Calls {{amount}}",
+    "bet": "Bets {{amount}}",
+    "raise": "Raises to {{amount}}",
+    "allInSuffix": " (all-in)",
+    "awardSeparator": ": "
+  }
+}

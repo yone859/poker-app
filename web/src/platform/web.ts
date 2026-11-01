@@ -1,9 +1,10 @@
 /**
  * ブラウザ専用の機能はこのファイルに集める。
- * Expo版では、同じ名前の関数を AsyncStorage・expo-audio・expo-haptics・expo-keep-awake で作り直す。
+ * Expo版では、同じ名前の関数を AsyncStorage・expo-audio・expo-haptics・expo-keep-awake・expo-localization で作り直す。
  */
 import { useEffect } from 'react';
 import type { TournamentState } from '../engine';
+import type { Language } from '../i18n';
 import { deserialize, serialize, STORAGE_KEY, type SavedGame } from '../state/persistence';
 
 // localStorage はプライベートブラウズなどで使えないことがあるので、失敗しても止まらないようにする
@@ -41,6 +42,36 @@ export function saveSoundOn(on: boolean): void {
   } catch {
     // 設定が残らないだけ
   }
+}
+
+const LANGUAGE_KEY = 'holdem-tracker/language';
+
+/** ブラウザの言語設定（優先順）。例：['ja-JP', 'en-US'] */
+export function getDeviceLanguages(): readonly string[] {
+  return navigator.languages?.length ? navigator.languages : [navigator.language];
+}
+
+/** 利用者が選んだ言語。まだ選んでいなければ null（ブラウザの言語設定に合わせる） */
+export function loadLanguage(): Language | null {
+  try {
+    const saved = localStorage.getItem(LANGUAGE_KEY);
+    return saved === 'ja' || saved === 'en' ? saved : null;
+  } catch {
+    return null;
+  }
+}
+
+export function saveLanguage(language: Language): void {
+  try {
+    localStorage.setItem(LANGUAGE_KEY, language);
+  } catch {
+    // 設定が残らないだけ
+  }
+}
+
+/** 画面の言語をブラウザにも伝える（読み上げ機能やフォントの選び方に使われる） */
+export function setDocumentLanguage(language: Language): void {
+  document.documentElement.lang = language;
 }
 
 let audio: AudioContext | null = null;

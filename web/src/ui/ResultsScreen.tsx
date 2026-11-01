@@ -1,36 +1,45 @@
+import { useTranslation } from 'react-i18next';
 import { standings, type TournamentState } from '../engine';
 import type { GameAction } from '../state/gameReducer';
 
 interface Props {
-  t: TournamentState;
+  tournament: TournamentState;
   dispatch: (action: GameAction) => void;
 }
 
-export function ResultsScreen({ t, dispatch }: Props) {
-  const rows = standings(t);
-  const totalEntries = t.players.reduce((sum, p) => sum + p.entries, 0);
-  const winner = t.players.find((p) => p.id === rows[0]?.playerId);
+export function ResultsScreen({ tournament, dispatch }: Props) {
+  const { t } = useTranslation();
+  const rows = standings(tournament);
+  const totalEntries = tournament.players.reduce((sum, p) => sum + p.entries, 0);
+  const winner = tournament.players.find((p) => p.id === rows[0]?.playerId);
 
   return (
     <div className="screen results">
-      <h1>トーナメント終了</h1>
-      {winner && <p className="winner">{winner.name} の優勝！</p>}
+      <h1>{t('results.title')}</h1>
+      {winner && <p className="winner">{t('results.winner', { name: winner.name })}</p>}
       <p className="muted">
-        {t.handNumber}ハンド・{totalEntries}エントリー
+        {t('results.hands', { count: tournament.handNumber })}
+        {t('results.summarySeparator')}
+        {t('results.entries', { count: totalEntries })}
       </p>
 
       <ul className="standings card">
         {rows.map((s) => {
-          const p = t.players.find((x) => x.id === s.playerId)!;
+          const p = tournament.players.find((x) => x.id === s.playerId)!;
           return (
             <li key={s.playerId}>
-              <span className="place">{s.place}位</span>
+              {/* 英語では 1st, 2nd, 3rd... と序数で表示する */}
+              <span className="place">{t('results.place', { count: s.place, ordinal: true })}</span>
               <span className="grow">
                 {p.name}
-                {p.entries > 1 && <span className="muted small">（{p.entries}エントリー）</span>}
+                {p.entries > 1 && (
+                  <span className="muted small">{t('results.entriesNote', { count: p.entries })}</span>
+                )}
               </span>
               <span className="muted small">
-                {s.eliminatedInHand ? `Hand #${s.eliminatedInHand} で脱落` : '優勝'}
+                {s.eliminatedInHand
+                  ? t('players.eliminatedIn', { n: s.eliminatedInHand })
+                  : t('results.champion')}
               </span>
             </li>
           );
@@ -38,7 +47,7 @@ export function ResultsScreen({ t, dispatch }: Props) {
       </ul>
 
       <button className="primary big" onClick={() => dispatch({ type: 'reset' })}>
-        新しいトーナメント
+        {t('results.newTournament')}
       </button>
     </div>
   );

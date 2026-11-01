@@ -1,0 +1,220 @@
+{
+  "app": {
+    "title": "ホールデム点数付け"
+  },
+  "common": {
+    "close": "閉じる",
+    "remove": "削除",
+    "listSeparator": "、",
+    "dot": "・",
+    "seatN": "席{{n}}"
+  },
+  "language": {
+    "label": "言語",
+    "switchTo": "English"
+  },
+  "presets": {
+    "wsop-standard": {
+      "name": "WSOP風 スタンダード",
+      "description": "25,000点スタート・1レベル20分・4レベルごとに10分休憩（目安 3〜4時間）"
+    },
+    "wsop-turbo": {
+      "name": "WSOP風 ターボ",
+      "description": "25,000点スタート・1レベル10分・6レベルごとに5分休憩（目安 1.5〜2時間）"
+    },
+    "wsop-deep": {
+      "name": "WSOP風 ディープスタック",
+      "description": "50,000点スタート・1レベル30分・4レベルごとに15分休憩（じっくり遊ぶ）"
+    }
+  },
+  "setup": {
+    "blindStructure": "ブラインド表",
+    "hideStructure": "▲ ブラインド表を閉じる",
+    "showStructure": "▼ ブラインド表を見る・編集する",
+    "colLevel": "Lv",
+    "colMinutes": "分",
+    "breakShort": "休",
+    "addLevel": "＋ レベル",
+    "addBreak": "＋ 休憩",
+    "startingStack": "初期スタック",
+    "minChip": "最小チップ",
+    "reentryTitle": "リエントリー",
+    "reentryEnabled": "リエントリー・途中参加を受け付ける",
+    "reentryLastLevel": "締切（このレベルの終わりまで）",
+    "reentryMaxEntries": "1人の最大エントリー数（0＝無制限）",
+    "playersTitle": "プレイヤー（{{count}}人）",
+    "seatingHint": "上から順に時計回りで座ります。",
+    "addPlayer": "＋ プレイヤーを追加",
+    "defaultPlayerName": "プレイヤー{{n}}",
+    "firstButton": "最初のボタン",
+    "randomButton": "ランダムに決める",
+    "start": "{{stack}}点でスタート"
+  },
+  "validation": {
+    "playerCount": "プレイヤーは2〜{{max}}人にしてください",
+    "emptyName": "名前が空のプレイヤーがいます",
+    "duplicateName": "同じ名前のプレイヤーがいます",
+    "minChip": "最小チップは1以上にしてください",
+    "startingStack": "初期スタックは最小チップで割り切れる額にしてください",
+    "noLevels": "ブラインド表にレベルが1つ以上必要です",
+    "minutes": "ブラインド表の{{row}}行目：時間は1分以上にしてください",
+    "blindOrder": "ブラインド表の{{row}}行目：BBはSBより大きくしてください",
+    "blindMultiple": "ブラインド表の{{row}}行目：額は最小チップ（{{chip}}）で割り切れるようにしてください",
+    "maxEntries": "リエントリーありの場合、最大エントリー数は2以上にしてください",
+    "lastLevel": "リエントリーの締切レベルは1以上にしてください"
+  },
+  "errors": {
+    "noBigBlind": "BBの席にプレイヤーがいません",
+    "noActor": "アクションできる人がいません",
+    "cannotCheck": "ベットに直面しているのでチェックできません",
+    "nothingToCall": "コールする額がありません",
+    "cannotRaise": "今はレイズできません",
+    "exceedsStack": "スタックを超えています",
+    "belowMinimum": "最低でも {{min}} 必要です",
+    "notShowdown": "ショーダウンではありません",
+    "potNeedsWinner": "ポット{{pot}}の勝者を選んでください",
+    "winnerNotEligible": "ポット{{pot}}に参加していない人が選ばれています",
+    "playerCount": "プレイヤーは2〜{{max}}人です",
+    "handNotFinished": "前のハンドが終わっていません",
+    "notEnoughPlayers": "プレイヤーが2人以上必要です",
+    "noHand": "ハンドが始まっていません",
+    "handNotComplete": "ハンドがまだ終わっていません",
+    "cannotReenter": "リエントリーできません",
+    "cannotAddDuringHand": "ハンドの途中では追加できません",
+    "registrationClosed": "登録の受付は終わっています",
+    "seatUnavailable": "その席は使えません",
+    "noTournament": "トーナメントが始まっていません"
+  },
+  "clock": {
+    "level": "Level {{n}}",
+    "break": "休憩",
+    "prevLevel": "前のレベル",
+    "nextLevel": "次のレベル",
+    "start": "開始",
+    "pause": "停止",
+    "pauseLabel": "一時停止",
+    "next": "次：{{blinds}}",
+    "pending": "このハンドは {{blinds}}（次のハンドから新レベル）",
+    "registrationOpen": "リエントリー受付中（Lv{{n}}まで）",
+    "registrationClosed": "リエントリー締切",
+    "soundOn": "音：ON",
+    "soundOff": "音：OFF"
+  },
+  "levelAlert": {
+    "level": "Level {{n}} になりました：{{blinds}}（次のハンドから）",
+    "break": "休憩です（{{minutes}}分）"
+  },
+  "streets": {
+    "preflop": "プリフロップ",
+    "flop": "フロップ",
+    "turn": "ターン",
+    "river": "リバー"
+  },
+  "pot": {
+    "main": "メインポット",
+    "side": "サイドポット",
+    "sideN": "サイドポット{{n}}"
+  },
+  "table": {
+    "handNo": "Hand #{{n}}",
+    "nextHand": "次のハンド #{{n}}",
+    "pot": "ポット {{amount}}",
+    "emptySeat": "空席",
+    "outSeat": "{{name}}（OUT）",
+    "allIn": "ALL IN",
+    "folded": "FOLD",
+    "onBreak": "休憩中です。再開したらハンドを始めてください。",
+    "oneLeft": "残りは1人です。リエントリーする人は「順位」から手続きしてください。",
+    "startHand": "Hand #{{n}} を始める",
+    "undo": "↶ 戻す",
+    "history": "履歴",
+    "standings": "順位",
+    "end": "終了",
+    "confirmEnd": "トーナメントを終了して設定画面に戻りますか？"
+  },
+  "seatAction": {
+    "sb": "SB",
+    "bb": "BB",
+    "ante": "BB",
+    "fold": "フォールド",
+    "check": "チェック",
+    "call": "コール",
+    "bet": "ベット",
+    "raise": "レイズ"
+  },
+  "action": {
+    "toAct": "<b>{{name}}</b> の番",
+    "facingBet": "コール {{toCall}}・残り {{stack}}",
+    "noBet": "賭けなし・残り {{stack}}",
+    "fold": "フォールド",
+    "check": "チェック",
+    "call": "コール {{amount}}",
+    "callAllIn": "オールイン {{amount}}",
+    "quickMin": "Min",
+    "quickHalfPot": "½ポット",
+    "quickPot": "ポット",
+    "quickAllIn": "オールイン",
+    "decrease": "減らす",
+    "increase": "増やす",
+    "amount": "金額",
+    "bet": "ベット {{amount}}",
+    "raise": "レイズ {{amount}}",
+    "allIn": "オールイン {{amount}}",
+    "range": "{{min}}〜{{max}}の範囲で入力してください"
+  },
+  "showdown": {
+    "title": "ショーダウン",
+    "runout": {
+      "flop": "全員の手札を表向きにして（Rule 70）、フロップ・ターン・リバーを開いてください",
+      "turn": "全員の手札を表向きにして（Rule 70）、ターン・リバーを開いてください",
+      "river": "全員の手札を表向きにして（Rule 70）、リバーを開いてください"
+    },
+    "showFirst": "最初に見せる人：{{name}}（Rule 72）",
+    "uncontested": "{{name}} が受け取ります",
+    "split": "引き分け：{{count}}人で分けます",
+    "confirm": "勝者を確定"
+  },
+  "result": {
+    "title": "Hand #{{n}} の結果",
+    "eliminated": "{{names}} が脱落しました",
+    "next": "次へ"
+  },
+  "players": {
+    "title": "プレイヤー",
+    "entries": "{{count}}エントリー",
+    "reenter": "リエントリー",
+    "eliminatedIn": "Hand #{{n}} で脱落",
+    "reenterBetweenHands": "リエントリーはハンドとハンドの間にできます。",
+    "lateRegistration": "途中参加",
+    "namePlaceholder": "名前",
+    "add": "追加",
+    "nameTaken": "同じ名前のプレイヤーがいます",
+    "lateRegistrationStack": "{{stack}}点で参加します（Rule 14）。"
+  },
+  "results": {
+    "title": "トーナメント終了",
+    "winner": "{{name}} の優勝！",
+    "hands": "{{count}}ハンド",
+    "entries": "{{count}}エントリー",
+    "entriesNote": "（{{count}}エントリー）",
+    "summarySeparator": "・",
+    "place": "{{count}}位",
+    "champion": "優勝",
+    "newTournament": "新しいトーナメント"
+  },
+  "history": {
+    "title": "ハンド履歴",
+    "empty": "まだハンドがありません。",
+    "inProgress": "プレイ中",
+    "sb": "SB {{amount}}",
+    "bb": "BB {{amount}}",
+    "ante": "BBアンティ {{amount}}",
+    "fold": "フォールド",
+    "check": "チェック",
+    "call": "コール {{amount}}",
+    "bet": "ベット {{amount}}",
+    "raise": "レイズ {{amount}}",
+    "allInSuffix": "（オールイン）",
+    "awardSeparator": "："
+  }
+}

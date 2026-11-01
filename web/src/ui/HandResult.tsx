@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { HandState, Player } from '../engine';
 import { chips, potLabel } from '../state/format';
 import type { GameAction } from '../state/gameReducer';
@@ -9,21 +10,22 @@ interface Props {
 }
 
 export function HandResult({ hand, players, dispatch }: Props) {
+  const { t } = useTranslation();
   const nameOf = (id: string) => players.find((p) => p.id === id)!.name;
   const busted = hand.players.filter((p) => p.stack === 0);
 
   return (
     <div className="panel result-panel">
       <div className="panel-title">
-        <strong>Hand #{hand.handNumber} の結果</strong>
+        <strong>{t('result.title', { n: hand.handNumber })}</strong>
       </div>
       <ul className="award-list">
         {hand.awards.map((award) => (
           <li key={award.potIndex}>
-            <span className="muted">{potLabel(award.potIndex, hand.awards.length)}</span>{' '}
+            <span className="muted">{potLabel(award.potIndex, hand.awards.length, t)}</span>{' '}
             {Object.entries(award.shares)
               .map(([id, amount]) => `${nameOf(id)} +${chips(amount)}`)
-              .join('、')}
+              .join(t('common.listSeparator'))}
           </li>
         ))}
       </ul>
@@ -42,10 +44,14 @@ export function HandResult({ hand, players, dispatch }: Props) {
         })}
       </ul>
       {busted.length > 0 && (
-        <p className="notice">{busted.map((p) => nameOf(p.playerId)).join('、')} が脱落しました</p>
+        <p className="notice">
+          {t('result.eliminated', {
+            names: busted.map((p) => nameOf(p.playerId)).join(t('common.listSeparator')),
+          })}
+        </p>
       )}
       <button className="primary" onClick={() => dispatch({ type: 'finishHand' })}>
-        次へ
+        {t('result.next')}
       </button>
     </div>
   );

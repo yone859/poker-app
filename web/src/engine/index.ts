@@ -1,4 +1,5 @@
 export * from './types';
+export * from './errors';
 export * from './hand';
 export * from './pots';
 export * from './positions';

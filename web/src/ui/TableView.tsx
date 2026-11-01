@@ -1,36 +1,28 @@
+import { useTranslation } from 'react-i18next';
 import {
   activePlayers,
   nextPositions,
   totalPot,
-  type ActionLog,
   type Positions,
   type TournamentState,
 } from '../engine';
-import { BOARD_CARDS, chips, STREET_LABEL } from '../state/format';
-
-const ACTION_LABEL: Record<ActionLog['kind'], string> = {
-  sb: 'SB',
-  bb: 'BB',
-  ante: 'BB',
-  fold: 'フォールド',
-  check: 'チェック',
-  call: 'コール',
-  bet: 'ベット',
-  raise: 'レイズ',
-};
+import { BOARD_CARDS, chips } from '../state/format';
 
 /** ハンドの間は、次のハンドのボタン位置を先に表示する */
-function displayPositions(t: TournamentState): Positions | null {
-  if (t.hand) return t.hand.positions;
-  const active = activePlayers(t).map((p) => p.seat);
-  return active.length >= 2 ? nextPositions(t.positions, active, t.initialButtonSeat) : null;
+function displayPositions(tournament: TournamentState): Positions | null {
+  if (tournament.hand) return tournament.hand.positions;
+  const active = activePlayers(tournament).map((p) => p.seat);
+  return active.length >= 2
+    ? nextPositions(tournament.positions, active, tournament.initialButtonSeat)
+    : null;
 }
 
-export function TableView({ t }: { t: TournamentState }) {
-  const hand = t.hand;
-  const positions = displayPositions(t);
+export function TableView({ tournament }: { tournament: TournamentState }) {
+  const { t } = useTranslation();
+  const hand = tournament.hand;
+  const positions = displayPositions(tournament);
   const usedSeats = [
-    ...t.players.map((p) => p.seat),
+    ...tournament.players.map((p) => p.seat),
     ...(positions ? [positions.buttonSeat, positions.sbSeat, positions.bbSeat] : []),
   ];
   const size = Math.max(2, ...usedSeats.map((s) => s + 1));
@@ -46,17 +38,17 @@ export function TableView({ t }: { t: TournamentState }) {
         <div className="felt-center">
           {hand ? (
             <>
-              <div className="hand-no">Hand #{hand.handNumber}</div>
-              <div className="street">{STREET_LABEL[street]}</div>
+              <div className="hand-no">{t('table.handNo', { n: hand.handNumber })}</div>
+              <div className="street">{t(`streets.${street}`)}</div>
               <div className="board">
                 {Array.from({ length: 5 }, (_, i) => (
                   <span key={i} className={`card-slot ${i < openCards ? 'open' : ''}`} />
                 ))}
               </div>
-              <div className="pot">ポット {chips(totalPot(hand))}</div>
+              <div className="pot">{t('table.pot', { amount: chips(totalPot(hand)) })}</div>
             </>
           ) : (
-            <div className="street muted">次のハンド #{t.handNumber + 1}</div>
+            <div className="street muted">{t('table.nextHand', { n: tournament.handNumber + 1 })}</div>
           )}
         </div>
       </div>
@@ -68,7 +60,7 @@ export function TableView({ t }: { t: TournamentState }) {
           left: `${50 + 37 * Math.cos(angle)}%`,
           top: `${50 + 43 * Math.sin(angle)}%`,
         };
-        const player = t.players.find((p) => p.seat === seat);
+        const player = tournament.players.find((p) => p.seat === seat);
         const hp = hand?.players.find((p) => p.seat === seat);
         // ヘッズアップではボタンとSBが同じ席になる（Rule 87）
         const badges = positions
@@ -85,7 +77,9 @@ export function TableView({ t }: { t: TournamentState }) {
               {badges.map((b) => (
                 <span key={String(b)} className={`badge b-${b}`}>{b}</span>
               ))}
-              <span className="seat-name">{player ? `${player.name}（OUT）` : '空席'}</span>
+              <span className="seat-name">
+                {player ? t('table.outSeat', { name: player.name }) : t('table.emptySeat')}
+              </span>
             </div>
           );
         }
@@ -110,11 +104,11 @@ export function TableView({ t }: { t: TournamentState }) {
             <span className="seat-name">{player.name}</span>
             <span className="seat-stack">{chips(hp ? hp.stack : player.stack)}</span>
             {hp?.allIn ? (
-              <span className="seat-status">ALL IN</span>
+              <span className="seat-status">{t('table.allIn')}</span>
             ) : hp?.folded ? (
-              <span className="seat-status">FOLD</span>
+              <span className="seat-status">{t('table.folded')}</span>
             ) : lastAction ? (
-              <span className="seat-status">{ACTION_LABEL[lastAction.kind]}</span>
+              <span className="seat-status">{t(`seatAction.${lastAction.kind}`)}</span>
             ) : null}
             {hp && hp.streetBet > 0 && <span className="bet-chip">{chips(hp.streetBet)}</span>}
           </div>

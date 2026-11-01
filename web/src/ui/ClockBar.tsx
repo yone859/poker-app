@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   isRegistrationOpen,
   levelForHand,
@@ -9,24 +10,26 @@ import { blindsText, clockText } from '../state/format';
 import type { GameAction } from '../state/gameReducer';
 
 interface Props {
-  t: TournamentState;
+  tournament: TournamentState;
   now: number;
   soundOn: boolean;
   onToggleSound: () => void;
+  onToggleLanguage: () => void;
   dispatch: (action: GameAction) => void;
 }
 
 const LAST_MINUTE_MS = 60_000;
 
-export function ClockBar({ t, now, soundOn, onToggleSound, dispatch }: Props) {
-  const { structure, reentry } = t.config;
-  const clock = syncClock(t.clock, structure, now);
+export function ClockBar({ tournament, now, soundOn, onToggleSound, onToggleLanguage, dispatch }: Props) {
+  const { t } = useTranslation();
+  const { structure, reentry } = tournament.config;
+  const clock = syncClock(tournament.clock, structure, now);
   const item = structure[clock.index];
   const nextItem = structure[clock.index + 1];
   const lvNo = levelNumber(structure, clock.index);
   const clockLevel = levelForHand(structure, clock.index);
   // 新しいレベルは次のハンドから（Rule 79）。プレイ中のハンドが前のレベルなら知らせる
-  const handLevel = t.hand?.level;
+  const handLevel = tournament.hand?.level;
   const pending = handLevel && handLevel.bigBlind !== clockLevel.bigBlind;
   const regOpen = isRegistrationOpen(structure, clock.index, reentry);
   const lastMinute = clock.running && nextItem && clock.remainingMs <= LAST_MINUTE_MS;
@@ -34,14 +37,16 @@ export function ClockBar({ t, now, soundOn, onToggleSound, dispatch }: Props) {
   return (
     <header className="clock-bar">
       <div className="clock-main">
-        <div className="clock-level">{item.type === 'break' ? '休憩' : `Level ${lvNo}`}</div>
+        <div className="clock-level">
+          {item.type === 'break' ? t('clock.break') : t('clock.level', { n: lvNo })}
+        </div>
         <div className={`clock-time ${clock.running ? '' : 'paused'} ${lastMinute ? 'last-minute' : ''}`}>
           {clockText(clock.remainingMs)}
         </div>
         <div className="clock-buttons">
           <button
             className="icon"
-            aria-label="前のレベル"
+            aria-label={t('clock.prevLevel')}
             disabled={clock.index === 0}
             onClick={() => dispatch({ type: 'clockJump', index: clock.index - 1, now: Date.now() })}
           >
@@ -49,16 +54,16 @@ export function ClockBar({ t, now, soundOn, onToggleSound, dispatch }: Props) {
           </button>
           <button
             className={clock.running ? '' : 'primary'}
-            aria-label={clock.running ? '一時停止' : '開始'}
+            aria-label={clock.running ? t('clock.pauseLabel') : t('clock.start')}
             onClick={() =>
               dispatch({ type: clock.running ? 'clockPause' : 'clockStart', now: Date.now() })
             }
           >
-            {clock.running ? '停止' : '開始'}
+            {clock.running ? t('clock.pause') : t('clock.start')}
           </button>
           <button
             className="icon"
-            aria-label="次のレベル"
+            aria-label={t('clock.nextLevel')}
             disabled={!nextItem}
             onClick={() => dispatch({ type: 'clockJump', index: clock.index + 1, now: Date.now() })}
           >
@@ -67,17 +72,24 @@ export function ClockBar({ t, now, soundOn, onToggleSound, dispatch }: Props) {
         </div>
       </div>
       <div className="clock-info">
-        <span className="clock-blinds">{blindsText(item)}</span>
-        {nextItem && <span>次：{blindsText(nextItem)}</span>}
-        {pending && <span className="warn">このハンドは {blindsText(handLevel)}（次のハンドから新レベル）</span>}
+        <span className="clock-blinds">{blindsText(item, t)}</span>
+        {nextItem && <span>{t('clock.next', { blinds: blindsText(nextItem, t) })}</span>}
+        {pending && <span className="warn">{t('clock.pending', { blinds: blindsText(handLevel, t) })}</span>}
         {reentry.enabled && (
           <span className={regOpen ? 'ok' : 'muted'}>
-            {regOpen ? `リエントリー受付中（Lv${reentry.lastLevel}まで）` : 'リエントリー締切'}
+            {regOpen
+              ? t('clock.registrationOpen', { n: reentry.lastLevel })
+              : t('clock.registrationClosed')}
           </span>
         )}
-        <button className="link sound" onClick={onToggleSound}>
-          {soundOn ? '音：ON' : '音：OFF'}
-        </button>
+        <span className="clock-toggles">
+          <button className="link" onClick={onToggleSound}>
+            {soundOn ? t('clock.soundOn') : t('clock.soundOff')}
+          </button>
+          <button className="link" onClick={onToggleLanguage}>
+            {t('language.switchTo')}
+          </button>
+        </span>
       </div>
     </header>
   );

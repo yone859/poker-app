@@ -64,7 +64,7 @@ export function levelForHand(structure: StructureItem[], index: number): BlindLe
     if (item.type === 'level') return item;
   }
   const next = structure.find((s): s is BlindLevel => s.type === 'level');
-  if (!next) throw new Error('ブラインド表にレベルがありません');
+  if (!next) throw new Error('structure has no levels');
   return next;
 }
 

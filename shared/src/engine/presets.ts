@@ -1,7 +1,7 @@
 import type { StructureItem, TournamentConfig } from './types';
 
 // WSOPのNLHEイベントに近い上がり方（BBアンティ＝BBの額）。[SB, BB]
-const WSOP_BLINDS: [number, number][] = [
+const TOURNAMENT_BLINDS: [number, number][] = [
   [100, 200],
   [200, 300],
   [200, 400],
@@ -29,9 +29,9 @@ const WSOP_BLINDS: [number, number][] = [
 ];
 
 function buildStructure(levelMinutes: number, breakEvery: number, breakMinutes: number): StructureItem[] {
-  return WSOP_BLINDS.flatMap(([sb, bb], i): StructureItem[] => {
+  return TOURNAMENT_BLINDS.flatMap(([sb, bb], i): StructureItem[] => {
     const level: StructureItem = { type: 'level', smallBlind: sb, bigBlind: bb, ante: bb, minutes: levelMinutes };
-    const isLast = i === WSOP_BLINDS.length - 1;
+    const isLast = i === TOURNAMENT_BLINDS.length - 1;
     return (i + 1) % breakEvery === 0 && !isLast
       ? [level, { type: 'break', minutes: breakMinutes }]
       : [level];
@@ -40,13 +40,13 @@ function buildStructure(levelMinutes: number, breakEvery: number, breakMinutes: 
 
 /** 名前と説明は画面側の翻訳ファイル（presets.<id>）に置く */
 export interface Preset {
-  id: 'wsop-standard' | 'wsop-turbo' | 'wsop-deep';
+  id: 'standard' | 'turbo' | 'deep';
   config: TournamentConfig;
 }
 
 export const PRESETS: Preset[] = [
   {
-    id: 'wsop-standard',
+    id: 'standard',
     config: {
       startingStack: 25_000,
       structure: buildStructure(20, 4, 10),
@@ -55,7 +55,7 @@ export const PRESETS: Preset[] = [
     },
   },
   {
-    id: 'wsop-turbo',
+    id: 'turbo',
     config: {
       startingStack: 25_000,
       structure: buildStructure(10, 6, 5),
@@ -64,7 +64,7 @@ export const PRESETS: Preset[] = [
     },
   },
   {
-    id: 'wsop-deep',
+    id: 'deep',
     config: {
       startingStack: 50_000,
       structure: buildStructure(30, 4, 15),

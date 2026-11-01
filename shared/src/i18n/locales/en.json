@@ -14,16 +14,16 @@
     "switchTo": "日本語"
   },
   "presets": {
-    "wsop-standard": {
-      "name": "WSOP-style Standard",
+    "standard": {
+      "name": "Standard",
       "description": "25,000 chips · 20-minute levels · 10-minute break every 4 levels (about 3–4 hours)"
     },
-    "wsop-turbo": {
-      "name": "WSOP-style Turbo",
+    "turbo": {
+      "name": "Turbo",
       "description": "25,000 chips · 10-minute levels · 5-minute break every 6 levels (about 1.5–2 hours)"
     },
-    "wsop-deep": {
-      "name": "WSOP-style Deep Stack",
+    "deep": {
+      "name": "Deep Stack",
       "description": "50,000 chips · 30-minute levels · 15-minute break every 4 levels (for a longer game)"
     }
   },
@@ -165,11 +165,11 @@
   "showdown": {
     "title": "Showdown",
     "runout": {
-      "flop": "All hands face up (Rule 70). Deal the flop, turn and river.",
-      "turn": "All hands face up (Rule 70). Deal the turn and river.",
-      "river": "All hands face up (Rule 70). Deal the river."
+      "flop": "All hands face up. Deal the flop, turn and river.",
+      "turn": "All hands face up. Deal the turn and river.",
+      "river": "All hands face up. Deal the river."
     },
-    "showFirst": "{{name}} shows first (Rule 72)",
+    "showFirst": "{{name}} shows first",
     "uncontested": "Goes to {{name}}",
     "split": "Split {{count}} ways",
     "confirm": "Confirm winners"
@@ -190,7 +190,7 @@
     "namePlaceholder": "Name",
     "add": "Add",
     "nameTaken": "That name is already taken.",
-    "lateRegistrationStack": "Joins with {{stack}} chips (Rule 14)."
+    "lateRegistrationStack": "Joins with {{stack}} chips."
   },
   "results": {
     "title": "Tournament over",

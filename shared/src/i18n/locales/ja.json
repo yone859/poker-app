@@ -14,16 +14,16 @@
     "switchTo": "English"
   },
   "presets": {
-    "wsop-standard": {
-      "name": "WSOP風 スタンダード",
+    "standard": {
+      "name": "スタンダード",
       "description": "25,000点スタート・1レベル20分・4レベルごとに10分休憩（目安 3〜4時間）"
     },
-    "wsop-turbo": {
-      "name": "WSOP風 ターボ",
+    "turbo": {
+      "name": "ターボ",
       "description": "25,000点スタート・1レベル10分・6レベルごとに5分休憩（目安 1.5〜2時間）"
     },
-    "wsop-deep": {
-      "name": "WSOP風 ディープスタック",
+    "deep": {
+      "name": "ディープスタック",
       "description": "50,000点スタート・1レベル30分・4レベルごとに15分休憩（じっくり遊ぶ）"
     }
   },
@@ -165,11 +165,11 @@
   "showdown": {
     "title": "ショーダウン",
     "runout": {
-      "flop": "全員の手札を表向きにして（Rule 70）、フロップ・ターン・リバーを開いてください",
-      "turn": "全員の手札を表向きにして（Rule 70）、ターン・リバーを開いてください",
-      "river": "全員の手札を表向きにして（Rule 70）、リバーを開いてください"
+      "flop": "全員の手札を表向きにして、フロップ・ターン・リバーを開いてください",
+      "turn": "全員の手札を表向きにして、ターン・リバーを開いてください",
+      "river": "全員の手札を表向きにして、リバーを開いてください"
     },
-    "showFirst": "最初に見せる人：{{name}}（Rule 72）",
+    "showFirst": "最初に見せる人：{{name}}",
     "uncontested": "{{name}} が受け取ります",
     "split": "引き分け：{{count}}人で分けます",
     "confirm": "勝者を確定"
@@ -189,7 +189,7 @@
     "namePlaceholder": "名前",
     "add": "追加",
     "nameTaken": "同じ名前のプレイヤーがいます",
-    "lateRegistrationStack": "{{stack}}点で参加します（Rule 14）。"
+    "lateRegistrationStack": "{{stack}}点で参加します。"
   },
   "results": {
     "title": "トーナメント終了",

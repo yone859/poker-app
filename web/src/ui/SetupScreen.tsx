@@ -8,20 +8,18 @@ import {
   type StructureItem,
   type TournamentConfig,
 } from '@holdem/shared/engine';
-import type { Language } from '@holdem/shared/i18n';
 import { chips } from '@holdem/shared/state/format';
 import { validateSetup } from '@holdem/shared/state/validateSetup';
 import { NumberField } from './NumberField';
 
 interface Props {
-  language: Language;
-  onChangeLanguage: (language: Language) => void;
+  onBack: () => void;
   onStart: (config: TournamentConfig, names: string[], buttonSeat: number) => void;
 }
 
 const copy = <T,>(v: T): T => JSON.parse(JSON.stringify(v)) as T;
 
-export function SetupScreen({ language, onChangeLanguage, onStart }: Props) {
+export function SetupScreen({ onBack, onStart }: Props) {
   const { t } = useTranslation();
   const [presetId, setPresetId] = useState<Preset['id']>(PRESETS[0].id);
   const [config, setConfig] = useState<TournamentConfig>(() => copy(PRESETS[0].config));
@@ -68,17 +66,11 @@ export function SetupScreen({ language, onChangeLanguage, onStart }: Props) {
 
   return (
     <div className="screen setup">
-      <div className="row between gap">
-        <h1>{t('app.title')}</h1>
-        <select
-          className="language-select"
-          aria-label={t('language.label')}
-          value={language}
-          onChange={(e) => onChangeLanguage(e.target.value as Language)}
-        >
-          <option value="ja">日本語</option>
-          <option value="en">English</option>
-        </select>
+      <div className="screen-header">
+        <button className="link" onClick={onBack}>
+          {t('common.back')}
+        </button>
+        <h1>{t('setup.title')}</h1>
       </div>
 
       <section className="card">

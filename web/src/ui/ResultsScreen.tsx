@@ -1,13 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { standings, type TournamentState } from '@holdem/shared/engine';
-import type { GameAction } from '@holdem/shared/state/gameReducer';
 
 interface Props {
   tournament: TournamentState;
-  dispatch: (action: GameAction) => void;
+  /** トーナメントを片付けてホームへ */
+  onHome: () => void;
+  /** トーナメントを片付けて設定画面へ */
+  onNewTournament: () => void;
 }
 
-export function ResultsScreen({ tournament, dispatch }: Props) {
+export function ResultsScreen({ tournament, onHome, onNewTournament }: Props) {
   const { t } = useTranslation();
   const rows = standings(tournament);
   const totalEntries = tournament.players.reduce((sum, p) => sum + p.entries, 0);
@@ -46,9 +48,10 @@ export function ResultsScreen({ tournament, dispatch }: Props) {
         })}
       </ul>
 
-      <button className="primary big" onClick={() => dispatch({ type: 'reset' })}>
+      <button className="primary big" onClick={onNewTournament}>
         {t('results.newTournament')}
       </button>
+      <button onClick={onHome}>{t('results.home')}</button>
     </div>
   );
 }

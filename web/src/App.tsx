@@ -2,21 +2,27 @@ import { useEffect, useReducer, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isFinished } from '@holdem/shared/engine';
 import type { Language } from '@holdem/shared/i18n';
-import { loadGame, loadSoundOn, saveGame, saveLanguage, saveSoundOn } from './platform/web';
 import { gameReducer, initialGameState } from '@holdem/shared/state/gameReducer';
 import { useNow } from '@holdem/shared/state/useNow';
+import { loadGame, loadSoundOn, saveGame, saveLanguage, saveSoundOn } from './platform/web';
+import { HomeScreen, type InfoScreen } from './ui/HomeScreen';
+import { AboutScreen, HowToScreen, SettingsScreen } from './ui/InfoScreens';
 import { ResultsScreen } from './ui/ResultsScreen';
 import { SetupScreen } from './ui/SetupScreen';
 import { TableScreen } from './ui/TableScreen';
 import './App.css';
 
+/** 'game' はテーブル画面（終わっていれば結果画面） */
+type Screen = 'home' | 'setup' | 'game' | InfoScreen;
+
 export default function App() {
   const { t, i18n } = useTranslation();
-  // 保存してあるトーナメントがあれば、そこから再開する
+  // 保存してあるトーナメントがあれば読み込んでおき、ホーム画面の「続きから再開」で使う
   const [state, dispatch] = useReducer(gameReducer, initialGameState, (s) => ({
     ...s,
     ...loadGame(),
   }));
+  const [screen, setScreen] = useState<Screen>('home');
   const [soundOn, setSoundOn] = useState(loadSoundOn);
   const now = useNow();
   const tournament = state.tournament;
@@ -28,9 +34,9 @@ export default function App() {
     document.title = t('app.title');
   }, [t]);
 
-  function toggleSound() {
-    setSoundOn(!soundOn);
-    saveSoundOn(!soundOn);
+  function changeSound(on: boolean) {
+    setSoundOn(on);
+    saveSoundOn(on);
   }
 
   // 選んだ言語は保存し、次回からはブラウザの言語設定より優先する
@@ -39,6 +45,10 @@ export default function App() {
     void i18n.changeLanguage(language);
   }
 
+  const goHome = () => setScreen('home');
+  // トーナメントがないのにテーブル画面を開こうとしたら、ホームを出す
+  const current: Screen = screen === 'game' && !tournament ? 'home' : screen;
+
   return (
     <>
       {state.error && (
@@ -46,27 +56,63 @@ export default function App() {
           {t(`errors.${state.error.code}`, state.error.params)}
         </div>
       )}
-      {!tournament ? (
-        <SetupScreen
-          language={i18n.language as Language}
-          onChangeLanguage={changeLanguage}
-          onStart={(config, names, buttonSeat) =>
-            dispatch({ type: 'create', config, names, buttonSeat, now: Date.now() })
-          }
-        />
-      ) : isFinished(tournament, now) ? (
-        <ResultsScreen tournament={tournament} dispatch={dispatch} />
-      ) : (
-        <TableScreen
+
+      {current === 'home' && (
+        <HomeScreen
           tournament={tournament}
           now={now}
-          canUndo={state.past.length > 0}
-          soundOn={soundOn}
-          onToggleSound={toggleSound}
-          onToggleLanguage={() => changeLanguage(i18n.language === 'ja' ? 'en' : 'ja')}
-          dispatch={dispatch}
+          onResume={() => setScreen('game')}
+          onNewTournament={() => setScreen('setup')}
+          onDiscard={() => dispatch({ type: 'reset' })}
+          onOpen={setScreen}
         />
       )}
+      {current === 'setup' && (
+        <SetupScreen
+          onBack={goHome}
+          onStart={(config, names, buttonSeat) => {
+            dispatch({ type: 'create', config, names, buttonSeat, now: Date.now() });
+            setScreen('game');
+          }}
+        />
+      )}
+      {current === 'game' && tournament && (
+        isFinished(tournament, now) ? (
+          <ResultsScreen
+            tournament={tournament}
+            onHome={() => {
+              dispatch({ type: 'reset' });
+              goHome();
+            }}
+            onNewTournament={() => {
+              dispatch({ type: 'reset' });
+              setScreen('setup');
+            }}
+          />
+        ) : (
+          <TableScreen
+            tournament={tournament}
+            now={now}
+            canUndo={state.past.length > 0}
+            soundOn={soundOn}
+            onToggleSound={() => changeSound(!soundOn)}
+            onToggleLanguage={() => changeLanguage(i18n.language === 'ja' ? 'en' : 'ja')}
+            onHome={goHome}
+            dispatch={dispatch}
+          />
+        )
+      )}
+      {current === 'howto' && <HowToScreen onBack={goHome} />}
+      {current === 'settings' && (
+        <SettingsScreen
+          onBack={goHome}
+          language={i18n.language as Language}
+          onChangeLanguage={changeLanguage}
+          soundOn={soundOn}
+          onChangeSound={changeSound}
+        />
+      )}
+      {current === 'about' && <AboutScreen onBack={goHome} />}
     </>
   );
 }

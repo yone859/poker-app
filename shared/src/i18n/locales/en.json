@@ -7,7 +7,9 @@
     "remove": "Remove",
     "listSeparator": ", ",
     "dot": " · ",
-    "seatN": "Seat {{n}}"
+    "seatN": "Seat {{n}}",
+    "back": "← Back",
+    "cancel": "Cancel"
   },
   "language": {
     "label": "Language",
@@ -48,7 +50,8 @@
     "defaultPlayerName": "Player {{n}}",
     "firstButton": "Starting dealer button",
     "randomButton": "Random",
-    "start": "Start with {{stack}} chips"
+    "start": "Start with {{stack}} chips",
+    "title": "New tournament"
   },
   "validation": {
     "playerCount": "Enter between 2 and {{max}} players.",
@@ -129,8 +132,7 @@
     "undo": "↶ Undo",
     "history": "History",
     "standings": "Standings",
-    "end": "End",
-    "confirmEnd": "End this tournament and go back to setup?"
+    "home": "Home"
   },
   "seatAction": {
     "sb": "SB",
@@ -207,7 +209,8 @@
     "place_ordinal_few": "{{count}}rd",
     "place_ordinal_other": "{{count}}th",
     "champion": "Winner",
-    "newTournament": "New tournament"
+    "newTournament": "New tournament",
+    "home": "Home"
   },
   "history": {
     "title": "Hand history",
@@ -223,5 +226,104 @@
     "raise": "Raises to {{amount}}",
     "allInSuffix": " (all-in)",
     "awardSeparator": ": "
+  },
+  "home": {
+    "resumeTitle": "Resume tournament",
+    "summaryNotStarted_one": "Not started · {{count}} player",
+    "summaryNotStarted_other": "Not started · {{count}} players",
+    "summaryPlaying_one": "Hand #{{hand}} · Level {{level}} · {{count}} player left",
+    "summaryPlaying_other": "Hand #{{hand}} · Level {{level}} · {{count}} players left",
+    "summaryFinished": "Finished · {{name}} won",
+    "discard": "End this tournament",
+    "confirmDiscard": "This will end the saved tournament. This can't be undone. Are you sure?",
+    "confirmDiscardOk": "End tournament",
+    "newTournament": "New tournament",
+    "confirmNew": "Starting a new tournament will end the saved one. Go to setup?",
+    "confirmNewOk": "Continue",
+    "howTo": "How to use",
+    "settings": "Settings",
+    "about": "About"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "sound": "Level-up sound",
+    "on": "On",
+    "off": "Off"
+  },
+  "about": {
+    "title": "About",
+    "version": "Version {{version}}",
+    "privacyTitle": "Privacy",
+    "privacyBody": "This app doesn't collect any personal information. Tournament records and settings are stored only on this device, and the app never connects to the internet.",
+    "noticeTitle": "Please note",
+    "noticeBody": "This app is a scorekeeping tool. It can't be used for real-money gambling.",
+    "rulesTitle": "About the rules",
+    "rulesBody": "Tournament procedures follow rules commonly used in live poker tournaments."
+  },
+  "howto": {
+    "title": "How to use",
+    "sections": [
+      {
+        "title": "What this app does",
+        "items": [
+          "Keeps score in place of chips while you play a Texas Hold'em tournament with a real deck of cards.",
+          "Put one phone in the middle of the table and share it. The app doesn't deal cards, so you pick the winner on screen after the showdown."
+        ]
+      },
+      {
+        "title": "Starting a tournament",
+        "items": [
+          "Tap New tournament, choose the blind structure, starting stack and players, then start.",
+          "Pick one of three preset blind structures, or edit any level yourself."
+        ]
+      },
+      {
+        "title": "Playing a hand",
+        "items": [
+          "Tap Deal Hand #1. The small blind, big blind and big blind ante are posted automatically.",
+          "The highlighted seat is the player to act. Enter what they declare: Fold, Check, Call, Bet or Raise.",
+          "Set a bet or raise with the Min, ½ Pot, Pot and All-in buttons, the slider, or by typing an amount. Amounts that aren't allowed can't be entered.",
+          "When the betting round is complete, the app moves to the next street. The card outlines in the middle show how many board cards should be face up."
+        ]
+      },
+      {
+        "title": "Showdown",
+        "items": [
+          "If the hand goes to showdown, choose the winner of each pot and tap Confirm winners.",
+          "For a split pot, select every player who ties and the pot is divided evenly. Side pots are calculated for you."
+        ]
+      },
+      {
+        "title": "Fixing mistakes",
+        "items": [
+          "Tap Undo to step back one action at a time (up to 50). If you close the app, you can resume where you left off."
+        ]
+      },
+      {
+        "title": "Blinds and the clock",
+        "items": [
+          "The clock starts with the first hand and moves to the next level when time runs out. New blinds take effect from the next hand.",
+          "A sound and a banner announce each new level. You can turn the sound off in Settings."
+        ]
+      },
+      {
+        "title": "Eliminations, re-entry and late registration",
+        "items": [
+          "Players who run out of chips are eliminated. While registration is open, re-entries and late registrations can be made from Standings."
+        ]
+      },
+      {
+        "title": "Key rules",
+        "items": [
+          "Big blind ante: the player in the big blind posts the ante for the whole table.",
+          "Minimum raise: a raise must be at least as large as the previous bet or raise in that round.",
+          "An all-in for less than a full raise does not reopen the betting to players who have already acted.",
+          "When betting is over with a player all-in, all hands are turned face up before the rest of the board is dealt.",
+          "In a split pot, an odd chip goes to the winner closest to the left of the button.",
+          "Heads-up, the button posts the small blind and acts first before the flop."
+        ]
+      }
+    ]
   }
 }

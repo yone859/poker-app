@@ -6,14 +6,18 @@ import { detectLanguage } from './index';
 import en from './locales/en.json';
 import ja from './locales/ja.json';
 
-type Tree = { [key: string]: string | Tree };
+type Json = string | Json[] | { [key: string]: Json };
 
-/** { a: { b: 'x' } } → { 'a.b': 'x' } */
-function flatten(tree: Tree, prefix = ''): Record<string, string> {
-  return Object.entries(tree).reduce<Record<string, string>>((acc, [k, v]) => {
-    const key = prefix ? `${prefix}.${k}` : k;
-    return typeof v === 'string' ? { ...acc, [key]: v } : { ...acc, ...flatten(v, key) };
-  }, {});
+/** { a: { b: 'x' }, c: ['y'] } → { 'a.b': 'x', 'c.0': 'y' }（配列は番号をキーにする） */
+function flatten(value: Json, prefix = ''): Record<string, string> {
+  if (typeof value === 'string') return { [prefix]: value };
+  const entries: [string, Json][] = Array.isArray(value)
+    ? value.map((v, i) => [String(i), v])
+    : Object.entries(value);
+  return entries.reduce<Record<string, string>>(
+    (acc, [k, v]) => ({ ...acc, ...flatten(v, prefix ? `${prefix}.${k}` : k) }),
+    {},
+  );
 }
 
 /** 単数形・複数形・序数の接尾辞（_one、_ordinal_two など）を取り除いた、元のキー */

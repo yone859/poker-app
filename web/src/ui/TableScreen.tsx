@@ -19,6 +19,7 @@ interface Props {
   soundOn: boolean;
   onToggleSound: () => void;
   onToggleLanguage: () => void;
+  onHome: () => void;
   dispatch: (action: GameAction) => void;
 }
 
@@ -29,6 +30,7 @@ export function TableScreen({
   soundOn,
   onToggleSound,
   onToggleLanguage,
+  onHome,
   dispatch,
 }: Props) {
   const { t } = useTranslation();
@@ -90,14 +92,7 @@ export function TableScreen({
           </button>
           <button onClick={() => setModal('history')}>{t('table.history')}</button>
           <button onClick={() => setModal('players')}>{t('table.standings')}</button>
-          <button
-            className="danger"
-            onClick={() => {
-              if (window.confirm(t('table.confirmEnd'))) dispatch({ type: 'reset' });
-            }}
-          >
-            {t('table.end')}
-          </button>
+          <button onClick={onHome}>{t('table.home')}</button>
         </div>
       </div>
 

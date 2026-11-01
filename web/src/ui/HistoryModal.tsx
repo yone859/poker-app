@@ -15,14 +15,16 @@ const STREETS: Street[] = ['preflop', 'flop', 'turn', 'river'];
 function describe(a: ActionLog, t: TFunction): string {
   const allIn = a.allIn ? t('history.allInSuffix') : '';
   switch (a.kind) {
+    // コールは追加で出した額（calls 200）、ベット・レイズはそのストリートの合計額（raises to 400）。
+    // ハンドヒストリーの一般的な書き方に合わせている
     case 'sb':
     case 'bb':
     case 'ante':
+    case 'call':
       return t(`history.${a.kind}`, { amount: chips(a.amount) }) + allIn;
     case 'fold':
     case 'check':
       return t(`history.${a.kind}`);
-    case 'call':
     case 'bet':
     case 'raise':
       return t(`history.${a.kind}`, { amount: chips(a.streetBet) }) + allIn;

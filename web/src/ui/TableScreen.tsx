@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { activePlayers, syncClock, type TournamentState } from '../engine';
+import { activePlayers, syncClock, type TournamentState } from '@holdem/shared/engine';
 import { useKeepAwake } from '../platform/web';
-import type { GameAction } from '../state/gameReducer';
+import type { GameAction } from '@holdem/shared/state/gameReducer';
 import { ActionPanel } from './ActionPanel';
 import { ClockBar } from './ClockBar';
 import { HandResult } from './HandResult';

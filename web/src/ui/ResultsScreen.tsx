@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { standings, type TournamentState } from '../engine';
-import type { GameAction } from '../state/gameReducer';
+import { standings, type TournamentState } from '@holdem/shared/engine';
+import type { GameAction } from '@holdem/shared/state/gameReducer';
 
 interface Props {
   tournament: TournamentState;

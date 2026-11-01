@@ -3,9 +3,9 @@
  * Expo版では、同じ名前の関数を AsyncStorage・expo-audio・expo-haptics・expo-keep-awake・expo-localization で作り直す。
  */
 import { useEffect } from 'react';
-import type { TournamentState } from '../engine';
-import type { Language } from '../i18n';
-import { deserialize, serialize, STORAGE_KEY, type SavedGame } from '../state/persistence';
+import type { TournamentState } from '@holdem/shared/engine';
+import type { Language } from '@holdem/shared/i18n';
+import { deserialize, serialize, STORAGE_KEY, type SavedGame } from '@holdem/shared/state/persistence';
 
 // localStorage はプライベートブラウズなどで使えないことがあるので、失敗しても止まらないようにする
 

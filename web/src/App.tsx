@@ -1,10 +1,10 @@
 import { useEffect, useReducer, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { isFinished } from './engine';
-import type { Language } from './i18n';
+import { isFinished } from '@holdem/shared/engine';
+import type { Language } from '@holdem/shared/i18n';
 import { loadGame, loadSoundOn, saveGame, saveLanguage, saveSoundOn } from './platform/web';
-import { gameReducer, initialGameState } from './state/gameReducer';
-import { useNow } from './state/useNow';
+import { gameReducer, initialGameState } from '@holdem/shared/state/gameReducer';
+import { useNow } from '@holdem/shared/state/useNow';
 import { ResultsScreen } from './ui/ResultsScreen';
 import { SetupScreen } from './ui/SetupScreen';
 import { TableScreen } from './ui/TableScreen';

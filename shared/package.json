@@ -1,0 +1,31 @@
+{
+  "name": "@holdem/shared",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Web版・スマホ版で共通のルール（engine）、状態管理（state）、翻訳（i18n）",
+  "exports": {
+    "./engine": "./src/engine/index.ts",
+    "./state/*": "./src/state/*.ts",
+    "./i18n": "./src/i18n/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint src"
+  },
+  "dependencies": {
+    "i18next": "^26.5.11",
+    "react-i18next": "^17.1.9"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "oxlint": "^1.81.0",
+    "typescript": "~6.0.2",
+    "vitest": "^5.0.0"
+  }
+}

@@ -1,8 +1,8 @@
 import type { TFunction } from 'i18next';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { ActionLog, HandState, Player, Street } from '../engine';
-import { blindsText, chips, potLabel } from '../state/format';
+import type { ActionLog, HandState, Player, Street } from '@holdem/shared/engine';
+import { blindsText, chips, potLabel } from '@holdem/shared/state/format';
 
 interface Props {
   hands: HandState[];

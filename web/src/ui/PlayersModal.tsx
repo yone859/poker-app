@@ -6,9 +6,9 @@ import {
   standings,
   TABLE_SIZE,
   type TournamentState,
-} from '../engine';
-import { chips } from '../state/format';
-import type { GameAction } from '../state/gameReducer';
+} from '@holdem/shared/engine';
+import { chips } from '@holdem/shared/state/format';
+import type { GameAction } from '@holdem/shared/state/gameReducer';
 
 interface Props {
   tournament: TournamentState;

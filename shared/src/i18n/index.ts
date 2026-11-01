@@ -1,5 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+// t('...') のキーを型チェックする設定。読み込む側（web・expo-app）でも有効にするため、ここで読み込む
+import type {} from './i18next-types';
 import en from './locales/en.json';
 import ja from './locales/ja.json';
 

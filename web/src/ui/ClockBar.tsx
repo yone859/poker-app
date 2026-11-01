@@ -5,9 +5,9 @@ import {
   levelNumber,
   syncClock,
   type TournamentState,
-} from '../engine';
-import { blindsText, clockText } from '../state/format';
-import type { GameAction } from '../state/gameReducer';
+} from '@holdem/shared/engine';
+import { blindsText, clockText } from '@holdem/shared/state/format';
+import type { GameAction } from '@holdem/shared/state/gameReducer';
 
 interface Props {
   tournament: TournamentState;

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { levelNumber, type StructureItem } from '../engine';
+import { levelNumber, type StructureItem } from '@holdem/shared/engine';
 import { playLevelUpSound, vibrate } from '../platform/web';
-import { blindsText } from '../state/format';
+import { blindsText } from '@holdem/shared/state/format';
 
 const SHOW_MS = 15_000;
 

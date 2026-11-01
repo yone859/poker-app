@@ -7,10 +7,10 @@ import {
   type Preset,
   type StructureItem,
   type TournamentConfig,
-} from '../engine';
-import type { Language } from '../i18n';
-import { chips } from '../state/format';
-import { validateSetup } from '../state/validateSetup';
+} from '@holdem/shared/engine';
+import type { Language } from '@holdem/shared/i18n';
+import { chips } from '@holdem/shared/state/format';
+import { validateSetup } from '@holdem/shared/state/validateSetup';
 import { NumberField } from './NumberField';
 
 interface Props {

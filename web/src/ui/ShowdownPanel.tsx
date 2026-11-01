@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { HandState, Player } from '../engine';
-import { chips, potLabel } from '../state/format';
-import type { GameAction } from '../state/gameReducer';
+import type { HandState, Player } from '@holdem/shared/engine';
+import { chips, potLabel } from '@holdem/shared/state/format';
+import type { GameAction } from '@holdem/shared/state/gameReducer';
 
 interface Props {
   hand: HandState;

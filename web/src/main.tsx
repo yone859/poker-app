@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
-import { detectLanguage, i18n, initI18n, type Language } from './i18n'
+import { detectLanguage, i18n, initI18n, type Language } from '@holdem/shared/i18n'
 import { getDeviceLanguages, loadLanguage, setDocumentLanguage } from './platform/web'
 
 // 画面を描く前に言語を決める（利用者が選んだ言語 → ブラウザの言語設定 → 英語 の順）

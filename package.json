@@ -1,0 +1,14 @@
+{
+  "name": "poker-app",
+  "private": true,
+  "workspaces": [
+    "shared",
+    "web"
+  ],
+  "scripts": {
+    "test": "npm run test -w shared",
+    "dev:web": "npm run dev -w web",
+    "build:web": "npm run build -w web",
+    "lint": "npm run lint -w shared && npm run lint -w web"
+  }
+}

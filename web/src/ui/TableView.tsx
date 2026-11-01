@@ -5,8 +5,8 @@ import {
   totalPot,
   type Positions,
   type TournamentState,
-} from '../engine';
-import { BOARD_CARDS, chips } from '../state/format';
+} from '@holdem/shared/engine';
+import { BOARD_CARDS, chips } from '@holdem/shared/state/format';
 
 /** ハンドの間は、次のハンドのボタン位置を先に表示する */
 function displayPositions(tournament: TournamentState): Positions | null {

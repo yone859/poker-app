@@ -58,7 +58,7 @@ describe('翻訳ファイル', () => {
   });
 
   it('英語の複数形は one と other の両方がある', () => {
-    for (const key of Object.keys(enFlat).filter((k) => /_one$/.test(k))) {
+    for (const key of Object.keys(enFlat).filter((k) => k.endsWith('_one'))) {
       expect(enFlat, key).toHaveProperty([key.replace(/_one$/, '_other')]);
     }
   });

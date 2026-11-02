@@ -3,12 +3,19 @@
   "private": true,
   "workspaces": [
     "shared",
-    "web"
+    "web",
+    "expo-app"
   ],
   "scripts": {
     "test": "npm run test -w shared",
     "dev:web": "npm run dev -w web",
     "build:web": "npm run build -w web",
-    "lint": "npm run lint -w shared && npm run lint -w web"
+    "lint": "npm run lint -w shared && npm run lint -w web && npm run lint -w expo-app",
+    "start:app": "npm run start -w expo-app --",
+    "typecheck": "npm run typecheck -w shared && npm run typecheck -w expo-app"
+  },
+  "overrides": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
   }
 }

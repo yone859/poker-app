@@ -1,0 +1,8 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "Hold'em Chip Tracker"
+  },
+  "android": {
+    "app_name": "Hold'em Chip Tracker"
+  }
+}

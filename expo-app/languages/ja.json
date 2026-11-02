@@ -1,0 +1,8 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "ホールデム点数付け"
+  },
+  "android": {
+    "app_name": "ホールデム点数付け"
+  }
+}

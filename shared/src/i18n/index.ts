@@ -23,8 +23,9 @@ export function detectLanguage(deviceLanguages: readonly string[]): Language {
   return FALLBACK;
 }
 
-export function initI18n(language: Language): void {
-  void i18n.use(initReactI18next).init({
+/** 初期化が終わると解決する Promise を返す（スマホ版は待ってから画面を出す） */
+export function initI18n(language: Language): Promise<unknown> {
+  return i18n.use(initReactI18next).init({
     resources: { ja: { translation: ja }, en: { translation: en } },
     lng: language,
     fallbackLng: FALLBACK,

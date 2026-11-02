@@ -863,7 +863,21 @@ button.danger-fill {
   min-width: 80px;
 }
 
-.segmented button.selected {
+.setting-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.language-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.segmented button.selected,
+.language-grid button.selected {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--accent-text);

@@ -1,0 +1,317 @@
+{
+  "app": {
+    "title": "德州扑克计分器"
+  },
+  "common": {
+    "close": "关闭",
+    "remove": "删除",
+    "listSeparator": "、",
+    "dot": " · ",
+    "seatN": "{{n}}号座位",
+    "back": "← 返回",
+    "cancel": "取消",
+    "thousandsSeparator": ","
+  },
+  "presets": {
+    "standard": {
+      "name": "标准",
+      "description": "起始筹码 25,000 · 每级 20 分钟 · 每 4 级休息 10 分钟（约 3–4 小时）"
+    },
+    "turbo": {
+      "name": "快速",
+      "description": "起始筹码 25,000 · 每级 10 分钟 · 每 6 级休息 5 分钟（约 1.5–2 小时）"
+    },
+    "deep": {
+      "name": "深筹码",
+      "description": "起始筹码 50,000 · 每级 30 分钟 · 每 4 级休息 15 分钟（适合慢慢玩）"
+    }
+  },
+  "setup": {
+    "blindStructure": "盲注结构",
+    "hideStructure": "▲ 收起盲注结构",
+    "showStructure": "▼ 查看或编辑盲注结构",
+    "colLevel": "级",
+    "colMinutes": "分钟",
+    "breakShort": "休",
+    "addLevel": "＋ 级别",
+    "addBreak": "＋ 休息",
+    "startingStack": "起始筹码",
+    "minChip": "最小筹码",
+    "reentryTitle": "重新参赛",
+    "reentryEnabled": "允许重新参赛和延迟报名",
+    "reentryLastLevel": "报名截止（到此级别结束）",
+    "reentryMaxEntries": "每人最多参赛次数（0 = 不限）",
+    "playersTitle": "玩家（{{count}}人）",
+    "seatingHint": "按从上到下的顺序，顺时针入座。",
+    "addPlayer": "＋ 添加玩家",
+    "defaultPlayerName": "玩家{{n}}",
+    "firstButton": "首个庄位",
+    "randomButton": "随机",
+    "start": "以 {{stack}} 筹码开始",
+    "title": "新锦标赛"
+  },
+  "validation": {
+    "playerCount": "请设置 2 到 {{max}} 名玩家。",
+    "emptyName": "有玩家没有填写名字。",
+    "duplicateName": "有玩家的名字重复。",
+    "minChip": "最小筹码必须至少为 1。",
+    "startingStack": "起始筹码必须是最小筹码的整数倍。",
+    "noLevels": "盲注结构至少需要一个级别。",
+    "minutes": "第 {{row}} 行：每个级别或休息至少需要 1 分钟。",
+    "blindOrder": "第 {{row}} 行：大盲必须大于小盲。",
+    "blindMultiple": "第 {{row}} 行：盲注和前注必须是最小筹码（{{chip}}）的整数倍。",
+    "maxEntries": "允许重新参赛时，最多参赛次数必须至少为 2。",
+    "lastLevel": "报名截止级别必须至少为 1。"
+  },
+  "errors": {
+    "noBigBlind": "大盲位上没有玩家。",
+    "noActor": "现在没有可以行动的玩家。",
+    "cannotCheck": "面对下注时不能过牌。",
+    "nothingToCall": "没有需要跟注的金额。",
+    "cannotRaise": "现在不能加注。",
+    "exceedsStack": "超过了该玩家的筹码。",
+    "belowMinimum": "最少需要 {{min}}。",
+    "notShowdown": "现在不是摊牌阶段。",
+    "potNeedsWinner": "请选择底池 {{pot}} 的赢家。",
+    "winnerNotEligible": "底池 {{pot}} 选中了没有参与该底池的玩家。",
+    "playerCount": "锦标赛需要 2 到 {{max}} 名玩家。",
+    "handNotFinished": "请先结束当前这一手牌。",
+    "notEnoughPlayers": "至少需要 2 名玩家。",
+    "noHand": "现在没有进行中的牌局。",
+    "handNotComplete": "这一手牌还没有结束。",
+    "cannotReenter": "该玩家不能重新参赛。",
+    "cannotAddDuringHand": "牌局进行中不能添加玩家。",
+    "registrationClosed": "报名已截止。",
+    "seatUnavailable": "该座位不可用。",
+    "noTournament": "没有进行中的锦标赛。"
+  },
+  "clock": {
+    "level": "第 {{n}} 级",
+    "break": "休息",
+    "prevLevel": "上一级",
+    "nextLevel": "下一级",
+    "start": "开始",
+    "pause": "暂停",
+    "pauseLabel": "暂停",
+    "next": "下一级：{{blinds}}",
+    "pending": "本手牌：{{blinds}}（下一手起进入新级别）",
+    "registrationOpen": "重新参赛开放至第 {{n}} 级",
+    "registrationClosed": "报名已截止",
+    "soundOn": "声音：开",
+    "soundOff": "声音：关"
+  },
+  "levelAlert": {
+    "level": "第 {{n}} 级：{{blinds}}（下一手起生效）",
+    "break": "休息 {{minutes}} 分钟"
+  },
+  "streets": {
+    "preflop": "翻牌前",
+    "flop": "翻牌",
+    "turn": "转牌",
+    "river": "河牌"
+  },
+  "pot": {
+    "main": "主池",
+    "side": "边池",
+    "sideN": "边池 {{n}}"
+  },
+  "table": {
+    "handNo": "第 {{n}} 手",
+    "nextHand": "下一手：第 {{n}} 手",
+    "pot": "底池 {{amount}}",
+    "emptySeat": "空座",
+    "outSeat": "{{name}}（出局）",
+    "allIn": "ALL IN",
+    "folded": "FOLD",
+    "onBreak": "休息中。恢复比赛后请开始下一手。",
+    "oneLeft": "只剩 1 名玩家。可以在“排名”中办理重新参赛。",
+    "startHand": "开始第 {{n}} 手",
+    "undo": "↶ 撤销",
+    "history": "记录",
+    "standings": "排名",
+    "home": "主页"
+  },
+  "seatAction": {
+    "sb": "SB",
+    "bb": "BB",
+    "ante": "BB",
+    "fold": "弃牌",
+    "check": "过牌",
+    "call": "跟注",
+    "bet": "下注",
+    "raise": "加注"
+  },
+  "action": {
+    "toAct": "轮到 <b>{{name}}</b>",
+    "facingBet": "跟注 {{toCall}} · 剩余 {{stack}}",
+    "noBet": "无人下注 · 剩余 {{stack}}",
+    "fold": "弃牌",
+    "check": "过牌",
+    "call": "跟注 {{amount}}",
+    "callAllIn": "跟注 {{amount}}（全下）",
+    "quickMin": "最小",
+    "quickHalfPot": "½ 底池",
+    "quickPot": "底池",
+    "quickAllIn": "全下",
+    "decrease": "减少",
+    "increase": "增加",
+    "amount": "金额",
+    "bet": "下注 {{amount}}",
+    "raise": "加注到 {{amount}}",
+    "allIn": "全下 {{amount}}",
+    "range": "请输入 {{min}} 到 {{max}} 之间的金额。"
+  },
+  "showdown": {
+    "title": "摊牌",
+    "runout": {
+      "flop": "所有人亮出手牌，然后发出翻牌、转牌和河牌。",
+      "turn": "所有人亮出手牌，然后发出转牌和河牌。",
+      "river": "所有人亮出手牌，然后发出河牌。"
+    },
+    "showFirst": "{{name}} 先亮牌",
+    "uncontested": "由 {{name}} 获得",
+    "split": "{{count}} 人平分",
+    "confirm": "确定赢家"
+  },
+  "result": {
+    "title": "第 {{n}} 手结果",
+    "eliminated": "{{names}} 出局",
+    "next": "下一步"
+  },
+  "players": {
+    "title": "玩家",
+    "entries": "参赛 {{count}} 次",
+    "reenter": "重新参赛",
+    "eliminatedIn": "第 {{n}} 手出局",
+    "reenterBetweenHands": "可以在两手牌之间重新参赛。",
+    "lateRegistration": "延迟报名",
+    "namePlaceholder": "名字",
+    "add": "添加",
+    "nameTaken": "这个名字已经有人用了。",
+    "lateRegistrationStack": "以 {{stack}} 筹码加入。"
+  },
+  "results": {
+    "title": "锦标赛结束",
+    "winner": "{{name}} 夺冠！",
+    "hands": "{{count}} 手牌",
+    "entries": "参赛 {{count}} 次",
+    "entriesNote": "（参赛 {{count}} 次）",
+    "summarySeparator": " · ",
+    "place": "第 {{count}} 名",
+    "champion": "冠军",
+    "newTournament": "新锦标赛",
+    "home": "主页"
+  },
+  "history": {
+    "title": "牌局记录",
+    "empty": "还没有打过牌。",
+    "inProgress": "进行中",
+    "sb": "下小盲 {{amount}}",
+    "bb": "下大盲 {{amount}}",
+    "ante": "下大盲前注 {{amount}}",
+    "fold": "弃牌",
+    "check": "过牌",
+    "call": "跟注 {{amount}}",
+    "bet": "下注 {{amount}}",
+    "raise": "加注到 {{amount}}",
+    "allInSuffix": "（全下）",
+    "awardSeparator": "："
+  },
+  "home": {
+    "resumeTitle": "继续锦标赛",
+    "summaryNotStarted": "未开始 · {{count}} 名玩家",
+    "summaryPlaying": "第 {{hand}} 手 · 第 {{level}} 级 · 剩余 {{count}} 人",
+    "summaryFinished": "已结束 · {{name}} 夺冠",
+    "discard": "结束这场锦标赛",
+    "confirmDiscard": "将结束已保存的锦标赛，且无法恢复。确定吗？",
+    "confirmDiscardOk": "结束",
+    "newTournament": "新锦标赛",
+    "confirmNew": "开始新锦标赛会结束已保存的锦标赛。要进入设置吗？",
+    "confirmNewOk": "继续",
+    "howTo": "使用说明",
+    "settings": "设置",
+    "about": "关于"
+  },
+  "settings": {
+    "title": "设置",
+    "language": "语言",
+    "sound": "升级提示音",
+    "on": "开",
+    "off": "关"
+  },
+  "about": {
+    "title": "关于",
+    "version": "版本 {{version}}",
+    "privacyTitle": "隐私",
+    "privacyBody": "本应用不收集任何个人信息。锦标赛记录和设置只保存在这台设备上，应用也不会连接互联网。",
+    "noticeTitle": "注意",
+    "noticeBody": "本应用只是计分工具，不能用于真钱赌博。",
+    "rulesTitle": "关于规则",
+    "rulesBody": "比赛流程参考了线下扑克锦标赛中常用的规则。"
+  },
+  "howto": {
+    "title": "使用说明",
+    "sections": [
+      {
+        "title": "本应用的用途",
+        "items": [
+          "用真实的扑克牌玩德州扑克锦标赛时，由本应用代替筹码记分。",
+          "把一部手机放在牌桌中间，大家一起操作。应用不负责发牌，所以摊牌后由大家在屏幕上选出赢家。"
+        ]
+      },
+      {
+        "title": "开始锦标赛",
+        "items": [
+          "点击“新锦标赛”，设置盲注结构、起始筹码和玩家后开始。",
+          "盲注结构可以从 3 种预设中选择，也可以逐级自行编辑。"
+        ]
+      },
+      {
+        "title": "进行一手牌",
+        "items": [
+          "点击“开始第 1 手”，小盲、大盲和大盲前注会自动收取。",
+          "高亮的座位就是要行动的玩家。按照他们的宣告，点击弃牌、过牌、跟注、下注或加注。",
+          "下注或加注的金额可以用“最小”“½ 底池”“底池”“全下”按钮、滑块或直接输入来设定。规则不允许的金额无法输入。",
+          "所有人的下注一致后，会自动进入下一轮。桌子中间的牌框表示公共牌应该翻开几张。"
+        ]
+      },
+      {
+        "title": "摊牌",
+        "items": [
+          "进入摊牌后，为每个底池选出赢家，然后点击“确定赢家”。",
+          "平局时选中所有打平的玩家，底池会平均分配。边池会自动计算。"
+        ]
+      },
+      {
+        "title": "操作失误时",
+        "items": [
+          "点击“撤销”可以一步一步退回（最多 50 步）。即使关闭应用，下次也能从中断处继续。"
+        ]
+      },
+      {
+        "title": "盲注与计时",
+        "items": [
+          "计时器在第一手牌开始时自动启动，时间到了就升到下一级。新的盲注从下一手牌开始生效。",
+          "升级时会有提示音和横幅提醒。提示音可以在“设置”中关闭。"
+        ]
+      },
+      {
+        "title": "出局、重新参赛和延迟报名",
+        "items": [
+          "筹码输光的玩家出局。报名截止前，可以在“排名”中办理重新参赛或延迟报名。"
+        ]
+      },
+      {
+        "title": "主要规则",
+        "items": [
+          "大盲前注：由大盲位的玩家替全桌支付前注。",
+          "最小加注：加注的幅度至少要等于本轮上一次下注或加注的幅度。",
+          "不足一次完整加注的全下，不会让已经行动过的玩家重新获得加注的机会。",
+          "有玩家全下且下注结束后，所有人亮出手牌，再发完剩下的公共牌。",
+          "平分底池时，无法平分的零头筹码归离庄位左侧最近的赢家。",
+          "只剩两人时，庄位下小盲，并且翻牌前先行动。"
+        ]
+      }
+    ]
+  }
+}

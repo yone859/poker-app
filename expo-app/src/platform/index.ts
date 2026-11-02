@@ -11,7 +11,7 @@ import { getLocales } from 'expo-localization';
 import { useEffect } from 'react';
 import { Platform } from 'react-native';
 import type { TournamentState } from '@holdem/shared/engine';
-import type { Language } from '@holdem/shared/i18n';
+import { isLanguage, type Language } from '@holdem/shared/i18n';
 import { deserialize, serialize, STORAGE_KEY, type SavedGame } from '@holdem/shared/state/persistence';
 
 const SOUND_KEY = 'holdem-tracker/sound';
@@ -61,7 +61,7 @@ export function getDeviceLanguages(): readonly string[] {
 export async function loadLanguage(): Promise<Language | null> {
   try {
     const saved = await AsyncStorage.getItem(LANGUAGE_KEY);
-    return saved === 'ja' || saved === 'en' ? saved : null;
+    return isLanguage(saved) ? saved : null;
   } catch {
     return null;
   }

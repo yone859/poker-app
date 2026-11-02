@@ -9,7 +9,17 @@
     "backgroundColor": "#0d1511",
     "locales": {
       "ja": "./languages/ja.json",
-      "en": "./languages/en.json"
+      "en": "./languages/en.json",
+      "zh-Hans": "./languages/zh-Hans.json",
+      "zh-Hant": "./languages/zh-Hant.json",
+      "ko": "./languages/ko.json",
+      "es": "./languages/es.json",
+      "pt": "./languages/pt.json",
+      "fr": "./languages/fr.json",
+      "de": "./languages/de.json",
+      "it": "./languages/it.json",
+      "ru": "./languages/ru.json",
+      "vi": "./languages/vi.json"
     },
     "ios": {
       "bundleIdentifier": "com.yone859.holdemchiptracker",
@@ -36,8 +46,34 @@
         "expo-localization",
         {
           "supportedLocales": {
-            "ios": ["ja", "en"],
-            "android": ["ja", "en"]
+            "ios": [
+              "ja",
+              "en",
+              "zh-Hans",
+              "zh-Hant",
+              "ko",
+              "es",
+              "pt-BR",
+              "fr",
+              "de",
+              "it",
+              "ru",
+              "vi"
+            ],
+            "android": [
+              "ja",
+              "en",
+              "zh-Hans",
+              "zh-Hant",
+              "ko",
+              "es",
+              "pt-BR",
+              "fr",
+              "de",
+              "it",
+              "ru",
+              "vi"
+            ]
           }
         }
       ],

@@ -1,0 +1,317 @@
+{
+  "app": {
+    "title": "Chip Hold'em"
+  },
+  "common": {
+    "close": "Đóng",
+    "remove": "Xóa",
+    "listSeparator": ", ",
+    "dot": " · ",
+    "seatN": "Ghế {{n}}",
+    "back": "← Quay lại",
+    "cancel": "Hủy",
+    "thousandsSeparator": "."
+  },
+  "presets": {
+    "standard": {
+      "name": "Tiêu chuẩn",
+      "description": "25.000 chip · mỗi cấp 20 phút · nghỉ 10 phút sau mỗi 4 cấp (khoảng 3–4 giờ)"
+    },
+    "turbo": {
+      "name": "Turbo",
+      "description": "25.000 chip · mỗi cấp 10 phút · nghỉ 5 phút sau mỗi 6 cấp (khoảng 1,5–2 giờ)"
+    },
+    "deep": {
+      "name": "Deep Stack",
+      "description": "50.000 chip · mỗi cấp 30 phút · nghỉ 15 phút sau mỗi 4 cấp (cho ván chơi dài)"
+    }
+  },
+  "setup": {
+    "blindStructure": "Cấu trúc blind",
+    "hideStructure": "▲ Ẩn cấu trúc blind",
+    "showStructure": "▼ Xem hoặc sửa cấu trúc blind",
+    "colLevel": "Cấp",
+    "colMinutes": "Phút",
+    "breakShort": "—",
+    "addLevel": "+ Cấp",
+    "addBreak": "+ Nghỉ",
+    "startingStack": "Stack ban đầu",
+    "minChip": "Chip nhỏ nhất",
+    "reentryTitle": "Tái tham gia",
+    "reentryEnabled": "Cho phép tái tham gia và đăng ký muộn",
+    "reentryLastLevel": "Đóng đăng ký sau cấp",
+    "reentryMaxEntries": "Số lần tham gia tối đa mỗi người (0 = không giới hạn)",
+    "playersTitle": "Người chơi ({{count}})",
+    "seatingHint": "Người chơi ngồi theo thứ tự này, theo chiều kim đồng hồ.",
+    "addPlayer": "+ Thêm người chơi",
+    "defaultPlayerName": "Người chơi {{n}}",
+    "firstButton": "Nút dealer ban đầu",
+    "randomButton": "Ngẫu nhiên",
+    "start": "Bắt đầu với {{stack}} chip",
+    "title": "Giải đấu mới"
+  },
+  "validation": {
+    "playerCount": "Hãy nhập từ 2 đến {{max}} người chơi.",
+    "emptyName": "Người chơi nào cũng cần có tên.",
+    "duplicateName": "Mỗi người chơi cần một tên khác nhau.",
+    "minChip": "Chip nhỏ nhất phải từ 1 trở lên.",
+    "startingStack": "Stack ban đầu phải là bội số của chip nhỏ nhất.",
+    "noLevels": "Cấu trúc blind cần ít nhất một cấp.",
+    "minutes": "Dòng {{row}}: mỗi cấp hoặc giờ nghỉ phải dài ít nhất 1 phút.",
+    "blindOrder": "Dòng {{row}}: big blind phải lớn hơn small blind.",
+    "blindMultiple": "Dòng {{row}}: blind và ante phải là bội số của chip nhỏ nhất ({{chip}}).",
+    "maxEntries": "Khi cho phép tái tham gia, số lần tham gia tối đa phải từ 2 trở lên.",
+    "lastLevel": "Đăng ký phải mở ít nhất đến hết cấp 1."
+  },
+  "errors": {
+    "noBigBlind": "Không có ai ở vị trí big blind.",
+    "noActor": "Lúc này không ai có thể hành động.",
+    "cannotCheck": "Không thể xem bài khi đang có người cược.",
+    "nothingToCall": "Không có gì để theo.",
+    "cannotRaise": "Lúc này không thể tố.",
+    "exceedsStack": "Số này nhiều hơn số chip người chơi đang có.",
+    "belowMinimum": "Tối thiểu là {{min}}.",
+    "notShowdown": "Ván bài chưa đến lúc lật bài.",
+    "potNeedsWinner": "Hãy chọn người thắng pot {{pot}}.",
+    "winnerNotEligible": "Có người được chọn cho pot {{pot}} nhưng không tham gia pot đó.",
+    "playerCount": "Một giải đấu cần từ 2 đến {{max}} người chơi.",
+    "handNotFinished": "Hãy kết thúc ván hiện tại trước.",
+    "notEnoughPlayers": "Cần ít nhất 2 người chơi.",
+    "noHand": "Không có ván nào đang diễn ra.",
+    "handNotComplete": "Ván bài chưa kết thúc.",
+    "cannotReenter": "Người chơi này không thể tái tham gia.",
+    "cannotAddDuringHand": "Không thể thêm người chơi giữa ván.",
+    "registrationClosed": "Đã đóng đăng ký.",
+    "seatUnavailable": "Ghế này không dùng được.",
+    "noTournament": "Không có giải đấu nào đang diễn ra."
+  },
+  "clock": {
+    "level": "Cấp {{n}}",
+    "break": "Nghỉ",
+    "prevLevel": "Cấp trước",
+    "nextLevel": "Cấp sau",
+    "start": "Bắt đầu",
+    "pause": "Dừng",
+    "pauseLabel": "Tạm dừng",
+    "next": "Tiếp theo: {{blinds}}",
+    "pending": "Ván này: {{blinds}} (cấp mới bắt đầu từ ván sau)",
+    "registrationOpen": "Mở tái tham gia đến hết cấp {{n}}",
+    "registrationClosed": "Đã đóng đăng ký",
+    "soundOn": "Âm thanh: bật",
+    "soundOff": "Âm thanh: tắt"
+  },
+  "levelAlert": {
+    "level": "Cấp {{n}}: {{blinds}} — bắt đầu từ ván sau",
+    "break": "Nghỉ {{minutes}} phút"
+  },
+  "streets": {
+    "preflop": "Preflop",
+    "flop": "Flop",
+    "turn": "Turn",
+    "river": "River"
+  },
+  "pot": {
+    "main": "Pot chính",
+    "side": "Pot phụ",
+    "sideN": "Pot phụ {{n}}"
+  },
+  "table": {
+    "handNo": "Ván #{{n}}",
+    "nextHand": "Tiếp theo: ván #{{n}}",
+    "pot": "Pot {{amount}}",
+    "emptySeat": "Trống",
+    "outSeat": "{{name}} (bị loại)",
+    "allIn": "ALL IN",
+    "folded": "FOLD",
+    "onBreak": "Đang nghỉ. Khi chơi tiếp, hãy chia ván sau.",
+    "oneLeft": "Chỉ còn một người chơi. Có thể tái tham gia trong mục Xếp hạng.",
+    "startHand": "Chia ván #{{n}}",
+    "undo": "↶ Hoàn tác",
+    "history": "Lịch sử",
+    "standings": "Xếp hạng",
+    "home": "Trang chủ"
+  },
+  "seatAction": {
+    "sb": "SB",
+    "bb": "BB",
+    "ante": "BB",
+    "fold": "Bỏ bài",
+    "check": "Xem bài",
+    "call": "Theo",
+    "bet": "Cược",
+    "raise": "Tố"
+  },
+  "action": {
+    "toAct": "Lượt của <b>{{name}}</b>",
+    "facingBet": "Theo {{toCall}} · còn {{stack}}",
+    "noBet": "Chưa ai cược · còn {{stack}}",
+    "fold": "Bỏ bài",
+    "check": "Xem bài",
+    "call": "Theo {{amount}}",
+    "callAllIn": "Theo {{amount}} (all-in)",
+    "quickMin": "Min",
+    "quickHalfPot": "½ pot",
+    "quickPot": "Pot",
+    "quickAllIn": "All-in",
+    "decrease": "Giảm",
+    "increase": "Tăng",
+    "amount": "Số chip",
+    "bet": "Cược {{amount}}",
+    "raise": "Tố lên {{amount}}",
+    "allIn": "All-in {{amount}}",
+    "range": "Hãy nhập số từ {{min}} đến {{max}}."
+  },
+  "showdown": {
+    "title": "Lật bài",
+    "runout": {
+      "flop": "Mọi người lật bài tẩy lên. Hãy chia flop, turn và river.",
+      "turn": "Mọi người lật bài tẩy lên. Hãy chia turn và river.",
+      "river": "Mọi người lật bài tẩy lên. Hãy chia river."
+    },
+    "showFirst": "{{name}} lật bài trước",
+    "uncontested": "{{name}} nhận pot",
+    "split": "Chia đều cho {{count}} người",
+    "confirm": "Xác nhận người thắng"
+  },
+  "result": {
+    "title": "Kết quả ván #{{n}}",
+    "eliminated": "Bị loại: {{names}}",
+    "next": "Tiếp"
+  },
+  "players": {
+    "title": "Người chơi",
+    "entries": "{{count}} lần tham gia",
+    "reenter": "Tái tham gia",
+    "eliminatedIn": "Bị loại ở ván #{{n}}",
+    "reenterBetweenHands": "Có thể tái tham gia giữa hai ván.",
+    "lateRegistration": "Đăng ký muộn",
+    "namePlaceholder": "Tên",
+    "add": "Thêm",
+    "nameTaken": "Tên này đã có người dùng.",
+    "lateRegistrationStack": "Tham gia với {{stack}} chip."
+  },
+  "results": {
+    "title": "Giải đấu kết thúc",
+    "winner": "{{name}} vô địch!",
+    "hands": "{{count}} ván",
+    "entries": "{{count}} lần tham gia",
+    "entriesNote": " ({{count}} lần tham gia)",
+    "summarySeparator": " · ",
+    "place": "Hạng {{count}}",
+    "champion": "Vô địch",
+    "newTournament": "Giải đấu mới",
+    "home": "Trang chủ"
+  },
+  "history": {
+    "title": "Lịch sử ván bài",
+    "empty": "Chưa chơi ván nào.",
+    "inProgress": "Đang chơi",
+    "sb": "Đặt small blind {{amount}}",
+    "bb": "Đặt big blind {{amount}}",
+    "ante": "Đặt ante big blind {{amount}}",
+    "fold": "Bỏ bài",
+    "check": "Xem bài",
+    "call": "Theo {{amount}}",
+    "bet": "Cược {{amount}}",
+    "raise": "Tố lên {{amount}}",
+    "allInSuffix": " (all-in)",
+    "awardSeparator": ": "
+  },
+  "home": {
+    "resumeTitle": "Tiếp tục giải đấu",
+    "summaryNotStarted": "Chưa bắt đầu · {{count}} người chơi",
+    "summaryPlaying": "Ván #{{hand}} · Cấp {{level}} · còn {{count}} người",
+    "summaryFinished": "Đã kết thúc · {{name}} vô địch",
+    "discard": "Kết thúc giải đấu này",
+    "confirmDiscard": "Giải đấu đã lưu sẽ kết thúc và không thể khôi phục. Bạn có chắc không?",
+    "confirmDiscardOk": "Kết thúc giải đấu",
+    "newTournament": "Giải đấu mới",
+    "confirmNew": "Bắt đầu giải đấu mới sẽ kết thúc giải đấu đã lưu. Chuyển sang phần thiết lập?",
+    "confirmNewOk": "Tiếp tục",
+    "howTo": "Cách sử dụng",
+    "settings": "Cài đặt",
+    "about": "Giới thiệu"
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "language": "Ngôn ngữ",
+    "sound": "Âm báo lên cấp",
+    "on": "Bật",
+    "off": "Tắt"
+  },
+  "about": {
+    "title": "Giới thiệu",
+    "version": "Phiên bản {{version}}",
+    "privacyTitle": "Quyền riêng tư",
+    "privacyBody": "Ứng dụng này không thu thập bất kỳ thông tin cá nhân nào. Dữ liệu giải đấu và cài đặt chỉ được lưu trên thiết bị này, và ứng dụng không bao giờ kết nối Internet.",
+    "noticeTitle": "Lưu ý",
+    "noticeBody": "Ứng dụng này chỉ là công cụ ghi điểm. Không thể dùng để cá cược bằng tiền thật.",
+    "rulesTitle": "Về luật chơi",
+    "rulesBody": "Cách tổ chức giải đấu dựa theo luật thường dùng trong các giải poker trực tiếp."
+  },
+  "howto": {
+    "title": "Cách sử dụng",
+    "sections": [
+      {
+        "title": "Ứng dụng này dùng để làm gì",
+        "items": [
+          "Ghi điểm thay cho chip khi mọi người chơi giải Texas Hold'em bằng bộ bài thật.",
+          "Đặt một chiếc điện thoại ở giữa bàn và cùng nhau thao tác. Ứng dụng không chia bài, vì vậy sau khi lật bài, mọi người chọn người thắng trên màn hình."
+        ]
+      },
+      {
+        "title": "Bắt đầu giải đấu",
+        "items": [
+          "Chạm vào Giải đấu mới, chọn cấu trúc blind, stack ban đầu và người chơi, rồi bắt đầu.",
+          "Có thể chọn một trong ba cấu trúc blind có sẵn, hoặc tự sửa từng cấp."
+        ]
+      },
+      {
+        "title": "Chơi một ván",
+        "items": [
+          "Chạm vào Chia ván #1. Small blind, big blind và ante big blind sẽ được đặt tự động.",
+          "Ghế được làm nổi bật là người đến lượt. Hãy nhập đúng điều người đó tuyên bố: Bỏ bài, Xem bài, Theo, Cược hoặc Tố.",
+          "Số chip cược hoặc tố có thể chọn bằng các nút Min, ½ pot, Pot và All-in, thanh trượt, hoặc nhập trực tiếp. Không thể nhập số không hợp lệ theo luật.",
+          "Khi vòng cược kết thúc, ứng dụng tự chuyển sang vòng tiếp theo. Các khung bài ở giữa bàn cho biết cần lật bao nhiêu lá bài chung."
+        ]
+      },
+      {
+        "title": "Lật bài",
+        "items": [
+          "Khi ván bài đến lúc lật bài, hãy chọn người thắng của từng pot rồi chạm vào Xác nhận người thắng.",
+          "Nếu hòa, hãy chọn tất cả những người hòa nhau, pot sẽ được chia đều. Pot phụ được tính tự động."
+        ]
+      },
+      {
+        "title": "Khi nhập nhầm",
+        "items": [
+          "Chạm vào Hoàn tác để quay lại từng thao tác một (tối đa 50). Dù đóng ứng dụng, bạn vẫn có thể chơi tiếp từ chỗ đã dừng."
+        ]
+      },
+      {
+        "title": "Blind và đồng hồ",
+        "items": [
+          "Đồng hồ tự chạy khi bắt đầu ván đầu tiên và chuyển sang cấp tiếp theo khi hết giờ. Blind mới áp dụng từ ván sau.",
+          "Mỗi khi lên cấp, ứng dụng sẽ báo bằng âm thanh và biểu ngữ. Có thể tắt âm thanh trong Cài đặt."
+        ]
+      },
+      {
+        "title": "Bị loại, tái tham gia và đăng ký muộn",
+        "items": [
+          "Người chơi hết chip sẽ bị loại. Trong thời gian mở đăng ký, có thể tái tham gia hoặc đăng ký muộn trong mục Xếp hạng."
+        ]
+      },
+      {
+        "title": "Các luật chính",
+        "items": [
+          "Ante big blind: người ở vị trí big blind trả ante cho cả bàn.",
+          "Tố tối thiểu: mức tố thêm phải ít nhất bằng mức cược hoặc tố trước đó trong vòng cược.",
+          "All-in chưa đủ một lần tố trọn vẹn thì không mở lại quyền tố cho những người đã hành động.",
+          "Khi vòng cược kết thúc mà có người all-in, mọi người lật bài tẩy lên rồi mới chia nốt các lá bài chung.",
+          "Khi chia pot, chip lẻ thuộc về người thắng ngồi gần bên trái nút dealer nhất.",
+          "Khi chỉ còn hai người, người giữ nút đặt small blind và hành động trước ở preflop."
+        ]
+      }
+    ]
+  }
+}

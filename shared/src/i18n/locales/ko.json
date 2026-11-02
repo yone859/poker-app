@@ -1,0 +1,317 @@
+{
+  "app": {
+    "title": "홀덤 칩 관리"
+  },
+  "common": {
+    "close": "닫기",
+    "remove": "삭제",
+    "listSeparator": ", ",
+    "dot": " · ",
+    "seatN": "{{n}}번 좌석",
+    "back": "← 뒤로",
+    "cancel": "취소",
+    "thousandsSeparator": ","
+  },
+  "presets": {
+    "standard": {
+      "name": "스탠다드",
+      "description": "시작 칩 25,000 · 레벨당 20분 · 4레벨마다 10분 휴식 (약 3~4시간)"
+    },
+    "turbo": {
+      "name": "터보",
+      "description": "시작 칩 25,000 · 레벨당 10분 · 6레벨마다 5분 휴식 (약 1.5~2시간)"
+    },
+    "deep": {
+      "name": "딥스택",
+      "description": "시작 칩 50,000 · 레벨당 30분 · 4레벨마다 15분 휴식 (여유롭게 즐기기)"
+    }
+  },
+  "setup": {
+    "blindStructure": "블라인드 구조",
+    "hideStructure": "▲ 블라인드 구조 닫기",
+    "showStructure": "▼ 블라인드 구조 보기·편집",
+    "colLevel": "Lv",
+    "colMinutes": "분",
+    "breakShort": "휴",
+    "addLevel": "+ 레벨",
+    "addBreak": "+ 휴식",
+    "startingStack": "시작 스택",
+    "minChip": "최소 칩",
+    "reentryTitle": "리엔트리",
+    "reentryEnabled": "리엔트리·레이트 등록 허용",
+    "reentryLastLevel": "등록 마감 (이 레벨이 끝날 때까지)",
+    "reentryMaxEntries": "1인당 최대 엔트리 수 (0 = 무제한)",
+    "playersTitle": "플레이어 ({{count}}명)",
+    "seatingHint": "위에서부터 시계 방향으로 앉습니다.",
+    "addPlayer": "+ 플레이어 추가",
+    "defaultPlayerName": "플레이어 {{n}}",
+    "firstButton": "첫 딜러 버튼",
+    "randomButton": "무작위",
+    "start": "{{stack}} 칩으로 시작",
+    "title": "새 토너먼트"
+  },
+  "validation": {
+    "playerCount": "플레이어는 2~{{max}}명으로 설정해 주세요.",
+    "emptyName": "이름이 비어 있는 플레이어가 있습니다.",
+    "duplicateName": "이름이 같은 플레이어가 있습니다.",
+    "minChip": "최소 칩은 1 이상이어야 합니다.",
+    "startingStack": "시작 스택은 최소 칩의 배수여야 합니다.",
+    "noLevels": "블라인드 구조에 레벨이 하나 이상 필요합니다.",
+    "minutes": "{{row}}번째 줄: 레벨과 휴식은 1분 이상이어야 합니다.",
+    "blindOrder": "{{row}}번째 줄: 빅 블라인드는 스몰 블라인드보다 커야 합니다.",
+    "blindMultiple": "{{row}}번째 줄: 블라인드와 앤티는 최소 칩({{chip}})의 배수여야 합니다.",
+    "maxEntries": "리엔트리를 허용할 때는 최대 엔트리 수가 2 이상이어야 합니다.",
+    "lastLevel": "등록 마감 레벨은 1 이상이어야 합니다."
+  },
+  "errors": {
+    "noBigBlind": "빅 블라인드 자리에 플레이어가 없습니다.",
+    "noActor": "지금 액션할 수 있는 플레이어가 없습니다.",
+    "cannotCheck": "베팅이 있을 때는 체크할 수 없습니다.",
+    "nothingToCall": "콜할 금액이 없습니다.",
+    "cannotRaise": "지금은 레이즈할 수 없습니다.",
+    "exceedsStack": "플레이어의 칩보다 많습니다.",
+    "belowMinimum": "최소 {{min}} 이상이어야 합니다.",
+    "notShowdown": "쇼다운 단계가 아닙니다.",
+    "potNeedsWinner": "팟 {{pot}}의 승자를 선택해 주세요.",
+    "winnerNotEligible": "팟 {{pot}}에 참여하지 않은 플레이어가 선택되었습니다.",
+    "playerCount": "토너먼트에는 2~{{max}}명의 플레이어가 필요합니다.",
+    "handNotFinished": "진행 중인 핸드를 먼저 끝내 주세요.",
+    "notEnoughPlayers": "플레이어가 2명 이상 필요합니다.",
+    "noHand": "진행 중인 핸드가 없습니다.",
+    "handNotComplete": "핸드가 아직 끝나지 않았습니다.",
+    "cannotReenter": "이 플레이어는 리엔트리할 수 없습니다.",
+    "cannotAddDuringHand": "핸드 도중에는 플레이어를 추가할 수 없습니다.",
+    "registrationClosed": "등록이 마감되었습니다.",
+    "seatUnavailable": "사용할 수 없는 좌석입니다.",
+    "noTournament": "진행 중인 토너먼트가 없습니다."
+  },
+  "clock": {
+    "level": "레벨 {{n}}",
+    "break": "휴식",
+    "prevLevel": "이전 레벨",
+    "nextLevel": "다음 레벨",
+    "start": "시작",
+    "pause": "정지",
+    "pauseLabel": "일시 정지",
+    "next": "다음: {{blinds}}",
+    "pending": "이번 핸드: {{blinds}} (다음 핸드부터 새 레벨)",
+    "registrationOpen": "레벨 {{n}}까지 리엔트리 가능",
+    "registrationClosed": "등록 마감",
+    "soundOn": "소리: 켜짐",
+    "soundOff": "소리: 꺼짐"
+  },
+  "levelAlert": {
+    "level": "레벨 {{n}}: {{blinds}} (다음 핸드부터)",
+    "break": "휴식 시간 ({{minutes}}분)"
+  },
+  "streets": {
+    "preflop": "프리플랍",
+    "flop": "플랍",
+    "turn": "턴",
+    "river": "리버"
+  },
+  "pot": {
+    "main": "메인 팟",
+    "side": "사이드 팟",
+    "sideN": "사이드 팟 {{n}}"
+  },
+  "table": {
+    "handNo": "핸드 #{{n}}",
+    "nextHand": "다음: 핸드 #{{n}}",
+    "pot": "팟 {{amount}}",
+    "emptySeat": "빈자리",
+    "outSeat": "{{name}} (탈락)",
+    "allIn": "ALL IN",
+    "folded": "FOLD",
+    "onBreak": "휴식 중입니다. 게임을 다시 시작할 때 다음 핸드를 시작하세요.",
+    "oneLeft": "플레이어가 1명만 남았습니다. 리엔트리는 '순위'에서 할 수 있습니다.",
+    "startHand": "핸드 #{{n}} 시작",
+    "undo": "↶ 되돌리기",
+    "history": "기록",
+    "standings": "순위",
+    "home": "홈"
+  },
+  "seatAction": {
+    "sb": "SB",
+    "bb": "BB",
+    "ante": "BB",
+    "fold": "폴드",
+    "check": "체크",
+    "call": "콜",
+    "bet": "벳",
+    "raise": "레이즈"
+  },
+  "action": {
+    "toAct": "<b>{{name}}</b> 차례",
+    "facingBet": "콜 {{toCall}} · 남은 칩 {{stack}}",
+    "noBet": "베팅 없음 · 남은 칩 {{stack}}",
+    "fold": "폴드",
+    "check": "체크",
+    "call": "콜 {{amount}}",
+    "callAllIn": "콜 {{amount}} (올인)",
+    "quickMin": "최소",
+    "quickHalfPot": "½ 팟",
+    "quickPot": "팟",
+    "quickAllIn": "올인",
+    "decrease": "줄이기",
+    "increase": "늘리기",
+    "amount": "금액",
+    "bet": "벳 {{amount}}",
+    "raise": "{{amount}}로 레이즈",
+    "allIn": "올인 {{amount}}",
+    "range": "{{min}}~{{max}} 사이의 금액을 입력해 주세요."
+  },
+  "showdown": {
+    "title": "쇼다운",
+    "runout": {
+      "flop": "모두 핸드를 공개한 뒤 플랍, 턴, 리버를 펼치세요.",
+      "turn": "모두 핸드를 공개한 뒤 턴과 리버를 펼치세요.",
+      "river": "모두 핸드를 공개한 뒤 리버를 펼치세요."
+    },
+    "showFirst": "{{name}}님이 먼저 공개",
+    "uncontested": "{{name}}님이 가져갑니다",
+    "split": "{{count}}명이 나눠 가짐",
+    "confirm": "승자 확정"
+  },
+  "result": {
+    "title": "핸드 #{{n}} 결과",
+    "eliminated": "탈락: {{names}}",
+    "next": "다음"
+  },
+  "players": {
+    "title": "플레이어",
+    "entries": "{{count}} 엔트리",
+    "reenter": "리엔트리",
+    "eliminatedIn": "핸드 #{{n}}에서 탈락",
+    "reenterBetweenHands": "리엔트리는 핸드와 핸드 사이에 할 수 있습니다.",
+    "lateRegistration": "레이트 등록",
+    "namePlaceholder": "이름",
+    "add": "추가",
+    "nameTaken": "이미 사용 중인 이름입니다.",
+    "lateRegistrationStack": "{{stack}} 칩으로 참가합니다."
+  },
+  "results": {
+    "title": "토너먼트 종료",
+    "winner": "{{name}}님 우승!",
+    "hands": "{{count}}핸드",
+    "entries": "{{count}} 엔트리",
+    "entriesNote": " ({{count}} 엔트리)",
+    "summarySeparator": " · ",
+    "place": "{{count}}위",
+    "champion": "우승",
+    "newTournament": "새 토너먼트",
+    "home": "홈"
+  },
+  "history": {
+    "title": "핸드 기록",
+    "empty": "아직 플레이한 핸드가 없습니다.",
+    "inProgress": "진행 중",
+    "sb": "SB {{amount}}",
+    "bb": "BB {{amount}}",
+    "ante": "BB 앤티 {{amount}}",
+    "fold": "폴드",
+    "check": "체크",
+    "call": "콜 {{amount}}",
+    "bet": "벳 {{amount}}",
+    "raise": "{{amount}}로 레이즈",
+    "allInSuffix": " (올인)",
+    "awardSeparator": ": "
+  },
+  "home": {
+    "resumeTitle": "토너먼트 이어하기",
+    "summaryNotStarted": "시작 전 · {{count}}명",
+    "summaryPlaying": "핸드 #{{hand}} · 레벨 {{level}} · {{count}}명 남음",
+    "summaryFinished": "종료 · {{name}}님 우승",
+    "discard": "이 토너먼트 끝내기",
+    "confirmDiscard": "저장된 토너먼트를 끝냅니다. 되돌릴 수 없습니다. 계속할까요?",
+    "confirmDiscardOk": "끝내기",
+    "newTournament": "새 토너먼트",
+    "confirmNew": "새 토너먼트를 시작하면 저장된 토너먼트는 끝납니다. 설정 화면으로 이동할까요?",
+    "confirmNewOk": "계속",
+    "howTo": "사용 방법",
+    "settings": "설정",
+    "about": "앱 정보"
+  },
+  "settings": {
+    "title": "설정",
+    "language": "언어",
+    "sound": "레벨 업 알림음",
+    "on": "켜기",
+    "off": "끄기"
+  },
+  "about": {
+    "title": "앱 정보",
+    "version": "버전 {{version}}",
+    "privacyTitle": "개인정보",
+    "privacyBody": "이 앱은 어떠한 개인정보도 수집하지 않습니다. 토너먼트 기록과 설정은 이 기기에만 저장되며, 인터넷에도 연결하지 않습니다.",
+    "noticeTitle": "주의 사항",
+    "noticeBody": "이 앱은 점수를 기록하는 도구입니다. 실제 돈을 거는 도박에는 사용할 수 없습니다.",
+    "rulesTitle": "규칙에 대하여",
+    "rulesBody": "토너먼트 진행 방식은 라이브 포커 토너먼트에서 일반적으로 쓰이는 규칙을 따릅니다."
+  },
+  "howto": {
+    "title": "사용 방법",
+    "sections": [
+      {
+        "title": "이 앱으로 할 수 있는 것",
+        "items": [
+          "실제 카드로 텍사스 홀덤 토너먼트를 할 때, 칩 대신 점수를 관리해 줍니다.",
+          "스마트폰 1대를 테이블 가운데에 두고 모두 함께 조작합니다. 카드를 나눠 주지는 않으므로, 쇼다운 후 승자를 화면에서 선택합니다."
+        ]
+      },
+      {
+        "title": "토너먼트 시작하기",
+        "items": [
+          "'새 토너먼트'를 눌러 블라인드 구조, 시작 스택, 플레이어를 정한 뒤 시작합니다.",
+          "블라인드 구조는 3가지 프리셋 중에서 고를 수 있고, 레벨별로 직접 편집할 수도 있습니다."
+        ]
+      },
+      {
+        "title": "핸드 진행하기",
+        "items": [
+          "'핸드 #1 시작'을 누르면 스몰 블라인드, 빅 블라인드, 빅 블라인드 앤티가 자동으로 걷힙니다.",
+          "강조 표시된 자리가 액션할 차례인 플레이어입니다. 선언한 대로 폴드, 체크, 콜, 벳, 레이즈를 누르세요.",
+          "벳이나 레이즈 금액은 최소, ½ 팟, 팟, 올인 버튼이나 슬라이더, 직접 입력으로 정할 수 있습니다. 규칙상 불가능한 금액은 입력할 수 없습니다.",
+          "모두의 베팅이 맞춰지면 자동으로 다음 스트리트로 넘어갑니다. 가운데에 있는 카드 틀은 펼쳐져 있어야 할 보드 카드의 수입니다."
+        ]
+      },
+      {
+        "title": "쇼다운",
+        "items": [
+          "쇼다운이 되면 팟마다 승자를 선택하고 '승자 확정'을 누릅니다.",
+          "무승부일 때는 동점인 플레이어를 모두 선택하면 팟이 똑같이 나뉩니다. 사이드 팟은 자동으로 계산됩니다."
+        ]
+      },
+      {
+        "title": "잘못 입력했을 때",
+        "items": [
+          "'되돌리기'를 누르면 한 단계씩 이전으로 돌아갑니다(최대 50단계). 앱을 닫아도 이어서 할 수 있습니다."
+        ]
+      },
+      {
+        "title": "블라인드와 타이머",
+        "items": [
+          "타이머는 첫 핸드를 시작하면 자동으로 움직이고, 시간이 다 되면 다음 레벨로 올라갑니다. 새 블라인드는 다음 핸드부터 적용됩니다.",
+          "레벨이 오르면 알림음과 배너로 알려 줍니다. 알림음은 설정에서 끌 수 있습니다."
+        ]
+      },
+      {
+        "title": "탈락, 리엔트리, 레이트 등록",
+        "items": [
+          "칩을 모두 잃은 플레이어는 탈락합니다. 등록 기간 중에는 '순위'에서 리엔트리나 레이트 등록을 할 수 있습니다."
+        ]
+      },
+      {
+        "title": "주요 규칙",
+        "items": [
+          "빅 블라인드 앤티: 빅 블라인드 자리의 플레이어가 테이블 전체의 앤티를 냅니다.",
+          "최소 레이즈: 레이즈는 그 라운드의 직전 벳이나 레이즈만큼 이상 올려야 합니다.",
+          "완전한 레이즈에 못 미치는 올인은, 이미 액션한 플레이어에게 다시 레이즈할 기회를 주지 않습니다.",
+          "올인으로 베팅이 끝나면, 모두 핸드를 공개한 뒤 남은 보드를 펼칩니다.",
+          "팟을 나눌 때 남는 칩은 버튼 왼쪽에 가장 가까운 승자가 가져갑니다.",
+          "두 명만 남으면 버튼이 스몰 블라인드를 내고, 프리플랍에서 먼저 액션합니다."
+        ]
+      }
+    ]
+  }
+}

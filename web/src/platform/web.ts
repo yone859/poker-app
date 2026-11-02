@@ -4,7 +4,7 @@
  */
 import { useEffect } from 'react';
 import type { TournamentState } from '@holdem/shared/engine';
-import type { Language } from '@holdem/shared/i18n';
+import { isLanguage, type Language } from '@holdem/shared/i18n';
 import { deserialize, serialize, STORAGE_KEY, type SavedGame } from '@holdem/shared/state/persistence';
 
 // localStorage はプライベートブラウズなどで使えないことがあるので、失敗しても止まらないようにする
@@ -55,7 +55,7 @@ export function getDeviceLanguages(): readonly string[] {
 export function loadLanguage(): Language | null {
   try {
     const saved = localStorage.getItem(LANGUAGE_KEY);
-    return saved === 'ja' || saved === 'en' ? saved : null;
+    return isLanguage(saved) ? saved : null;
   } catch {
     return null;
   }
@@ -70,8 +70,10 @@ export function saveLanguage(language: Language): void {
 }
 
 /** 画面の言語をブラウザにも伝える（読み上げ機能やフォントの選び方に使われる） */
-export function setDocumentLanguage(language: Language): void {
+/** 読み上げ機能やフォントのために <html lang> を、タブの表示のためにタイトルを、表示中の言語に合わせる */
+export function setDocumentLanguage(language: Language, title: string): void {
   document.documentElement.lang = language;
+  document.title = title;
 }
 
 let audio: AudioContext | null = null;

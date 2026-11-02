@@ -1,0 +1,317 @@
+{
+  "app": {
+    "title": "德州撲克計分器"
+  },
+  "common": {
+    "close": "關閉",
+    "remove": "刪除",
+    "listSeparator": "、",
+    "dot": " · ",
+    "seatN": "{{n}}號座位",
+    "back": "← 返回",
+    "cancel": "取消",
+    "thousandsSeparator": ","
+  },
+  "presets": {
+    "standard": {
+      "name": "標準",
+      "description": "起始籌碼 25,000 · 每級 20 分鐘 · 每 4 級休息 10 分鐘（約 3–4 小時）"
+    },
+    "turbo": {
+      "name": "快速",
+      "description": "起始籌碼 25,000 · 每級 10 分鐘 · 每 6 級休息 5 分鐘（約 1.5–2 小時）"
+    },
+    "deep": {
+      "name": "深籌碼",
+      "description": "起始籌碼 50,000 · 每級 30 分鐘 · 每 4 級休息 15 分鐘（適合慢慢玩）"
+    }
+  },
+  "setup": {
+    "blindStructure": "盲注結構",
+    "hideStructure": "▲ 收起盲注結構",
+    "showStructure": "▼ 查看或編輯盲注結構",
+    "colLevel": "級",
+    "colMinutes": "分鐘",
+    "breakShort": "休",
+    "addLevel": "＋ 級別",
+    "addBreak": "＋ 休息",
+    "startingStack": "起始籌碼",
+    "minChip": "最小籌碼",
+    "reentryTitle": "重新參賽",
+    "reentryEnabled": "允許重新參賽和延遲報名",
+    "reentryLastLevel": "報名截止（到此級別結束）",
+    "reentryMaxEntries": "每人最多參賽次數（0 = 不限）",
+    "playersTitle": "玩家（{{count}}人）",
+    "seatingHint": "依照由上到下的順序，順時針入座。",
+    "addPlayer": "＋ 新增玩家",
+    "defaultPlayerName": "玩家{{n}}",
+    "firstButton": "第一個莊家位",
+    "randomButton": "隨機",
+    "start": "以 {{stack}} 籌碼開始",
+    "title": "新錦標賽"
+  },
+  "validation": {
+    "playerCount": "請設定 2 到 {{max}} 名玩家。",
+    "emptyName": "有玩家沒有填寫名字。",
+    "duplicateName": "有玩家的名字重複。",
+    "minChip": "最小籌碼必須至少為 1。",
+    "startingStack": "起始籌碼必須是最小籌碼的整數倍。",
+    "noLevels": "盲注結構至少需要一個級別。",
+    "minutes": "第 {{row}} 列：每個級別或休息至少需要 1 分鐘。",
+    "blindOrder": "第 {{row}} 列：大盲必須大於小盲。",
+    "blindMultiple": "第 {{row}} 列：盲注和前注必須是最小籌碼（{{chip}}）的整數倍。",
+    "maxEntries": "允許重新參賽時，最多參賽次數必須至少為 2。",
+    "lastLevel": "報名截止級別必須至少為 1。"
+  },
+  "errors": {
+    "noBigBlind": "大盲位上沒有玩家。",
+    "noActor": "現在沒有可以行動的玩家。",
+    "cannotCheck": "面對下注時不能過牌。",
+    "nothingToCall": "沒有需要跟注的金額。",
+    "cannotRaise": "現在不能加注。",
+    "exceedsStack": "超過了這位玩家的籌碼。",
+    "belowMinimum": "最少需要 {{min}}。",
+    "notShowdown": "現在不是攤牌階段。",
+    "potNeedsWinner": "請選擇底池 {{pot}} 的贏家。",
+    "winnerNotEligible": "底池 {{pot}} 選到了沒有參與這個底池的玩家。",
+    "playerCount": "錦標賽需要 2 到 {{max}} 名玩家。",
+    "handNotFinished": "請先結束目前這一手牌。",
+    "notEnoughPlayers": "至少需要 2 名玩家。",
+    "noHand": "現在沒有進行中的牌局。",
+    "handNotComplete": "這一手牌還沒有結束。",
+    "cannotReenter": "這位玩家不能重新參賽。",
+    "cannotAddDuringHand": "牌局進行中不能新增玩家。",
+    "registrationClosed": "報名已截止。",
+    "seatUnavailable": "這個座位無法使用。",
+    "noTournament": "沒有進行中的錦標賽。"
+  },
+  "clock": {
+    "level": "第 {{n}} 級",
+    "break": "休息",
+    "prevLevel": "上一級",
+    "nextLevel": "下一級",
+    "start": "開始",
+    "pause": "暫停",
+    "pauseLabel": "暫停",
+    "next": "下一級：{{blinds}}",
+    "pending": "本手牌：{{blinds}}（下一手起進入新級別）",
+    "registrationOpen": "重新參賽開放至第 {{n}} 級",
+    "registrationClosed": "報名已截止",
+    "soundOn": "聲音：開",
+    "soundOff": "聲音：關"
+  },
+  "levelAlert": {
+    "level": "第 {{n}} 級：{{blinds}}（下一手起生效）",
+    "break": "休息 {{minutes}} 分鐘"
+  },
+  "streets": {
+    "preflop": "翻牌前",
+    "flop": "翻牌",
+    "turn": "轉牌",
+    "river": "河牌"
+  },
+  "pot": {
+    "main": "主池",
+    "side": "邊池",
+    "sideN": "邊池 {{n}}"
+  },
+  "table": {
+    "handNo": "第 {{n}} 手",
+    "nextHand": "下一手：第 {{n}} 手",
+    "pot": "底池 {{amount}}",
+    "emptySeat": "空位",
+    "outSeat": "{{name}}（出局）",
+    "allIn": "ALL IN",
+    "folded": "FOLD",
+    "onBreak": "休息中。恢復比賽後請開始下一手。",
+    "oneLeft": "只剩 1 名玩家。可以在「排名」中辦理重新參賽。",
+    "startHand": "開始第 {{n}} 手",
+    "undo": "↶ 復原",
+    "history": "紀錄",
+    "standings": "排名",
+    "home": "首頁"
+  },
+  "seatAction": {
+    "sb": "SB",
+    "bb": "BB",
+    "ante": "BB",
+    "fold": "棄牌",
+    "check": "過牌",
+    "call": "跟注",
+    "bet": "下注",
+    "raise": "加注"
+  },
+  "action": {
+    "toAct": "輪到 <b>{{name}}</b>",
+    "facingBet": "跟注 {{toCall}} · 剩餘 {{stack}}",
+    "noBet": "無人下注 · 剩餘 {{stack}}",
+    "fold": "棄牌",
+    "check": "過牌",
+    "call": "跟注 {{amount}}",
+    "callAllIn": "跟注 {{amount}}（全下）",
+    "quickMin": "最小",
+    "quickHalfPot": "½ 底池",
+    "quickPot": "底池",
+    "quickAllIn": "全下",
+    "decrease": "減少",
+    "increase": "增加",
+    "amount": "金額",
+    "bet": "下注 {{amount}}",
+    "raise": "加注到 {{amount}}",
+    "allIn": "全下 {{amount}}",
+    "range": "請輸入 {{min}} 到 {{max}} 之間的金額。"
+  },
+  "showdown": {
+    "title": "攤牌",
+    "runout": {
+      "flop": "所有人亮出手牌，然後發出翻牌、轉牌和河牌。",
+      "turn": "所有人亮出手牌，然後發出轉牌和河牌。",
+      "river": "所有人亮出手牌，然後發出河牌。"
+    },
+    "showFirst": "{{name}} 先亮牌",
+    "uncontested": "由 {{name}} 獲得",
+    "split": "{{count}} 人平分",
+    "confirm": "確定贏家"
+  },
+  "result": {
+    "title": "第 {{n}} 手結果",
+    "eliminated": "{{names}} 出局",
+    "next": "下一步"
+  },
+  "players": {
+    "title": "玩家",
+    "entries": "參賽 {{count}} 次",
+    "reenter": "重新參賽",
+    "eliminatedIn": "第 {{n}} 手出局",
+    "reenterBetweenHands": "可以在兩手牌之間重新參賽。",
+    "lateRegistration": "延遲報名",
+    "namePlaceholder": "名字",
+    "add": "新增",
+    "nameTaken": "這個名字已經有人使用了。",
+    "lateRegistrationStack": "以 {{stack}} 籌碼加入。"
+  },
+  "results": {
+    "title": "錦標賽結束",
+    "winner": "{{name}} 奪冠！",
+    "hands": "{{count}} 手牌",
+    "entries": "參賽 {{count}} 次",
+    "entriesNote": "（參賽 {{count}} 次）",
+    "summarySeparator": " · ",
+    "place": "第 {{count}} 名",
+    "champion": "冠軍",
+    "newTournament": "新錦標賽",
+    "home": "首頁"
+  },
+  "history": {
+    "title": "牌局紀錄",
+    "empty": "還沒有打過牌。",
+    "inProgress": "進行中",
+    "sb": "下小盲 {{amount}}",
+    "bb": "下大盲 {{amount}}",
+    "ante": "下大盲前注 {{amount}}",
+    "fold": "棄牌",
+    "check": "過牌",
+    "call": "跟注 {{amount}}",
+    "bet": "下注 {{amount}}",
+    "raise": "加注到 {{amount}}",
+    "allInSuffix": "（全下）",
+    "awardSeparator": "："
+  },
+  "home": {
+    "resumeTitle": "繼續錦標賽",
+    "summaryNotStarted": "尚未開始 · {{count}} 名玩家",
+    "summaryPlaying": "第 {{hand}} 手 · 第 {{level}} 級 · 剩餘 {{count}} 人",
+    "summaryFinished": "已結束 · {{name}} 奪冠",
+    "discard": "結束這場錦標賽",
+    "confirmDiscard": "將結束已儲存的錦標賽，而且無法復原。確定嗎？",
+    "confirmDiscardOk": "結束",
+    "newTournament": "新錦標賽",
+    "confirmNew": "開始新錦標賽會結束已儲存的錦標賽。要前往設定嗎？",
+    "confirmNewOk": "繼續",
+    "howTo": "使用說明",
+    "settings": "設定",
+    "about": "關於"
+  },
+  "settings": {
+    "title": "設定",
+    "language": "語言",
+    "sound": "升級提示音",
+    "on": "開",
+    "off": "關"
+  },
+  "about": {
+    "title": "關於",
+    "version": "版本 {{version}}",
+    "privacyTitle": "隱私權",
+    "privacyBody": "本 App 不會收集任何個人資料。錦標賽紀錄和設定只會儲存在這台裝置上，App 也不會連上網路。",
+    "noticeTitle": "注意事項",
+    "noticeBody": "本 App 只是計分工具，不能用於真錢賭博。",
+    "rulesTitle": "關於規則",
+    "rulesBody": "比賽流程參考了現場撲克錦標賽中常用的規則。"
+  },
+  "howto": {
+    "title": "使用說明",
+    "sections": [
+      {
+        "title": "本 App 的用途",
+        "items": [
+          "用真實的撲克牌玩德州撲克錦標賽時，由本 App 代替籌碼計分。",
+          "把一支手機放在牌桌中間，大家一起操作。App 不負責發牌，所以攤牌後由大家在螢幕上選出贏家。"
+        ]
+      },
+      {
+        "title": "開始錦標賽",
+        "items": [
+          "點選「新錦標賽」，設定盲注結構、起始籌碼和玩家後開始。",
+          "盲注結構可以從 3 種預設中選擇，也可以逐級自行編輯。"
+        ]
+      },
+      {
+        "title": "進行一手牌",
+        "items": [
+          "點選「開始第 1 手」，小盲、大盲和大盲前注會自動收取。",
+          "醒目顯示的座位就是要行動的玩家。依照他們的宣告，點選棄牌、過牌、跟注、下注或加注。",
+          "下注或加注的金額可以用「最小」「½ 底池」「底池」「全下」按鈕、滑桿或直接輸入來設定。規則不允許的金額無法輸入。",
+          "所有人的下注一致後，會自動進入下一輪。桌子中間的牌框表示公共牌應該翻開幾張。"
+        ]
+      },
+      {
+        "title": "攤牌",
+        "items": [
+          "進入攤牌後，為每個底池選出贏家，然後點選「確定贏家」。",
+          "平手時選取所有打平的玩家，底池會平均分配。邊池會自動計算。"
+        ]
+      },
+      {
+        "title": "操作失誤時",
+        "items": [
+          "點選「復原」可以一步一步退回（最多 50 步）。即使關閉 App，下次也能從中斷的地方繼續。"
+        ]
+      },
+      {
+        "title": "盲注與計時",
+        "items": [
+          "計時器在第一手牌開始時自動啟動，時間到了就升到下一級。新的盲注從下一手牌開始生效。",
+          "升級時會有提示音和橫幅提醒。提示音可以在「設定」中關閉。"
+        ]
+      },
+      {
+        "title": "出局、重新參賽和延遲報名",
+        "items": [
+          "籌碼輸光的玩家出局。報名截止前，可以在「排名」中辦理重新參賽或延遲報名。"
+        ]
+      },
+      {
+        "title": "主要規則",
+        "items": [
+          "大盲前注：由大盲位的玩家替全桌支付前注。",
+          "最小加注：加注的幅度至少要等於本輪上一次下注或加注的幅度。",
+          "不足一次完整加注的全下，不會讓已經行動過的玩家重新獲得加注的機會。",
+          "有玩家全下且下注結束後，所有人亮出手牌，再發完剩下的公共牌。",
+          "平分底池時，無法平分的零頭籌碼歸離莊家位左側最近的贏家。",
+          "只剩兩人時，莊家位下小盲，並且翻牌前先行動。"
+        ]
+      }
+    ]
+  }
+}

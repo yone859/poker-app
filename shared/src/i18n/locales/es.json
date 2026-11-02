@@ -1,0 +1,329 @@
+{
+  "app": {
+    "title": "Contador de fichas Hold'em"
+  },
+  "common": {
+    "close": "Cerrar",
+    "remove": "Eliminar",
+    "listSeparator": ", ",
+    "dot": " · ",
+    "seatN": "Asiento {{n}}",
+    "back": "← Atrás",
+    "cancel": "Cancelar",
+    "thousandsSeparator": "."
+  },
+  "presets": {
+    "standard": {
+      "name": "Estándar",
+      "description": "25.000 fichas · niveles de 20 minutos · descanso de 10 minutos cada 4 niveles (unas 3–4 horas)"
+    },
+    "turbo": {
+      "name": "Turbo",
+      "description": "25.000 fichas · niveles de 10 minutos · descanso de 5 minutos cada 6 niveles (unas 1,5–2 horas)"
+    },
+    "deep": {
+      "name": "Deep Stack",
+      "description": "50.000 fichas · niveles de 30 minutos · descanso de 15 minutos cada 4 niveles (para una partida larga)"
+    }
+  },
+  "setup": {
+    "blindStructure": "Estructura de ciegas",
+    "hideStructure": "▲ Ocultar estructura de ciegas",
+    "showStructure": "▼ Ver o editar estructura de ciegas",
+    "colLevel": "Nv",
+    "colMinutes": "Min",
+    "breakShort": "—",
+    "addLevel": "+ Nivel",
+    "addBreak": "+ Descanso",
+    "startingStack": "Stack inicial",
+    "minChip": "Ficha más pequeña",
+    "reentryTitle": "Reentrada",
+    "reentryEnabled": "Permitir reentrada y registro tardío",
+    "reentryLastLevel": "El registro cierra al terminar el nivel",
+    "reentryMaxEntries": "Entradas máximas por jugador (0 = sin límite)",
+    "playersTitle": "Jugadores ({{count}})",
+    "seatingHint": "Los jugadores se sientan en este orden, en el sentido de las agujas del reloj.",
+    "addPlayer": "+ Añadir jugador",
+    "defaultPlayerName": "Jugador {{n}}",
+    "firstButton": "Botón de dealer inicial",
+    "randomButton": "Al azar",
+    "start": "Empezar con {{stack}} fichas",
+    "title": "Nuevo torneo"
+  },
+  "validation": {
+    "playerCount": "Introduce entre 2 y {{max}} jugadores.",
+    "emptyName": "Todos los jugadores necesitan un nombre.",
+    "duplicateName": "Cada jugador necesita un nombre distinto.",
+    "minChip": "La ficha más pequeña debe ser al menos 1.",
+    "startingStack": "El stack inicial debe ser múltiplo de la ficha más pequeña.",
+    "noLevels": "La estructura de ciegas necesita al menos un nivel.",
+    "minutes": "Fila {{row}}: cada nivel o descanso debe durar al menos 1 minuto.",
+    "blindOrder": "Fila {{row}}: la ciega grande debe ser mayor que la ciega pequeña.",
+    "blindMultiple": "Fila {{row}}: las ciegas y el ante deben ser múltiplos de la ficha más pequeña ({{chip}}).",
+    "maxEntries": "Con la reentrada activada, las entradas máximas deben ser 2 o más.",
+    "lastLevel": "El registro debe seguir abierto al menos hasta el nivel 1."
+  },
+  "errors": {
+    "noBigBlind": "No hay nadie en la ciega grande.",
+    "noActor": "Nadie puede actuar ahora.",
+    "cannotCheck": "No puedes pasar si hay una apuesta.",
+    "nothingToCall": "No hay nada que igualar.",
+    "cannotRaise": "Aquí no se puede subir.",
+    "exceedsStack": "Es más de lo que tiene el jugador.",
+    "belowMinimum": "El mínimo es {{min}}.",
+    "notShowdown": "La mano no está en el showdown.",
+    "potNeedsWinner": "Elige un ganador para el bote {{pot}}.",
+    "winnerNotEligible": "Hay alguien seleccionado para el bote {{pot}} que no participa en ese bote.",
+    "playerCount": "Un torneo necesita de 2 a {{max}} jugadores.",
+    "handNotFinished": "Termina primero la mano actual.",
+    "notEnoughPlayers": "Se necesitan al menos 2 jugadores.",
+    "noHand": "No hay ninguna mano en curso.",
+    "handNotComplete": "La mano todavía no ha terminado.",
+    "cannotReenter": "Este jugador no puede volver a entrar.",
+    "cannotAddDuringHand": "No se pueden añadir jugadores durante una mano.",
+    "registrationClosed": "El registro está cerrado.",
+    "seatUnavailable": "Ese asiento no está disponible.",
+    "noTournament": "No hay ningún torneo en curso."
+  },
+  "clock": {
+    "level": "Nivel {{n}}",
+    "break": "Descanso",
+    "prevLevel": "Nivel anterior",
+    "nextLevel": "Nivel siguiente",
+    "start": "Iniciar",
+    "pause": "Pausa",
+    "pauseLabel": "Pausar",
+    "next": "Siguiente: {{blinds}}",
+    "pending": "Esta mano: {{blinds}} (el nuevo nivel empieza en la próxima mano)",
+    "registrationOpen": "Reentrada abierta hasta el nivel {{n}}",
+    "registrationClosed": "Registro cerrado",
+    "soundOn": "Sonido: sí",
+    "soundOff": "Sonido: no"
+  },
+  "levelAlert": {
+    "level": "Nivel {{n}}: {{blinds}} — empieza en la próxima mano",
+    "break": "Descanso de {{minutes}} minutos"
+  },
+  "streets": {
+    "preflop": "Preflop",
+    "flop": "Flop",
+    "turn": "Turn",
+    "river": "River"
+  },
+  "pot": {
+    "main": "Bote principal",
+    "side": "Bote secundario",
+    "sideN": "Bote secundario {{n}}"
+  },
+  "table": {
+    "handNo": "Mano #{{n}}",
+    "nextHand": "Siguiente: mano #{{n}}",
+    "pot": "Bote {{amount}}",
+    "emptySeat": "Libre",
+    "outSeat": "{{name}} (eliminado)",
+    "allIn": "ALL IN",
+    "folded": "FOLD",
+    "onBreak": "Descanso. Reparte la siguiente mano cuando se reanude el juego.",
+    "oneLeft": "Solo queda un jugador. Las reentradas se hacen desde Clasificación.",
+    "startHand": "Repartir mano #{{n}}",
+    "undo": "↶ Deshacer",
+    "history": "Historial",
+    "standings": "Clasificación",
+    "home": "Inicio"
+  },
+  "seatAction": {
+    "sb": "SB",
+    "bb": "BB",
+    "ante": "BB",
+    "fold": "Retirado",
+    "check": "Pasa",
+    "call": "Iguala",
+    "bet": "Apuesta",
+    "raise": "Sube"
+  },
+  "action": {
+    "toAct": "Le toca a <b>{{name}}</b>",
+    "facingBet": "{{toCall}} para igualar · le quedan {{stack}}",
+    "noBet": "Sin apuestas · le quedan {{stack}}",
+    "fold": "Retirarse",
+    "check": "Pasar",
+    "call": "Igualar {{amount}}",
+    "callAllIn": "Igualar {{amount}} (all-in)",
+    "quickMin": "Mín.",
+    "quickHalfPot": "½ bote",
+    "quickPot": "Bote",
+    "quickAllIn": "All-in",
+    "decrease": "Reducir",
+    "increase": "Aumentar",
+    "amount": "Cantidad",
+    "bet": "Apostar {{amount}}",
+    "raise": "Subir a {{amount}}",
+    "allIn": "All-in {{amount}}",
+    "range": "Introduce una cantidad entre {{min}} y {{max}}."
+  },
+  "showdown": {
+    "title": "Showdown",
+    "runout": {
+      "flop": "Todas las manos boca arriba. Reparte el flop, el turn y el river.",
+      "turn": "Todas las manos boca arriba. Reparte el turn y el river.",
+      "river": "Todas las manos boca arriba. Reparte el river."
+    },
+    "showFirst": "{{name}} enseña primero",
+    "uncontested": "Se lo lleva {{name}}",
+    "split": "Se reparte entre {{count}}",
+    "confirm": "Confirmar ganadores"
+  },
+  "result": {
+    "title": "Resultado de la mano #{{n}}",
+    "eliminated": "Eliminados: {{names}}",
+    "next": "Siguiente"
+  },
+  "players": {
+    "title": "Jugadores",
+    "entries_one": "{{count}} entrada",
+    "entries_many": "{{count}} de entradas",
+    "entries_other": "{{count}} entradas",
+    "reenter": "Reentrar",
+    "eliminatedIn": "Eliminado en la mano #{{n}}",
+    "reenterBetweenHands": "Las reentradas se hacen entre manos.",
+    "lateRegistration": "Registro tardío",
+    "namePlaceholder": "Nombre",
+    "add": "Añadir",
+    "nameTaken": "Ese nombre ya está en uso.",
+    "lateRegistrationStack": "Entra con {{stack}} fichas."
+  },
+  "results": {
+    "title": "Fin del torneo",
+    "winner": "¡{{name}} gana!",
+    "hands_one": "{{count}} mano",
+    "hands_many": "{{count}} de manos",
+    "hands_other": "{{count}} manos",
+    "entries_one": "{{count}} entrada",
+    "entries_many": "{{count}} de entradas",
+    "entries_other": "{{count}} entradas",
+    "entriesNote_one": " ({{count}} entrada)",
+    "entriesNote_many": " ({{count}} de entradas)",
+    "entriesNote_other": " ({{count}} entradas)",
+    "summarySeparator": " · ",
+    "place": "{{count}}.º",
+    "champion": "Ganador",
+    "newTournament": "Nuevo torneo",
+    "home": "Inicio"
+  },
+  "history": {
+    "title": "Historial de manos",
+    "empty": "Todavía no se ha jugado ninguna mano.",
+    "inProgress": "En curso",
+    "sb": "Pone la ciega pequeña {{amount}}",
+    "bb": "Pone la ciega grande {{amount}}",
+    "ante": "Pone el ante de ciega grande {{amount}}",
+    "fold": "Se retira",
+    "check": "Pasa",
+    "call": "Iguala {{amount}}",
+    "bet": "Apuesta {{amount}}",
+    "raise": "Sube a {{amount}}",
+    "allInSuffix": " (all-in)",
+    "awardSeparator": ": "
+  },
+  "home": {
+    "resumeTitle": "Continuar torneo",
+    "summaryNotStarted_one": "Sin empezar · {{count}} jugador",
+    "summaryNotStarted_many": "Sin empezar · {{count}} de jugadores",
+    "summaryNotStarted_other": "Sin empezar · {{count}} jugadores",
+    "summaryPlaying_one": "Mano #{{hand}} · Nivel {{level}} · queda {{count}} jugador",
+    "summaryPlaying_many": "Mano #{{hand}} · Nivel {{level}} · quedan {{count}} de jugadores",
+    "summaryPlaying_other": "Mano #{{hand}} · Nivel {{level}} · quedan {{count}} jugadores",
+    "summaryFinished": "Terminado · ganó {{name}}",
+    "discard": "Terminar este torneo",
+    "confirmDiscard": "Se terminará el torneo guardado. No se puede deshacer. ¿Seguro?",
+    "confirmDiscardOk": "Terminar torneo",
+    "newTournament": "Nuevo torneo",
+    "confirmNew": "Si empiezas un torneo nuevo, se terminará el guardado. ¿Ir a la configuración?",
+    "confirmNewOk": "Continuar",
+    "howTo": "Cómo se usa",
+    "settings": "Ajustes",
+    "about": "Acerca de"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "language": "Idioma",
+    "sound": "Sonido al subir de nivel",
+    "on": "Sí",
+    "off": "No"
+  },
+  "about": {
+    "title": "Acerca de",
+    "version": "Versión {{version}}",
+    "privacyTitle": "Privacidad",
+    "privacyBody": "Esta aplicación no recoge ningún dato personal. Los registros de torneos y los ajustes se guardan solo en este dispositivo, y la aplicación nunca se conecta a internet.",
+    "noticeTitle": "Ten en cuenta",
+    "noticeBody": "Esta aplicación es una herramienta para llevar la puntuación. No se puede usar para apostar dinero real.",
+    "rulesTitle": "Sobre las reglas",
+    "rulesBody": "El desarrollo del torneo sigue las reglas que se usan habitualmente en los torneos de póker en vivo."
+  },
+  "howto": {
+    "title": "Cómo se usa",
+    "sections": [
+      {
+        "title": "Para qué sirve",
+        "items": [
+          "Lleva la puntuación en lugar de las fichas mientras jugáis un torneo de Texas Hold'em con una baraja de verdad.",
+          "Pon un móvil en el centro de la mesa y compartidlo. La aplicación no reparte cartas, así que el ganador se elige en la pantalla después del showdown."
+        ]
+      },
+      {
+        "title": "Empezar un torneo",
+        "items": [
+          "Toca Nuevo torneo, elige la estructura de ciegas, el stack inicial y los jugadores, y empieza.",
+          "Elige una de las tres estructuras de ciegas predefinidas o edita cualquier nivel a tu gusto."
+        ]
+      },
+      {
+        "title": "Jugar una mano",
+        "items": [
+          "Toca Repartir mano #1. La ciega pequeña, la ciega grande y el ante de ciega grande se ponen automáticamente.",
+          "El asiento resaltado es el del jugador al que le toca. Introduce lo que declare: Retirarse, Pasar, Igualar, Apostar o Subir.",
+          "Fija una apuesta o subida con los botones Mín., ½ bote, Bote y All-in, con el control deslizante o escribiendo la cantidad. No se pueden introducir cantidades no permitidas.",
+          "Cuando termina la ronda de apuestas, la aplicación pasa a la siguiente calle. Los recuadros del centro indican cuántas cartas comunitarias deben estar boca arriba."
+        ]
+      },
+      {
+        "title": "Showdown",
+        "items": [
+          "Si la mano llega al showdown, elige el ganador de cada bote y toca Confirmar ganadores.",
+          "Si hay empate, selecciona a todos los jugadores empatados y el bote se reparte a partes iguales. Los botes secundarios se calculan solos."
+        ]
+      },
+      {
+        "title": "Corregir errores",
+        "items": [
+          "Toca Deshacer para retroceder de una acción en una acción (hasta 50). Si cierras la aplicación, puedes continuar donde lo dejaste."
+        ]
+      },
+      {
+        "title": "Ciegas y reloj",
+        "items": [
+          "El reloj arranca con la primera mano y pasa al siguiente nivel cuando se acaba el tiempo. Las nuevas ciegas se aplican desde la mano siguiente.",
+          "Un sonido y un aviso anuncian cada nivel nuevo. Puedes desactivar el sonido en Ajustes."
+        ]
+      },
+      {
+        "title": "Eliminaciones, reentradas y registro tardío",
+        "items": [
+          "Los jugadores que se quedan sin fichas quedan eliminados. Mientras el registro esté abierto, las reentradas y los registros tardíos se hacen desde Clasificación."
+        ]
+      },
+      {
+        "title": "Reglas principales",
+        "items": [
+          "Ante de ciega grande: el jugador de la ciega grande pone el ante de toda la mesa.",
+          "Subida mínima: una subida debe ser al menos tan grande como la apuesta o subida anterior de esa ronda.",
+          "Un all-in que no llega a una subida completa no reabre las apuestas para los jugadores que ya han actuado.",
+          "Cuando terminan las apuestas con un jugador all-in, todas las manos se ponen boca arriba antes de repartir el resto del board.",
+          "En un bote repartido, la ficha sobrante es para el ganador más cercano a la izquierda del botón.",
+          "En el heads-up, el botón pone la ciega pequeña y actúa primero antes del flop."
+        ]
+      }
+    ]
+  }
+}

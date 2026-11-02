@@ -1,0 +1,329 @@
+{
+  "app": {
+    "title": "Contador de fichas Hold'em"
+  },
+  "common": {
+    "close": "Fechar",
+    "remove": "Remover",
+    "listSeparator": ", ",
+    "dot": " · ",
+    "seatN": "Assento {{n}}",
+    "back": "← Voltar",
+    "cancel": "Cancelar",
+    "thousandsSeparator": "."
+  },
+  "presets": {
+    "standard": {
+      "name": "Padrão",
+      "description": "25.000 fichas · níveis de 20 minutos · intervalo de 10 minutos a cada 4 níveis (cerca de 3–4 horas)"
+    },
+    "turbo": {
+      "name": "Turbo",
+      "description": "25.000 fichas · níveis de 10 minutos · intervalo de 5 minutos a cada 6 níveis (cerca de 1,5–2 horas)"
+    },
+    "deep": {
+      "name": "Deep Stack",
+      "description": "50.000 fichas · níveis de 30 minutos · intervalo de 15 minutos a cada 4 níveis (para um jogo mais longo)"
+    }
+  },
+  "setup": {
+    "blindStructure": "Estrutura de blinds",
+    "hideStructure": "▲ Ocultar estrutura de blinds",
+    "showStructure": "▼ Ver ou editar estrutura de blinds",
+    "colLevel": "Nv",
+    "colMinutes": "Min",
+    "breakShort": "—",
+    "addLevel": "+ Nível",
+    "addBreak": "+ Intervalo",
+    "startingStack": "Stack inicial",
+    "minChip": "Menor ficha",
+    "reentryTitle": "Reentrada",
+    "reentryEnabled": "Permitir reentrada e registro tardio",
+    "reentryLastLevel": "O registro fecha ao fim do nível",
+    "reentryMaxEntries": "Máximo de entradas por jogador (0 = sem limite)",
+    "playersTitle": "Jogadores ({{count}})",
+    "seatingHint": "Os jogadores se sentam nesta ordem, no sentido horário.",
+    "addPlayer": "+ Adicionar jogador",
+    "defaultPlayerName": "Jogador {{n}}",
+    "firstButton": "Botão inicial do dealer",
+    "randomButton": "Aleatório",
+    "start": "Começar com {{stack}} fichas",
+    "title": "Novo torneio"
+  },
+  "validation": {
+    "playerCount": "Informe de 2 a {{max}} jogadores.",
+    "emptyName": "Todos os jogadores precisam de um nome.",
+    "duplicateName": "Cada jogador precisa de um nome diferente.",
+    "minChip": "A menor ficha deve ser pelo menos 1.",
+    "startingStack": "O stack inicial deve ser múltiplo da menor ficha.",
+    "noLevels": "A estrutura de blinds precisa de pelo menos um nível.",
+    "minutes": "Linha {{row}}: cada nível ou intervalo deve durar pelo menos 1 minuto.",
+    "blindOrder": "Linha {{row}}: o big blind deve ser maior que o small blind.",
+    "blindMultiple": "Linha {{row}}: blinds e antes devem ser múltiplos da menor ficha ({{chip}}).",
+    "maxEntries": "Com a reentrada ativada, o máximo de entradas deve ser 2 ou mais.",
+    "lastLevel": "O registro deve ficar aberto pelo menos até o nível 1."
+  },
+  "errors": {
+    "noBigBlind": "Não há ninguém no big blind.",
+    "noActor": "Ninguém pode agir agora.",
+    "cannotCheck": "Não dá para passar quando há uma aposta.",
+    "nothingToCall": "Não há nada para pagar.",
+    "cannotRaise": "Não é possível aumentar agora.",
+    "exceedsStack": "É mais do que o jogador tem.",
+    "belowMinimum": "O mínimo é {{min}}.",
+    "notShowdown": "A mão não está no showdown.",
+    "potNeedsWinner": "Escolha um vencedor para o pote {{pot}}.",
+    "winnerNotEligible": "Alguém selecionado para o pote {{pot}} não participa desse pote.",
+    "playerCount": "Um torneio precisa de 2 a {{max}} jogadores.",
+    "handNotFinished": "Termine a mão atual primeiro.",
+    "notEnoughPlayers": "São necessários pelo menos 2 jogadores.",
+    "noHand": "Nenhuma mão em andamento.",
+    "handNotComplete": "A mão ainda não terminou.",
+    "cannotReenter": "Este jogador não pode reentrar.",
+    "cannotAddDuringHand": "Não é possível adicionar jogadores durante uma mão.",
+    "registrationClosed": "O registro está fechado.",
+    "seatUnavailable": "Esse assento não está disponível.",
+    "noTournament": "Nenhum torneio em andamento."
+  },
+  "clock": {
+    "level": "Nível {{n}}",
+    "break": "Intervalo",
+    "prevLevel": "Nível anterior",
+    "nextLevel": "Próximo nível",
+    "start": "Iniciar",
+    "pause": "Pausa",
+    "pauseLabel": "Pausar",
+    "next": "Próximo: {{blinds}}",
+    "pending": "Nesta mão: {{blinds}} (o novo nível começa na próxima mão)",
+    "registrationOpen": "Reentrada aberta até o nível {{n}}",
+    "registrationClosed": "Registro fechado",
+    "soundOn": "Som: ligado",
+    "soundOff": "Som: desligado"
+  },
+  "levelAlert": {
+    "level": "Nível {{n}}: {{blinds}} — começa na próxima mão",
+    "break": "Intervalo de {{minutes}} minutos"
+  },
+  "streets": {
+    "preflop": "Pré-flop",
+    "flop": "Flop",
+    "turn": "Turn",
+    "river": "River"
+  },
+  "pot": {
+    "main": "Pote principal",
+    "side": "Pote lateral",
+    "sideN": "Pote lateral {{n}}"
+  },
+  "table": {
+    "handNo": "Mão #{{n}}",
+    "nextHand": "Próxima: mão #{{n}}",
+    "pot": "Pote {{amount}}",
+    "emptySeat": "Vazio",
+    "outSeat": "{{name}} (fora)",
+    "allIn": "ALL IN",
+    "folded": "FOLD",
+    "onBreak": "Intervalo. Distribua a próxima mão quando o jogo voltar.",
+    "oneLeft": "Só resta um jogador. As reentradas são feitas em Classificação.",
+    "startHand": "Distribuir mão #{{n}}",
+    "undo": "↶ Desfazer",
+    "history": "Histórico",
+    "standings": "Classificação",
+    "home": "Início"
+  },
+  "seatAction": {
+    "sb": "SB",
+    "bb": "BB",
+    "ante": "BB",
+    "fold": "Desistiu",
+    "check": "Passou",
+    "call": "Pagou",
+    "bet": "Apostou",
+    "raise": "Aumentou"
+  },
+  "action": {
+    "toAct": "Vez de <b>{{name}}</b>",
+    "facingBet": "{{toCall}} para pagar · restam {{stack}}",
+    "noBet": "Sem aposta · restam {{stack}}",
+    "fold": "Desistir",
+    "check": "Passar",
+    "call": "Pagar {{amount}}",
+    "callAllIn": "Pagar {{amount}} (all-in)",
+    "quickMin": "Mín.",
+    "quickHalfPot": "½ pote",
+    "quickPot": "Pote",
+    "quickAllIn": "All-in",
+    "decrease": "Diminuir",
+    "increase": "Aumentar",
+    "amount": "Valor",
+    "bet": "Apostar {{amount}}",
+    "raise": "Aumentar para {{amount}}",
+    "allIn": "All-in {{amount}}",
+    "range": "Informe um valor entre {{min}} e {{max}}."
+  },
+  "showdown": {
+    "title": "Showdown",
+    "runout": {
+      "flop": "Todas as mãos viradas para cima. Abra o flop, o turn e o river.",
+      "turn": "Todas as mãos viradas para cima. Abra o turn e o river.",
+      "river": "Todas as mãos viradas para cima. Abra o river."
+    },
+    "showFirst": "{{name}} mostra primeiro",
+    "uncontested": "Vai para {{name}}",
+    "split": "Dividido entre {{count}}",
+    "confirm": "Confirmar vencedores"
+  },
+  "result": {
+    "title": "Resultado da mão #{{n}}",
+    "eliminated": "Eliminados: {{names}}",
+    "next": "Próxima"
+  },
+  "players": {
+    "title": "Jogadores",
+    "entries_one": "{{count}} entrada",
+    "entries_many": "{{count}} de entradas",
+    "entries_other": "{{count}} entradas",
+    "reenter": "Reentrar",
+    "eliminatedIn": "Eliminado na mão #{{n}}",
+    "reenterBetweenHands": "As reentradas são feitas entre as mãos.",
+    "lateRegistration": "Registro tardio",
+    "namePlaceholder": "Nome",
+    "add": "Adicionar",
+    "nameTaken": "Esse nome já está em uso.",
+    "lateRegistrationStack": "Entra com {{stack}} fichas."
+  },
+  "results": {
+    "title": "Fim do torneio",
+    "winner": "{{name}} venceu!",
+    "hands_one": "{{count}} mão",
+    "hands_many": "{{count}} de mãos",
+    "hands_other": "{{count}} mãos",
+    "entries_one": "{{count}} entrada",
+    "entries_many": "{{count}} de entradas",
+    "entries_other": "{{count}} entradas",
+    "entriesNote_one": " ({{count}} entrada)",
+    "entriesNote_many": " ({{count}} de entradas)",
+    "entriesNote_other": " ({{count}} entradas)",
+    "summarySeparator": " · ",
+    "place": "{{count}}º",
+    "champion": "Campeão",
+    "newTournament": "Novo torneio",
+    "home": "Início"
+  },
+  "history": {
+    "title": "Histórico de mãos",
+    "empty": "Nenhuma mão jogada ainda.",
+    "inProgress": "Em andamento",
+    "sb": "Paga o small blind {{amount}}",
+    "bb": "Paga o big blind {{amount}}",
+    "ante": "Paga o ante do big blind {{amount}}",
+    "fold": "Desiste",
+    "check": "Passa",
+    "call": "Paga {{amount}}",
+    "bet": "Aposta {{amount}}",
+    "raise": "Aumenta para {{amount}}",
+    "allInSuffix": " (all-in)",
+    "awardSeparator": ": "
+  },
+  "home": {
+    "resumeTitle": "Continuar torneio",
+    "summaryNotStarted_one": "Não iniciado · {{count}} jogador",
+    "summaryNotStarted_many": "Não iniciado · {{count}} de jogadores",
+    "summaryNotStarted_other": "Não iniciado · {{count}} jogadores",
+    "summaryPlaying_one": "Mão #{{hand}} · Nível {{level}} · resta {{count}} jogador",
+    "summaryPlaying_many": "Mão #{{hand}} · Nível {{level}} · restam {{count}} de jogadores",
+    "summaryPlaying_other": "Mão #{{hand}} · Nível {{level}} · restam {{count}} jogadores",
+    "summaryFinished": "Encerrado · {{name}} venceu",
+    "discard": "Encerrar este torneio",
+    "confirmDiscard": "O torneio salvo será encerrado. Não é possível desfazer. Tem certeza?",
+    "confirmDiscardOk": "Encerrar torneio",
+    "newTournament": "Novo torneio",
+    "confirmNew": "Ao começar um novo torneio, o torneio salvo será encerrado. Ir para a configuração?",
+    "confirmNewOk": "Continuar",
+    "howTo": "Como usar",
+    "settings": "Configurações",
+    "about": "Sobre"
+  },
+  "settings": {
+    "title": "Configurações",
+    "language": "Idioma",
+    "sound": "Som ao subir de nível",
+    "on": "Ligado",
+    "off": "Desligado"
+  },
+  "about": {
+    "title": "Sobre",
+    "version": "Versão {{version}}",
+    "privacyTitle": "Privacidade",
+    "privacyBody": "Este app não coleta nenhuma informação pessoal. Os registros de torneios e as configurações ficam salvos apenas neste aparelho, e o app nunca se conecta à internet.",
+    "noticeTitle": "Atenção",
+    "noticeBody": "Este app é uma ferramenta para marcar pontos. Não pode ser usado para apostas com dinheiro real.",
+    "rulesTitle": "Sobre as regras",
+    "rulesBody": "O andamento do torneio segue regras usadas com frequência em torneios de pôquer ao vivo."
+  },
+  "howto": {
+    "title": "Como usar",
+    "sections": [
+      {
+        "title": "Para que serve",
+        "items": [
+          "Marca os pontos no lugar das fichas enquanto vocês jogam um torneio de Texas Hold'em com um baralho de verdade.",
+          "Coloque um celular no meio da mesa e compartilhem. O app não distribui cartas, então o vencedor é escolhido na tela depois do showdown."
+        ]
+      },
+      {
+        "title": "Começar um torneio",
+        "items": [
+          "Toque em Novo torneio, escolha a estrutura de blinds, o stack inicial e os jogadores, e comece.",
+          "Escolha uma das três estruturas de blinds prontas ou edite qualquer nível como quiser."
+        ]
+      },
+      {
+        "title": "Jogar uma mão",
+        "items": [
+          "Toque em Distribuir mão #1. O small blind, o big blind e o ante do big blind são pagos automaticamente.",
+          "O assento destacado é o do jogador da vez. Registre o que ele anunciar: Desistir, Passar, Pagar, Apostar ou Aumentar.",
+          "Defina uma aposta ou um aumento com os botões Mín., ½ pote, Pote e All-in, com o controle deslizante ou digitando o valor. Valores não permitidos não podem ser informados.",
+          "Quando a rodada de apostas termina, o app passa para a próxima rua. Os contornos de cartas no centro mostram quantas cartas comunitárias devem estar viradas para cima."
+        ]
+      },
+      {
+        "title": "Showdown",
+        "items": [
+          "Se a mão chegar ao showdown, escolha o vencedor de cada pote e toque em Confirmar vencedores.",
+          "Em caso de empate, selecione todos os jogadores empatados e o pote é dividido igualmente. Os potes laterais são calculados automaticamente."
+        ]
+      },
+      {
+        "title": "Corrigir erros",
+        "items": [
+          "Toque em Desfazer para voltar uma ação de cada vez (até 50). Se você fechar o app, pode continuar de onde parou."
+        ]
+      },
+      {
+        "title": "Blinds e relógio",
+        "items": [
+          "O relógio começa com a primeira mão e passa para o próximo nível quando o tempo acaba. Os novos blinds valem a partir da mão seguinte.",
+          "Um som e um aviso anunciam cada novo nível. Você pode desligar o som em Configurações."
+        ]
+      },
+      {
+        "title": "Eliminações, reentrada e registro tardio",
+        "items": [
+          "Os jogadores que ficam sem fichas são eliminados. Enquanto o registro estiver aberto, as reentradas e os registros tardios são feitos em Classificação."
+        ]
+      },
+      {
+        "title": "Regras principais",
+        "items": [
+          "Ante do big blind: o jogador do big blind paga o ante de toda a mesa.",
+          "Aumento mínimo: um aumento deve ser pelo menos do tamanho da aposta ou do aumento anterior naquela rodada.",
+          "Um all-in menor que um aumento completo não reabre as apostas para os jogadores que já agiram.",
+          "Quando as apostas terminam com um jogador all-in, todas as mãos são viradas para cima antes de abrir o restante do board.",
+          "Num pote dividido, a ficha que sobra vai para o vencedor mais próximo à esquerda do botão.",
+          "No heads-up, o botão paga o small blind e age primeiro antes do flop."
+        ]
+      }
+    ]
+  }
+}

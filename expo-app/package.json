@@ -4,6 +4,9 @@
   "main": "index.ts",
   "dependencies": {
     "@expo/metro-runtime": "~58.0.16",
+    "@formatjs/intl-getcanonicallocales": "^3.3.0",
+    "@formatjs/intl-locale": "^5.4.2",
+    "@formatjs/intl-pluralrules": "^7.0.2",
     "@holdem/shared": "*",
     "@react-native-async-storage/async-storage": "2.2.0",
     "@react-native-community/slider": "5.2.1",

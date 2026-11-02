@@ -1,0 +1,330 @@
+{
+  "app": {
+    "title": "Compteur de jetons Hold'em"
+  },
+  "common": {
+    "close": "Fermer",
+    "remove": "Supprimer",
+    "listSeparator": ", ",
+    "dot": " · ",
+    "seatN": "Siège {{n}}",
+    "back": "← Retour",
+    "cancel": "Annuler",
+    "thousandsSeparator": "\u00a0"
+  },
+  "presets": {
+    "standard": {
+      "name": "Standard",
+      "description": "25\u00a0000 jetons · niveaux de 20 minutes · pause de 10 minutes tous les 4 niveaux (environ 3 à 4 heures)"
+    },
+    "turbo": {
+      "name": "Turbo",
+      "description": "25\u00a0000 jetons · niveaux de 10 minutes · pause de 5 minutes tous les 6 niveaux (environ 1 h 30 à 2 heures)"
+    },
+    "deep": {
+      "name": "Deep Stack",
+      "description": "50\u00a0000 jetons · niveaux de 30 minutes · pause de 15 minutes tous les 4 niveaux (pour une partie plus longue)"
+    }
+  },
+  "setup": {
+    "blindStructure": "Structure des blindes",
+    "hideStructure": "▲ Masquer la structure des blindes",
+    "showStructure": "▼ Voir ou modifier la structure des blindes",
+    "colLevel": "Niv.",
+    "colMinutes": "Min",
+    "breakShort": "—",
+    "addLevel": "+ Niveau",
+    "addBreak": "+ Pause",
+    "startingStack": "Tapis de départ",
+    "minChip": "Plus petit jeton",
+    "reentryTitle": "Re-entry",
+    "reentryEnabled": "Autoriser les re-entries et l'inscription tardive",
+    "reentryLastLevel": "Fin des inscriptions après le niveau",
+    "reentryMaxEntries": "Entrées max. par joueur (0 = illimité)",
+    "playersTitle": "Joueurs ({{count}})",
+    "seatingHint": "Les joueurs s'assoient dans cet ordre, dans le sens des aiguilles d'une montre.",
+    "addPlayer": "+ Ajouter un joueur",
+    "defaultPlayerName": "Joueur {{n}}",
+    "firstButton": "Bouton du donneur au départ",
+    "randomButton": "Au hasard",
+    "start": "Commencer avec {{stack}} jetons",
+    "title": "Nouveau tournoi"
+  },
+  "validation": {
+    "playerCount": "Indiquez entre 2 et {{max}} joueurs.",
+    "emptyName": "Chaque joueur doit avoir un nom.",
+    "duplicateName": "Chaque joueur doit avoir un nom différent.",
+    "minChip": "Le plus petit jeton doit valoir au moins 1.",
+    "startingStack": "Le tapis de départ doit être un multiple du plus petit jeton.",
+    "noLevels": "La structure des blindes doit comporter au moins un niveau.",
+    "minutes": "Ligne {{row}} : chaque niveau ou pause doit durer au moins 1 minute.",
+    "blindOrder": "Ligne {{row}} : la grosse blinde doit être supérieure à la petite blinde.",
+    "blindMultiple": "Ligne {{row}} : les blindes et l'ante doivent être des multiples du plus petit jeton ({{chip}}).",
+    "maxEntries": "Avec les re-entries, le nombre d'entrées max. doit être d'au moins 2.",
+    "lastLevel": "Les inscriptions doivent rester ouvertes au moins jusqu'au niveau 1."
+  },
+  "errors": {
+    "noBigBlind": "Personne n'est à la grosse blinde.",
+    "noActor": "Personne ne peut jouer pour le moment.",
+    "cannotCheck": "Impossible de checker face à une mise.",
+    "nothingToCall": "Il n'y a rien à suivre.",
+    "cannotRaise": "Impossible de relancer ici.",
+    "exceedsStack": "C'est plus que ce que le joueur possède.",
+    "belowMinimum": "Le minimum est de {{min}}.",
+    "notShowdown": "La main n'est pas à l'abattage.",
+    "potNeedsWinner": "Choisissez un gagnant pour le pot {{pot}}.",
+    "winnerNotEligible": "Un joueur sélectionné pour le pot {{pot}} ne participe pas à ce pot.",
+    "playerCount": "Un tournoi se joue à 2 à {{max}} joueurs.",
+    "handNotFinished": "Terminez d'abord la main en cours.",
+    "notEnoughPlayers": "Il faut au moins 2 joueurs.",
+    "noHand": "Aucune main n'est en cours.",
+    "handNotComplete": "La main n'est pas encore terminée.",
+    "cannotReenter": "Ce joueur ne peut pas faire de re-entry.",
+    "cannotAddDuringHand": "Impossible d'ajouter des joueurs pendant une main.",
+    "registrationClosed": "Les inscriptions sont closes.",
+    "seatUnavailable": "Ce siège n'est pas disponible.",
+    "noTournament": "Aucun tournoi n'est en cours."
+  },
+  "clock": {
+    "level": "Niveau {{n}}",
+    "break": "Pause",
+    "prevLevel": "Niveau précédent",
+    "nextLevel": "Niveau suivant",
+    "start": "Démarrer",
+    "pause": "Pause",
+    "pauseLabel": "Mettre en pause",
+    "next": "Ensuite : {{blinds}}",
+    "pending": "Cette main : {{blinds}} (le nouveau niveau commence à la main suivante)",
+    "registrationOpen": "Re-entry possible jusqu'au niveau {{n}}",
+    "registrationClosed": "Inscriptions closes",
+    "soundOn": "Son : activé",
+    "soundOff": "Son : désactivé"
+  },
+  "levelAlert": {
+    "level": "Niveau {{n}} : {{blinds}} — à partir de la main suivante",
+    "break": "Pause de {{minutes}} minutes"
+  },
+  "streets": {
+    "preflop": "Préflop",
+    "flop": "Flop",
+    "turn": "Turn",
+    "river": "River"
+  },
+  "pot": {
+    "main": "Pot principal",
+    "side": "Pot annexe",
+    "sideN": "Pot annexe {{n}}"
+  },
+  "table": {
+    "handNo": "Main n°\u00a0{{n}}",
+    "nextHand": "Suivante : main n°\u00a0{{n}}",
+    "pot": "Pot {{amount}}",
+    "emptySeat": "Libre",
+    "outSeat": "{{name}} (éliminé)",
+    "allIn": "ALL IN",
+    "folded": "FOLD",
+    "onBreak": "C'est la pause. Distribuez la main suivante à la reprise du jeu.",
+    "oneLeft": "Il ne reste qu'un joueur. Les re-entries se font depuis Classement.",
+    "startHand": "Distribuer la main n°\u00a0{{n}}",
+    "undo": "↶ Annuler",
+    "history": "Historique",
+    "standings": "Classement",
+    "home": "Accueil"
+  },
+  "seatAction": {
+    "sb": "SB",
+    "bb": "BB",
+    "ante": "BB",
+    "fold": "Couché",
+    "check": "Check",
+    "call": "Suit",
+    "bet": "Mise",
+    "raise": "Relance"
+  },
+  "action": {
+    "toAct": "À <b>{{name}}</b> de jouer",
+    "facingBet": "{{toCall}} à suivre · reste {{stack}}",
+    "noBet": "Aucune mise · reste {{stack}}",
+    "fold": "Se coucher",
+    "check": "Checker",
+    "call": "Suivre {{amount}}",
+    "callAllIn": "Suivre {{amount}} (tapis)",
+    "quickMin": "Min",
+    "quickHalfPot": "½ pot",
+    "quickPot": "Pot",
+    "quickAllIn": "Tapis",
+    "decrease": "Diminuer",
+    "increase": "Augmenter",
+    "amount": "Montant",
+    "bet": "Miser {{amount}}",
+    "raise": "Relancer à {{amount}}",
+    "allIn": "Tapis {{amount}}",
+    "range": "Saisissez un montant entre {{min}} et {{max}}."
+  },
+  "showdown": {
+    "title": "Abattage",
+    "runout": {
+      "flop": "Toutes les mains sont retournées. Distribuez le flop, la turn et la river.",
+      "turn": "Toutes les mains sont retournées. Distribuez la turn et la river.",
+      "river": "Toutes les mains sont retournées. Distribuez la river."
+    },
+    "showFirst": "{{name}} montre en premier",
+    "uncontested": "Revient à {{name}}",
+    "split": "Partagé entre {{count}} joueurs",
+    "confirm": "Valider les gagnants"
+  },
+  "result": {
+    "title": "Résultat de la main n°\u00a0{{n}}",
+    "eliminated": "Éliminés : {{names}}",
+    "next": "Suivant"
+  },
+  "players": {
+    "title": "Joueurs",
+    "entries_one": "{{count}} entrée",
+    "entries_many": "{{count}} d'entrées",
+    "entries_other": "{{count}} entrées",
+    "reenter": "Re-entry",
+    "eliminatedIn": "Éliminé à la main n°\u00a0{{n}}",
+    "reenterBetweenHands": "Les re-entries se font entre deux mains.",
+    "lateRegistration": "Inscription tardive",
+    "namePlaceholder": "Nom",
+    "add": "Ajouter",
+    "nameTaken": "Ce nom est déjà pris.",
+    "lateRegistrationStack": "Rejoint la partie avec {{stack}} jetons."
+  },
+  "results": {
+    "title": "Tournoi terminé",
+    "winner": "{{name}} gagne !",
+    "hands_one": "{{count}} main",
+    "hands_many": "{{count}} de mains",
+    "hands_other": "{{count}} mains",
+    "entries_one": "{{count}} entrée",
+    "entries_many": "{{count}} d'entrées",
+    "entries_other": "{{count}} entrées",
+    "entriesNote_one": " ({{count}} entrée)",
+    "entriesNote_many": " ({{count}} d'entrées)",
+    "entriesNote_other": " ({{count}} entrées)",
+    "summarySeparator": " · ",
+    "place_ordinal_one": "{{count}}er",
+    "place_ordinal_other": "{{count}}e",
+    "champion": "Vainqueur",
+    "newTournament": "Nouveau tournoi",
+    "home": "Accueil"
+  },
+  "history": {
+    "title": "Historique des mains",
+    "empty": "Aucune main jouée pour l'instant.",
+    "inProgress": "En cours",
+    "sb": "Petite blinde {{amount}}",
+    "bb": "Grosse blinde {{amount}}",
+    "ante": "Ante grosse blinde {{amount}}",
+    "fold": "Se couche",
+    "check": "Checke",
+    "call": "Suit {{amount}}",
+    "bet": "Mise {{amount}}",
+    "raise": "Relance à {{amount}}",
+    "allInSuffix": " (tapis)",
+    "awardSeparator": " : "
+  },
+  "home": {
+    "resumeTitle": "Reprendre le tournoi",
+    "summaryNotStarted_one": "Pas commencé · {{count}} joueur",
+    "summaryNotStarted_many": "Pas commencé · {{count}} de joueurs",
+    "summaryNotStarted_other": "Pas commencé · {{count}} joueurs",
+    "summaryPlaying_one": "Main n°\u00a0{{hand}} · Niveau {{level}} · {{count}} joueur restant",
+    "summaryPlaying_many": "Main n°\u00a0{{hand}} · Niveau {{level}} · {{count}} de joueurs restants",
+    "summaryPlaying_other": "Main n°\u00a0{{hand}} · Niveau {{level}} · {{count}} joueurs restants",
+    "summaryFinished": "Terminé · victoire de {{name}}",
+    "discard": "Mettre fin à ce tournoi",
+    "confirmDiscard": "Le tournoi enregistré va prendre fin. Cette action est irréversible. Continuer ?",
+    "confirmDiscardOk": "Mettre fin au tournoi",
+    "newTournament": "Nouveau tournoi",
+    "confirmNew": "Commencer un nouveau tournoi mettra fin au tournoi enregistré. Passer à la configuration ?",
+    "confirmNewOk": "Continuer",
+    "howTo": "Mode d'emploi",
+    "settings": "Réglages",
+    "about": "À propos"
+  },
+  "settings": {
+    "title": "Réglages",
+    "language": "Langue",
+    "sound": "Son de changement de niveau",
+    "on": "Activé",
+    "off": "Désactivé"
+  },
+  "about": {
+    "title": "À propos",
+    "version": "Version {{version}}",
+    "privacyTitle": "Confidentialité",
+    "privacyBody": "Cette application ne collecte aucune donnée personnelle. Les tournois et les réglages sont enregistrés uniquement sur cet appareil, et l'application ne se connecte jamais à Internet.",
+    "noticeTitle": "À noter",
+    "noticeBody": "Cette application sert uniquement à compter les points. Elle ne peut pas être utilisée pour jouer de l'argent réel.",
+    "rulesTitle": "À propos des règles",
+    "rulesBody": "Le déroulement du tournoi suit les règles couramment appliquées dans les tournois de poker live."
+  },
+  "howto": {
+    "title": "Mode d'emploi",
+    "sections": [
+      {
+        "title": "À quoi sert l'application",
+        "items": [
+          "Elle compte les points à la place des jetons pendant que vous jouez un tournoi de Texas Hold'em avec un vrai jeu de cartes.",
+          "Posez un téléphone au milieu de la table et partagez-le. L'application ne distribue pas les cartes : après l'abattage, vous désignez le gagnant à l'écran."
+        ]
+      },
+      {
+        "title": "Lancer un tournoi",
+        "items": [
+          "Touchez Nouveau tournoi, choisissez la structure des blindes, le tapis de départ et les joueurs, puis commencez.",
+          "Choisissez l'une des trois structures de blindes proposées, ou modifiez vous-même n'importe quel niveau."
+        ]
+      },
+      {
+        "title": "Jouer une main",
+        "items": [
+          "Touchez Distribuer la main n°\u00a01. La petite blinde, la grosse blinde et l'ante grosse blinde sont payées automatiquement.",
+          "Le siège en surbrillance est celui du joueur qui doit parler. Saisissez ce qu'il annonce : se coucher, checker, suivre, miser ou relancer.",
+          "Réglez une mise ou une relance avec les boutons Min, ½ pot, Pot et Tapis, avec le curseur, ou en tapant un montant. Les montants non autorisés ne peuvent pas être saisis.",
+          "Une fois le tour d'enchères terminé, l'application passe au tour suivant. Les emplacements de cartes au centre indiquent combien de cartes du tableau doivent être retournées."
+        ]
+      },
+      {
+        "title": "Abattage",
+        "items": [
+          "Si la main va à l'abattage, choisissez le gagnant de chaque pot puis touchez Valider les gagnants.",
+          "En cas d'égalité, sélectionnez tous les joueurs à égalité : le pot est partagé à parts égales. Les pots annexes sont calculés automatiquement."
+        ]
+      },
+      {
+        "title": "Corriger une erreur",
+        "items": [
+          "Touchez Annuler pour revenir en arrière action par action (jusqu'à 50). Si vous fermez l'application, vous pourrez reprendre là où vous en étiez."
+        ]
+      },
+      {
+        "title": "Blindes et chrono",
+        "items": [
+          "Le chrono démarre avec la première main et passe au niveau suivant quand le temps est écoulé. Les nouvelles blindes s'appliquent à partir de la main suivante.",
+          "Un son et une bannière annoncent chaque nouveau niveau. Vous pouvez couper le son dans Réglages."
+        ]
+      },
+      {
+        "title": "Éliminations, re-entries et inscription tardive",
+        "items": [
+          "Les joueurs qui n'ont plus de jetons sont éliminés. Tant que les inscriptions sont ouvertes, les re-entries et les inscriptions tardives se font depuis Classement."
+        ]
+      },
+      {
+        "title": "Principales règles",
+        "items": [
+          "Ante grosse blinde : le joueur de grosse blinde paie l'ante pour toute la table.",
+          "Relance minimale : une relance doit être au moins égale à la mise ou à la relance précédente du même tour.",
+          "Un tapis inférieur à une relance complète ne rouvre pas les enchères pour les joueurs qui ont déjà parlé.",
+          "Lorsque les enchères sont terminées avec un joueur à tapis, toutes les mains sont retournées avant de distribuer le reste du tableau.",
+          "En cas de pot partagé, le jeton restant revient au gagnant le plus proche à gauche du bouton.",
+          "En tête-à-tête, le bouton paie la petite blinde et parle en premier avant le flop."
+        ]
+      }
+    ]
+  }
+}

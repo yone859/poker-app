@@ -96,7 +96,6 @@ export default function App() {
             canUndo={state.past.length > 0}
             soundOn={soundOn}
             onToggleSound={() => changeSound(!soundOn)}
-            onToggleLanguage={() => changeLanguage(i18n.language === 'ja' ? 'en' : 'ja')}
             onHome={goHome}
             dispatch={dispatch}
           />

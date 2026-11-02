@@ -1,0 +1,330 @@
+{
+  "app": {
+    "title": "Segnapunti Hold'em"
+  },
+  "common": {
+    "close": "Chiudi",
+    "remove": "Rimuovi",
+    "listSeparator": ", ",
+    "dot": " · ",
+    "seatN": "Posto {{n}}",
+    "back": "← Indietro",
+    "cancel": "Annulla",
+    "thousandsSeparator": "."
+  },
+  "presets": {
+    "standard": {
+      "name": "Standard",
+      "description": "25.000 fiches · livelli da 20 minuti · pausa di 10 minuti ogni 4 livelli (circa 3–4 ore)"
+    },
+    "turbo": {
+      "name": "Turbo",
+      "description": "25.000 fiches · livelli da 10 minuti · pausa di 5 minuti ogni 6 livelli (circa 1,5–2 ore)"
+    },
+    "deep": {
+      "name": "Deep Stack",
+      "description": "50.000 fiches · livelli da 30 minuti · pausa di 15 minuti ogni 4 livelli (per una partita più lunga)"
+    }
+  },
+  "setup": {
+    "blindStructure": "Struttura dei bui",
+    "hideStructure": "▲ Nascondi la struttura dei bui",
+    "showStructure": "▼ Vedi o modifica la struttura dei bui",
+    "colLevel": "Liv",
+    "colMinutes": "Min",
+    "breakShort": "—",
+    "addLevel": "+ Livello",
+    "addBreak": "+ Pausa",
+    "startingStack": "Stack iniziale",
+    "minChip": "Fiche più piccola",
+    "reentryTitle": "Re-entry",
+    "reentryEnabled": "Consenti re-entry e iscrizione tardiva",
+    "reentryLastLevel": "Iscrizioni chiuse dopo il livello",
+    "reentryMaxEntries": "Entry massime per giocatore (0 = illimitate)",
+    "playersTitle": "Giocatori ({{count}})",
+    "seatingHint": "I giocatori si siedono in quest'ordine, in senso orario.",
+    "addPlayer": "+ Aggiungi giocatore",
+    "defaultPlayerName": "Giocatore {{n}}",
+    "firstButton": "Bottone del mazziere iniziale",
+    "randomButton": "Casuale",
+    "start": "Inizia con {{stack}} fiches",
+    "title": "Nuovo torneo"
+  },
+  "validation": {
+    "playerCount": "Inserisci da 2 a {{max}} giocatori.",
+    "emptyName": "Ogni giocatore deve avere un nome.",
+    "duplicateName": "Ogni giocatore deve avere un nome diverso.",
+    "minChip": "La fiche più piccola deve valere almeno 1.",
+    "startingStack": "Lo stack iniziale deve essere un multiplo della fiche più piccola.",
+    "noLevels": "La struttura dei bui deve avere almeno un livello.",
+    "minutes": "Riga {{row}}: ogni livello o pausa deve durare almeno 1 minuto.",
+    "blindOrder": "Riga {{row}}: il grande buio deve essere maggiore del piccolo buio.",
+    "blindMultiple": "Riga {{row}}: bui e ante devono essere multipli della fiche più piccola ({{chip}}).",
+    "maxEntries": "Con il re-entry attivo, le entry massime devono essere almeno 2.",
+    "lastLevel": "Le iscrizioni devono restare aperte almeno fino al livello 1."
+  },
+  "errors": {
+    "noBigBlind": "Nessuno è al grande buio.",
+    "noActor": "Al momento nessuno può agire.",
+    "cannotCheck": "Non puoi fare check davanti a una puntata.",
+    "nothingToCall": "Non c'è niente da chiamare.",
+    "cannotRaise": "Qui non si può rilanciare.",
+    "exceedsStack": "È più di quanto ha il giocatore.",
+    "belowMinimum": "Il minimo è {{min}}.",
+    "notShowdown": "La mano non è allo showdown.",
+    "potNeedsWinner": "Scegli un vincitore per il piatto {{pot}}.",
+    "winnerNotEligible": "Per il piatto {{pot}} è stato scelto qualcuno che non partecipa a quel piatto.",
+    "playerCount": "Un torneo richiede da 2 a {{max}} giocatori.",
+    "handNotFinished": "Termina prima la mano in corso.",
+    "notEnoughPlayers": "Servono almeno 2 giocatori.",
+    "noHand": "Nessuna mano in corso.",
+    "handNotComplete": "La mano non è ancora finita.",
+    "cannotReenter": "Questo giocatore non può fare re-entry.",
+    "cannotAddDuringHand": "Non si possono aggiungere giocatori durante una mano.",
+    "registrationClosed": "Le iscrizioni sono chiuse.",
+    "seatUnavailable": "Quel posto non è disponibile.",
+    "noTournament": "Nessun torneo in corso."
+  },
+  "clock": {
+    "level": "Livello {{n}}",
+    "break": "Pausa",
+    "prevLevel": "Livello precedente",
+    "nextLevel": "Livello successivo",
+    "start": "Avvia",
+    "pause": "Pausa",
+    "pauseLabel": "Metti in pausa",
+    "next": "Prossimo: {{blinds}}",
+    "pending": "Questa mano: {{blinds}} (il nuovo livello parte dalla prossima mano)",
+    "registrationOpen": "Re-entry aperto fino al livello {{n}}",
+    "registrationClosed": "Iscrizioni chiuse",
+    "soundOn": "Suono: sì",
+    "soundOff": "Suono: no"
+  },
+  "levelAlert": {
+    "level": "Livello {{n}}: {{blinds}} — dalla prossima mano",
+    "break": "Pausa di {{minutes}} minuti"
+  },
+  "streets": {
+    "preflop": "Preflop",
+    "flop": "Flop",
+    "turn": "Turn",
+    "river": "River"
+  },
+  "pot": {
+    "main": "Piatto principale",
+    "side": "Piatto laterale",
+    "sideN": "Piatto laterale {{n}}"
+  },
+  "table": {
+    "handNo": "Mano #{{n}}",
+    "nextHand": "Prossima: mano #{{n}}",
+    "pot": "Piatto {{amount}}",
+    "emptySeat": "Libero",
+    "outSeat": "{{name}} (eliminato)",
+    "allIn": "ALL IN",
+    "folded": "FOLD",
+    "onBreak": "Pausa. Distribuisci la prossima mano quando si riprende a giocare.",
+    "oneLeft": "È rimasto un solo giocatore. I re-entry si fanno da Classifica.",
+    "startHand": "Distribuisci mano #{{n}}",
+    "undo": "↶ Annulla",
+    "history": "Cronologia",
+    "standings": "Classifica",
+    "home": "Home"
+  },
+  "seatAction": {
+    "sb": "SB",
+    "bb": "BB",
+    "ante": "BB",
+    "fold": "Lascia",
+    "check": "Check",
+    "call": "Chiama",
+    "bet": "Punta",
+    "raise": "Rilancia"
+  },
+  "action": {
+    "toAct": "Tocca a <b>{{name}}</b>",
+    "facingBet": "{{toCall}} per chiamare · restano {{stack}}",
+    "noBet": "Nessuna puntata · restano {{stack}}",
+    "fold": "Lascia",
+    "check": "Check",
+    "call": "Chiama {{amount}}",
+    "callAllIn": "Chiama {{amount}} (all-in)",
+    "quickMin": "Min",
+    "quickHalfPot": "½ piatto",
+    "quickPot": "Piatto",
+    "quickAllIn": "All-in",
+    "decrease": "Diminuisci",
+    "increase": "Aumenta",
+    "amount": "Importo",
+    "bet": "Punta {{amount}}",
+    "raise": "Rilancia a {{amount}}",
+    "allIn": "All-in {{amount}}",
+    "range": "Inserisci un importo tra {{min}} e {{max}}."
+  },
+  "showdown": {
+    "title": "Showdown",
+    "runout": {
+      "flop": "Tutte le mani scoperte. Distribuisci flop, turn e river.",
+      "turn": "Tutte le mani scoperte. Distribuisci turn e river.",
+      "river": "Tutte le mani scoperte. Distribuisci il river."
+    },
+    "showFirst": "{{name}} mostra per primo",
+    "uncontested": "Va a {{name}}",
+    "split": "Diviso tra {{count}} giocatori",
+    "confirm": "Conferma i vincitori"
+  },
+  "result": {
+    "title": "Risultato della mano #{{n}}",
+    "eliminated": "Eliminati: {{names}}",
+    "next": "Avanti"
+  },
+  "players": {
+    "title": "Giocatori",
+    "entries_one": "{{count}} entry",
+    "entries_many": "{{count}} di entry",
+    "entries_other": "{{count}} entry",
+    "reenter": "Re-entry",
+    "eliminatedIn": "Eliminato alla mano #{{n}}",
+    "reenterBetweenHands": "I re-entry si fanno tra una mano e l'altra.",
+    "lateRegistration": "Iscrizione tardiva",
+    "namePlaceholder": "Nome",
+    "add": "Aggiungi",
+    "nameTaken": "Questo nome è già usato.",
+    "lateRegistrationStack": "Entra con {{stack}} fiches."
+  },
+  "results": {
+    "title": "Torneo finito",
+    "winner": "Vince {{name}}!",
+    "hands_one": "{{count}} mano",
+    "hands_many": "{{count}} di mani",
+    "hands_other": "{{count}} mani",
+    "entries_one": "{{count}} entry",
+    "entries_many": "{{count}} di entry",
+    "entries_other": "{{count}} entry",
+    "entriesNote_one": " ({{count}} entry)",
+    "entriesNote_many": " ({{count}} di entry)",
+    "entriesNote_other": " ({{count}} entry)",
+    "summarySeparator": " · ",
+    "place_ordinal_many": "{{count}}º",
+    "place_ordinal_other": "{{count}}º",
+    "champion": "Vincitore",
+    "newTournament": "Nuovo torneo",
+    "home": "Home"
+  },
+  "history": {
+    "title": "Cronologia delle mani",
+    "empty": "Nessuna mano giocata finora.",
+    "inProgress": "In corso",
+    "sb": "Mette il piccolo buio {{amount}}",
+    "bb": "Mette il grande buio {{amount}}",
+    "ante": "Mette l'ante del grande buio {{amount}}",
+    "fold": "Lascia",
+    "check": "Fa check",
+    "call": "Chiama {{amount}}",
+    "bet": "Punta {{amount}}",
+    "raise": "Rilancia a {{amount}}",
+    "allInSuffix": " (all-in)",
+    "awardSeparator": ": "
+  },
+  "home": {
+    "resumeTitle": "Riprendi il torneo",
+    "summaryNotStarted_one": "Non iniziato · {{count}} giocatore",
+    "summaryNotStarted_many": "Non iniziato · {{count}} di giocatori",
+    "summaryNotStarted_other": "Non iniziato · {{count}} giocatori",
+    "summaryPlaying_one": "Mano #{{hand}} · Livello {{level}} · resta {{count}} giocatore",
+    "summaryPlaying_many": "Mano #{{hand}} · Livello {{level}} · restano {{count}} di giocatori",
+    "summaryPlaying_other": "Mano #{{hand}} · Livello {{level}} · restano {{count}} giocatori",
+    "summaryFinished": "Finito · ha vinto {{name}}",
+    "discard": "Termina questo torneo",
+    "confirmDiscard": "Il torneo salvato verrà terminato. L'operazione non si può annullare. Continuare?",
+    "confirmDiscardOk": "Termina torneo",
+    "newTournament": "Nuovo torneo",
+    "confirmNew": "Iniziando un nuovo torneo, quello salvato verrà terminato. Passare alla configurazione?",
+    "confirmNewOk": "Continua",
+    "howTo": "Come si usa",
+    "settings": "Impostazioni",
+    "about": "Informazioni"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "language": "Lingua",
+    "sound": "Suono al cambio di livello",
+    "on": "Sì",
+    "off": "No"
+  },
+  "about": {
+    "title": "Informazioni",
+    "version": "Versione {{version}}",
+    "privacyTitle": "Privacy",
+    "privacyBody": "Questa app non raccoglie alcun dato personale. I tornei e le impostazioni vengono salvati solo su questo dispositivo e l'app non si collega mai a Internet.",
+    "noticeTitle": "Nota bene",
+    "noticeBody": "Questa app è solo uno strumento per segnare i punti. Non può essere usata per giocare con denaro reale.",
+    "rulesTitle": "Sulle regole",
+    "rulesBody": "Lo svolgimento del torneo segue le regole comunemente usate nei tornei di poker dal vivo."
+  },
+  "howto": {
+    "title": "Come si usa",
+    "sections": [
+      {
+        "title": "A cosa serve",
+        "items": [
+          "Segna i punti al posto delle fiches mentre giocate un torneo di Texas Hold'em con un vero mazzo di carte.",
+          "Mettete un telefono al centro del tavolo e usatelo insieme. L'app non distribuisce le carte, quindi il vincitore si sceglie sullo schermo dopo lo showdown."
+        ]
+      },
+      {
+        "title": "Iniziare un torneo",
+        "items": [
+          "Tocca Nuovo torneo, scegli la struttura dei bui, lo stack iniziale e i giocatori, poi inizia.",
+          "Scegli una delle tre strutture dei bui predefinite oppure modifica tu qualsiasi livello."
+        ]
+      },
+      {
+        "title": "Giocare una mano",
+        "items": [
+          "Tocca Distribuisci mano #1. Piccolo buio, grande buio e ante del grande buio vengono messi automaticamente.",
+          "Il posto evidenziato è quello del giocatore di turno. Inserisci quello che dichiara: Lascia, Check, Chiama, Punta o Rilancia.",
+          "Imposta una puntata o un rilancio con i pulsanti Min, ½ piatto, Piatto e All-in, con il cursore o digitando l'importo. Gli importi non consentiti non si possono inserire.",
+          "Quando il giro di puntate è completo, l'app passa alla strada successiva. I riquadri al centro indicano quante carte comuni devono essere scoperte."
+        ]
+      },
+      {
+        "title": "Showdown",
+        "items": [
+          "Se la mano arriva allo showdown, scegli il vincitore di ogni piatto e tocca Conferma i vincitori.",
+          "In caso di pareggio, seleziona tutti i giocatori a pari merito e il piatto viene diviso in parti uguali. I piatti laterali sono calcolati automaticamente."
+        ]
+      },
+      {
+        "title": "Correggere un errore",
+        "items": [
+          "Tocca Annulla per tornare indietro di un'azione alla volta (fino a 50). Se chiudi l'app, puoi riprendere da dove avevi lasciato."
+        ]
+      },
+      {
+        "title": "Bui e orologio",
+        "items": [
+          "L'orologio parte con la prima mano e passa al livello successivo allo scadere del tempo. I nuovi bui valgono dalla mano seguente.",
+          "Un suono e un avviso annunciano ogni nuovo livello. Puoi disattivare il suono in Impostazioni."
+        ]
+      },
+      {
+        "title": "Eliminazioni, re-entry e iscrizione tardiva",
+        "items": [
+          "I giocatori che restano senza fiches vengono eliminati. Finché le iscrizioni sono aperte, re-entry e iscrizioni tardive si fanno da Classifica."
+        ]
+      },
+      {
+        "title": "Regole principali",
+        "items": [
+          "Ante del grande buio: il giocatore al grande buio paga l'ante per tutto il tavolo.",
+          "Rilancio minimo: un rilancio deve essere almeno pari alla puntata o al rilancio precedente di quel giro.",
+          "Un all-in inferiore a un rilancio completo non riapre le puntate per i giocatori che hanno già agito.",
+          "Quando le puntate finiscono con un giocatore all-in, tutte le mani vengono scoperte prima di distribuire il resto del board.",
+          "In un piatto diviso, la fiche che avanza va al vincitore più vicino alla sinistra del bottone.",
+          "In heads-up, il bottone mette il piccolo buio e agisce per primo prima del flop."
+        ]
+      }
+    ]
+  }
+}

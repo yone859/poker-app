@@ -1,9 +1,17 @@
 import type { TFunction } from 'i18next';
 import type { Street, StructureItem } from '../engine';
 
+// 桁区切りの記号。言語ごとに違う（英語 "1,234"、ドイツ語 "1.234"、フランス語 "1 234"）
+let thousandsSeparator = ',';
+
+/** 言語を切り替えたときに、翻訳ファイルの common.thousandsSeparator を設定する（i18n/index.ts から呼ぶ） */
+export function setThousandsSeparator(separator: string): void {
+  thousandsSeparator = separator;
+}
+
 /** 1234567 → "1,234,567"（Intlに頼らないのでReact Nativeでも同じ表示になる） */
 export function chips(n: number): string {
-  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSeparator);
 }
 
 /** ミリ秒 → "mm:ss" */

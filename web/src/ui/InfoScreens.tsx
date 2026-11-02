@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { Language } from '@holdem/shared/i18n';
+import { LANGUAGE_NAMES, LANGUAGES, type Language } from '@holdem/shared/i18n';
 import { APP_VERSION } from '@holdem/shared/version';
 
 function InfoLayout({ title, onBack, children }: { title: string; onBack: () => void; children: ReactNode }) {
@@ -82,15 +82,24 @@ export function SettingsScreen({ onBack, language, onChangeLanguage, soundOn, on
   return (
     <InfoLayout title={t('settings.title')} onBack={onBack}>
       <section className="card">
-        <Segmented
-          label={t('settings.language')}
-          value={language}
-          options={[
-            { value: 'ja', label: '日本語' },
-            { value: 'en', label: 'English' },
-          ]}
-          onChange={onChangeLanguage}
-        />
+        <div className="setting-block">
+          <span>{t('settings.language')}</span>
+          {/* 言語が多いので、2列に並べる。言語名はその言語の字形で出す（lang） */}
+          <div className="language-grid" role="radiogroup" aria-label={t('settings.language')}>
+            {LANGUAGES.map((l) => (
+              <button
+                key={l}
+                lang={l}
+                role="radio"
+                aria-checked={l === language}
+                className={l === language ? 'selected' : ''}
+                onClick={() => onChangeLanguage(l)}
+              >
+                {LANGUAGE_NAMES[l]}
+              </button>
+            ))}
+          </div>
+        </div>
         <Segmented
           label={t('settings.sound')}
           value={soundOn ? 'on' : 'off'}

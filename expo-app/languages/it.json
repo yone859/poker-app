@@ -1,0 +1,8 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "Fiches Hold'em"
+  },
+  "android": {
+    "app_name": "Fiches Hold'em"
+  }
+}

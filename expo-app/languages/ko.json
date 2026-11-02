@@ -1,0 +1,8 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "홀덤 칩 관리"
+  },
+  "android": {
+    "app_name": "홀덤 칩 관리"
+  }
+}

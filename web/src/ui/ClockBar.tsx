@@ -14,13 +14,12 @@ interface Props {
   now: number;
   soundOn: boolean;
   onToggleSound: () => void;
-  onToggleLanguage: () => void;
   dispatch: (action: GameAction) => void;
 }
 
 const LAST_MINUTE_MS = 60_000;
 
-export function ClockBar({ tournament, now, soundOn, onToggleSound, onToggleLanguage, dispatch }: Props) {
+export function ClockBar({ tournament, now, soundOn, onToggleSound, dispatch }: Props) {
   const { t } = useTranslation();
   const { structure, reentry } = tournament.config;
   const clock = syncClock(tournament.clock, structure, now);
@@ -85,9 +84,6 @@ export function ClockBar({ tournament, now, soundOn, onToggleSound, onToggleLang
         <span className="clock-toggles">
           <button className="link" onClick={onToggleSound}>
             {soundOn ? t('clock.soundOn') : t('clock.soundOff')}
-          </button>
-          <button className="link" onClick={onToggleLanguage}>
-            {t('language.switchTo')}
           </button>
         </span>
       </div>

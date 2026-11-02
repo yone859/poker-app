@@ -17,13 +17,12 @@ interface Props {
   now: number;
   soundOn: boolean;
   onToggleSound: () => void;
-  onToggleLanguage: () => void;
   dispatch: (action: GameAction) => void;
 }
 
 const LAST_MINUTE_MS = 60_000;
 
-export function ClockBar({ tournament, now, soundOn, onToggleSound, onToggleLanguage, dispatch }: Props) {
+export function ClockBar({ tournament, now, soundOn, onToggleSound, dispatch }: Props) {
   const { t } = useTranslation();
   const { structure, reentry } = tournament.config;
   const clock = syncClock(tournament.clock, structure, now);
@@ -96,9 +95,6 @@ export function ClockBar({ tournament, now, soundOn, onToggleSound, onToggleLang
         <View style={styles.toggles}>
           <Btn variant="link" onPress={onToggleSound} textStyle={styles.toggleText} style={styles.toggle} testID="sound-toggle">
             {soundOn ? t('clock.soundOn') : t('clock.soundOff')}
-          </Btn>
-          <Btn variant="link" onPress={onToggleLanguage} textStyle={styles.toggleText} style={styles.toggle} testID="language-toggle">
-            {t('language.switchTo')}
           </Btn>
         </View>
       </View>

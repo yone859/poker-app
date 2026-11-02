@@ -20,7 +20,6 @@ interface Props {
   canUndo: boolean;
   soundOn: boolean;
   onToggleSound: () => void;
-  onToggleLanguage: () => void;
   onHome: () => void;
   dispatch: (action: GameAction) => void;
 }
@@ -31,7 +30,6 @@ export function TableScreen({
   canUndo,
   soundOn,
   onToggleSound,
-  onToggleLanguage,
   onHome,
   dispatch,
 }: Props) {
@@ -54,7 +52,6 @@ export function TableScreen({
         now={now}
         soundOn={soundOn}
         onToggleSound={onToggleSound}
-        onToggleLanguage={onToggleLanguage}
         dispatch={dispatch}
       />
       {levelAlert.message && (

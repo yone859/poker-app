@@ -9,11 +9,8 @@
     "dot": " · ",
     "seatN": "Seat {{n}}",
     "back": "← Back",
-    "cancel": "Cancel"
-  },
-  "language": {
-    "label": "Language",
-    "switchTo": "日本語"
+    "cancel": "Cancel",
+    "thousandsSeparator": ","
   },
   "presets": {
     "standard": {

@@ -9,11 +9,8 @@
     "dot": "・",
     "seatN": "席{{n}}",
     "back": "← 戻る",
-    "cancel": "キャンセル"
-  },
-  "language": {
-    "label": "言語",
-    "switchTo": "English"
+    "cancel": "キャンセル",
+    "thousandsSeparator": ","
   },
   "presets": {
     "standard": {

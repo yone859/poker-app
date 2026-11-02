@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
-import type { Language } from '@holdem/shared/i18n';
+import { LANGUAGE_NAMES, LANGUAGES, type Language } from '@holdem/shared/i18n';
 import { APP_VERSION } from '@holdem/shared/version';
-import { Card, Screen, ScreenHeader, Segmented, T } from './kit';
+import { Btn, Card, Screen, ScreenHeader, Segmented, T } from './kit';
+import { colors } from './theme';
 
 export function HowToScreen({ onBack }: { onBack: () => void }) {
   const { t } = useTranslation();
@@ -39,17 +40,25 @@ export function SettingsScreen({ onBack, language, onChangeLanguage, soundOn, on
     <Screen testID="settings">
       <ScreenHeader title={t('settings.title')} onBack={onBack} />
       <Card>
-        <View style={styles.settingRow}>
+        <View style={styles.settingBlock}>
           <T>{t('settings.language')}</T>
-          <Segmented
-            testID="setting-language"
-            value={language}
-            options={[
-              { value: 'ja', label: '日本語' },
-              { value: 'en', label: 'English' },
-            ]}
-            onChange={onChangeLanguage}
-          />
+          {/* 言語が多いので、2列に並べる */}
+          <View style={styles.languageGrid} role="radiogroup" aria-label={t('settings.language')} testID="setting-language">
+            {LANGUAGES.map((l) => (
+              <Btn
+                key={l}
+                role="radio"
+                variant={l === language ? 'primary' : 'default'}
+                selected={l === language}
+                onPress={() => onChangeLanguage(l)}
+                style={[styles.languageButton, l !== language && { backgroundColor: colors.surface2 }]}
+                textStyle={l === language ? undefined : { fontWeight: '400' }}
+                testID={`setting-language-${l}`}
+              >
+                {LANGUAGE_NAMES[l]}
+              </Btn>
+            ))}
+          </View>
         </View>
         <View style={styles.settingRow}>
           <T>{t('settings.sound')}</T>
@@ -96,6 +105,10 @@ export function AboutScreen({ onBack }: { onBack: () => void }) {
 
 const styles = StyleSheet.create({
   bullet: { flexDirection: 'row', gap: 8 },
+  settingBlock: { gap: 8, paddingVertical: 8 },
+  languageGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
+  // 2列にする（48% にして、すき間の分は flexGrow で埋める）
+  languageButton: { width: '48%', flexGrow: 1 },
   settingRow: {
     flexDirection: 'row',
     alignItems: 'center',

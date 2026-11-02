@@ -1,0 +1,323 @@
+{
+  "app": {
+    "title": "Hold'em Chipzähler"
+  },
+  "common": {
+    "close": "Schließen",
+    "remove": "Entfernen",
+    "listSeparator": ", ",
+    "dot": " · ",
+    "seatN": "Platz {{n}}",
+    "back": "← Zurück",
+    "cancel": "Abbrechen",
+    "thousandsSeparator": "."
+  },
+  "presets": {
+    "standard": {
+      "name": "Standard",
+      "description": "25.000 Chips · 20-Minuten-Level · 10 Minuten Pause alle 4 Level (etwa 3–4 Stunden)"
+    },
+    "turbo": {
+      "name": "Turbo",
+      "description": "25.000 Chips · 10-Minuten-Level · 5 Minuten Pause alle 6 Level (etwa 1,5–2 Stunden)"
+    },
+    "deep": {
+      "name": "Deep Stack",
+      "description": "50.000 Chips · 30-Minuten-Level · 15 Minuten Pause alle 4 Level (für ein längeres Spiel)"
+    }
+  },
+  "setup": {
+    "blindStructure": "Blindstruktur",
+    "hideStructure": "▲ Blindstruktur ausblenden",
+    "showStructure": "▼ Blindstruktur ansehen oder bearbeiten",
+    "colLevel": "Lv",
+    "colMinutes": "Min",
+    "breakShort": "—",
+    "addLevel": "+ Level",
+    "addBreak": "+ Pause",
+    "startingStack": "Startstack",
+    "minChip": "Kleinster Chip",
+    "reentryTitle": "Re-Entry",
+    "reentryEnabled": "Re-Entry und Nachmeldung erlauben",
+    "reentryLastLevel": "Anmeldeschluss nach Level",
+    "reentryMaxEntries": "Max. Entries pro Spieler (0 = unbegrenzt)",
+    "playersTitle": "Spieler ({{count}})",
+    "seatingHint": "Die Spieler sitzen in dieser Reihenfolge im Uhrzeigersinn.",
+    "addPlayer": "+ Spieler hinzufügen",
+    "defaultPlayerName": "Spieler {{n}}",
+    "firstButton": "Dealer-Button zu Beginn",
+    "randomButton": "Zufällig",
+    "start": "Mit {{stack}} Chips starten",
+    "title": "Neues Turnier"
+  },
+  "validation": {
+    "playerCount": "Gib 2 bis {{max}} Spieler ein.",
+    "emptyName": "Jeder Spieler braucht einen Namen.",
+    "duplicateName": "Jeder Spieler braucht einen anderen Namen.",
+    "minChip": "Der kleinste Chip muss mindestens 1 sein.",
+    "startingStack": "Der Startstack muss ein Vielfaches des kleinsten Chips sein.",
+    "noLevels": "Die Blindstruktur braucht mindestens ein Level.",
+    "minutes": "Zeile {{row}}: Jedes Level und jede Pause muss mindestens 1 Minute dauern.",
+    "blindOrder": "Zeile {{row}}: Der Big Blind muss größer als der Small Blind sein.",
+    "blindMultiple": "Zeile {{row}}: Blinds und Antes müssen Vielfache des kleinsten Chips ({{chip}}) sein.",
+    "maxEntries": "Mit Re-Entry müssen die max. Entries mindestens 2 sein.",
+    "lastLevel": "Die Anmeldung muss mindestens bis Level 1 offen bleiben."
+  },
+  "errors": {
+    "noBigBlind": "Niemand sitzt im Big Blind.",
+    "noActor": "Gerade kann niemand handeln.",
+    "cannotCheck": "Bei einem Einsatz kannst du nicht checken.",
+    "nothingToCall": "Es gibt nichts mitzugehen.",
+    "cannotRaise": "Hier ist kein Erhöhen möglich.",
+    "exceedsStack": "Das ist mehr, als der Spieler hat.",
+    "belowMinimum": "Das Minimum ist {{min}}.",
+    "notShowdown": "Die Hand ist nicht im Showdown.",
+    "potNeedsWinner": "Wähle einen Gewinner für Pot {{pot}}.",
+    "winnerNotEligible": "Für Pot {{pot}} ist jemand ausgewählt, der nicht an diesem Pot beteiligt ist.",
+    "playerCount": "Ein Turnier braucht 2 bis {{max}} Spieler.",
+    "handNotFinished": "Beende zuerst die laufende Hand.",
+    "notEnoughPlayers": "Es werden mindestens 2 Spieler gebraucht.",
+    "noHand": "Es läuft gerade keine Hand.",
+    "handNotComplete": "Die Hand ist noch nicht vorbei.",
+    "cannotReenter": "Dieser Spieler kann kein Re-Entry machen.",
+    "cannotAddDuringHand": "Während einer Hand können keine Spieler hinzugefügt werden.",
+    "registrationClosed": "Die Anmeldung ist geschlossen.",
+    "seatUnavailable": "Dieser Platz ist nicht verfügbar.",
+    "noTournament": "Es läuft kein Turnier."
+  },
+  "clock": {
+    "level": "Level {{n}}",
+    "break": "Pause",
+    "prevLevel": "Vorheriges Level",
+    "nextLevel": "Nächstes Level",
+    "start": "Start",
+    "pause": "Pause",
+    "pauseLabel": "Anhalten",
+    "next": "Danach: {{blinds}}",
+    "pending": "Diese Hand: {{blinds}} (das neue Level beginnt mit der nächsten Hand)",
+    "registrationOpen": "Re-Entry bis Level {{n}} möglich",
+    "registrationClosed": "Anmeldung geschlossen",
+    "soundOn": "Ton: an",
+    "soundOff": "Ton: aus"
+  },
+  "levelAlert": {
+    "level": "Level {{n}}: {{blinds}} – ab der nächsten Hand",
+    "break": "Pause – {{minutes}} Minuten"
+  },
+  "streets": {
+    "preflop": "Preflop",
+    "flop": "Flop",
+    "turn": "Turn",
+    "river": "River"
+  },
+  "pot": {
+    "main": "Hauptpot",
+    "side": "Sidepot",
+    "sideN": "Sidepot {{n}}"
+  },
+  "table": {
+    "handNo": "Hand #{{n}}",
+    "nextHand": "Nächste: Hand #{{n}}",
+    "pot": "Pot {{amount}}",
+    "emptySeat": "Frei",
+    "outSeat": "{{name}} (raus)",
+    "allIn": "ALL IN",
+    "folded": "FOLD",
+    "onBreak": "Pause. Teile die nächste Hand aus, wenn es weitergeht.",
+    "oneLeft": "Nur noch ein Spieler übrig. Re-Entries gehen über Rangliste.",
+    "startHand": "Hand #{{n}} austeilen",
+    "undo": "↶ Rückgängig",
+    "history": "Verlauf",
+    "standings": "Rangliste",
+    "home": "Start"
+  },
+  "seatAction": {
+    "sb": "SB",
+    "bb": "BB",
+    "ante": "BB",
+    "fold": "Fold",
+    "check": "Check",
+    "call": "Call",
+    "bet": "Bet",
+    "raise": "Raise"
+  },
+  "action": {
+    "toAct": "<b>{{name}}</b> ist am Zug",
+    "facingBet": "{{toCall}} zum Mitgehen · {{stack}} übrig",
+    "noBet": "Kein Einsatz · {{stack}} übrig",
+    "fold": "Fold",
+    "check": "Check",
+    "call": "Call {{amount}}",
+    "callAllIn": "Call {{amount}} (All-in)",
+    "quickMin": "Min",
+    "quickHalfPot": "½ Pot",
+    "quickPot": "Pot",
+    "quickAllIn": "All-in",
+    "decrease": "Verringern",
+    "increase": "Erhöhen",
+    "amount": "Betrag",
+    "bet": "Bet {{amount}}",
+    "raise": "Raise auf {{amount}}",
+    "allIn": "All-in {{amount}}",
+    "range": "Gib einen Betrag zwischen {{min}} und {{max}} ein."
+  },
+  "showdown": {
+    "title": "Showdown",
+    "runout": {
+      "flop": "Alle Hände werden aufgedeckt. Teile Flop, Turn und River aus.",
+      "turn": "Alle Hände werden aufgedeckt. Teile Turn und River aus.",
+      "river": "Alle Hände werden aufgedeckt. Teile den River aus."
+    },
+    "showFirst": "{{name}} zeigt zuerst",
+    "uncontested": "Geht an {{name}}",
+    "split": "Wird unter {{count}} Spielern geteilt",
+    "confirm": "Gewinner bestätigen"
+  },
+  "result": {
+    "title": "Ergebnis von Hand #{{n}}",
+    "eliminated": "Ausgeschieden: {{names}}",
+    "next": "Weiter"
+  },
+  "players": {
+    "title": "Spieler",
+    "entries_one": "{{count}} Entry",
+    "entries_other": "{{count}} Entries",
+    "reenter": "Re-Entry",
+    "eliminatedIn": "Ausgeschieden in Hand #{{n}}",
+    "reenterBetweenHands": "Re-Entries sind zwischen zwei Händen möglich.",
+    "lateRegistration": "Nachmeldung",
+    "namePlaceholder": "Name",
+    "add": "Hinzufügen",
+    "nameTaken": "Dieser Name ist schon vergeben.",
+    "lateRegistrationStack": "Steigt mit {{stack}} Chips ein."
+  },
+  "results": {
+    "title": "Turnier beendet",
+    "winner": "{{name}} gewinnt!",
+    "hands_one": "{{count}} Hand",
+    "hands_other": "{{count}} Hände",
+    "entries_one": "{{count}} Entry",
+    "entries_other": "{{count}} Entries",
+    "entriesNote_one": " ({{count}} Entry)",
+    "entriesNote_other": " ({{count}} Entries)",
+    "summarySeparator": " · ",
+    "place": "{{count}}.",
+    "champion": "Sieger",
+    "newTournament": "Neues Turnier",
+    "home": "Start"
+  },
+  "history": {
+    "title": "Handverlauf",
+    "empty": "Noch keine Hand gespielt.",
+    "inProgress": "Läuft",
+    "sb": "Setzt Small Blind {{amount}}",
+    "bb": "Setzt Big Blind {{amount}}",
+    "ante": "Setzt Big-Blind-Ante {{amount}}",
+    "fold": "Foldet",
+    "check": "Checkt",
+    "call": "Callt {{amount}}",
+    "bet": "Bettet {{amount}}",
+    "raise": "Raist auf {{amount}}",
+    "allInSuffix": " (All-in)",
+    "awardSeparator": ": "
+  },
+  "home": {
+    "resumeTitle": "Turnier fortsetzen",
+    "summaryNotStarted_one": "Nicht gestartet · {{count}} Spieler",
+    "summaryNotStarted_other": "Nicht gestartet · {{count}} Spieler",
+    "summaryPlaying_one": "Hand #{{hand}} · Level {{level}} · {{count}} Spieler übrig",
+    "summaryPlaying_other": "Hand #{{hand}} · Level {{level}} · {{count}} Spieler übrig",
+    "summaryFinished": "Beendet · {{name}} hat gewonnen",
+    "discard": "Dieses Turnier beenden",
+    "confirmDiscard": "Das gespeicherte Turnier wird beendet. Das lässt sich nicht rückgängig machen. Fortfahren?",
+    "confirmDiscardOk": "Turnier beenden",
+    "newTournament": "Neues Turnier",
+    "confirmNew": "Wenn du ein neues Turnier startest, wird das gespeicherte beendet. Zur Einrichtung wechseln?",
+    "confirmNewOk": "Weiter",
+    "howTo": "Anleitung",
+    "settings": "Einstellungen",
+    "about": "Über die App"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "language": "Sprache",
+    "sound": "Ton beim Levelwechsel",
+    "on": "An",
+    "off": "Aus"
+  },
+  "about": {
+    "title": "Über die App",
+    "version": "Version {{version}}",
+    "privacyTitle": "Datenschutz",
+    "privacyBody": "Diese App erhebt keinerlei persönliche Daten. Turniere und Einstellungen werden nur auf diesem Gerät gespeichert, und die App verbindet sich nie mit dem Internet.",
+    "noticeTitle": "Hinweis",
+    "noticeBody": "Diese App ist nur ein Hilfsmittel zum Zählen. Sie kann nicht für Glücksspiel mit echtem Geld verwendet werden.",
+    "rulesTitle": "Zu den Regeln",
+    "rulesBody": "Der Turnierablauf folgt Regeln, die bei Live-Pokerturnieren üblich sind."
+  },
+  "howto": {
+    "title": "Anleitung",
+    "sections": [
+      {
+        "title": "Wofür die App da ist",
+        "items": [
+          "Sie zählt die Punkte anstelle von Chips, während ihr ein Texas-Hold'em-Turnier mit echten Karten spielt.",
+          "Legt ein Handy in die Tischmitte und bedient es gemeinsam. Die App teilt keine Karten aus – nach dem Showdown wählt ihr den Gewinner auf dem Bildschirm."
+        ]
+      },
+      {
+        "title": "Ein Turnier starten",
+        "items": [
+          "Tippe auf Neues Turnier, wähle Blindstruktur, Startstack und Spieler und starte.",
+          "Wähle eine der drei vorgegebenen Blindstrukturen oder bearbeite jedes Level selbst."
+        ]
+      },
+      {
+        "title": "Eine Hand spielen",
+        "items": [
+          "Tippe auf Hand #1 austeilen. Small Blind, Big Blind und Big-Blind-Ante werden automatisch gesetzt.",
+          "Der hervorgehobene Platz ist der Spieler, der am Zug ist. Gib ein, was er ansagt: Fold, Check, Call, Bet oder Raise.",
+          "Lege einen Bet oder Raise mit den Tasten Min, ½ Pot, Pot und All-in, mit dem Schieberegler oder durch Eintippen fest. Nicht erlaubte Beträge lassen sich nicht eingeben.",
+          "Ist die Setzrunde abgeschlossen, geht die App zur nächsten Straße über. Die Kartenrahmen in der Mitte zeigen, wie viele Boardkarten offen liegen sollten."
+        ]
+      },
+      {
+        "title": "Showdown",
+        "items": [
+          "Kommt es zum Showdown, wähle für jeden Pot den Gewinner und tippe auf Gewinner bestätigen.",
+          "Bei einem Unentschieden wählst du alle gleichauf liegenden Spieler, und der Pot wird gleichmäßig geteilt. Sidepots werden automatisch berechnet."
+        ]
+      },
+      {
+        "title": "Fehler korrigieren",
+        "items": [
+          "Mit Rückgängig gehst du Aktion für Aktion zurück (bis zu 50). Wenn du die App schließt, kannst du später dort weitermachen."
+        ]
+      },
+      {
+        "title": "Blinds und Uhr",
+        "items": [
+          "Die Uhr startet mit der ersten Hand und wechselt nach Ablauf der Zeit ins nächste Level. Neue Blinds gelten ab der nächsten Hand.",
+          "Ein Ton und ein Banner kündigen jedes neue Level an. Den Ton kannst du in den Einstellungen ausschalten."
+        ]
+      },
+      {
+        "title": "Ausscheiden, Re-Entry und Nachmeldung",
+        "items": [
+          "Wer keine Chips mehr hat, scheidet aus. Solange die Anmeldung offen ist, sind Re-Entries und Nachmeldungen über Rangliste möglich."
+        ]
+      },
+      {
+        "title": "Wichtige Regeln",
+        "items": [
+          "Big-Blind-Ante: Der Spieler im Big Blind zahlt das Ante für den ganzen Tisch.",
+          "Mindest-Raise: Ein Raise muss mindestens so hoch sein wie der vorherige Bet oder Raise in dieser Setzrunde.",
+          "Ein All-in, das kein vollständiger Raise ist, eröffnet Spielern, die schon gehandelt haben, keine neue Setzrunde.",
+          "Ist das Setzen mit einem All-in-Spieler beendet, werden alle Hände aufgedeckt, bevor der Rest des Boards ausgeteilt wird.",
+          "Bei einem geteilten Pot geht ein übrig bleibender Chip an den Gewinner, der links vom Button am nächsten sitzt.",
+          "Im Heads-up setzt der Button den Small Blind und handelt vor dem Flop zuerst."
+        ]
+      }
+    ]
+  }
+}

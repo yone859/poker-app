@@ -1,0 +1,8 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "德州扑克计分"
+  },
+  "android": {
+    "app_name": "德州扑克计分"
+  }
+}

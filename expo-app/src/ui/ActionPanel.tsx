@@ -111,7 +111,7 @@ export function ActionPanel({ hand, players, dispatch }: Props) {
               testID="slider"
             />
             <Btn variant="icon" label={t('action.increase')} onPress={() => setAmount(clamp(amount + hand.level.bigBlind))} testID="increase">
-              ＋
+              +
             </Btn>
           </Row>
           <Row>

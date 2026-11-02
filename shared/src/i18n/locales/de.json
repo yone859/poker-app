@@ -126,10 +126,10 @@
     "onBreak": "Pause. Teile die nächste Hand aus, wenn es weitergeht.",
     "oneLeft": "Nur noch ein Spieler übrig. Re-Entries gehen über Rangliste.",
     "startHand": "Hand #{{n}} austeilen",
-    "undo": "↶ Rückgängig",
+    "undo": "Rückgängig",
     "history": "Verlauf",
     "standings": "Rangliste",
-    "home": "Start"
+    "home": "Menü"
   },
   "seatAction": {
     "sb": "SB",
@@ -204,7 +204,7 @@
     "place": "{{count}}.",
     "champion": "Sieger",
     "newTournament": "Neues Turnier",
-    "home": "Start"
+    "home": "Zum Menü"
   },
   "history": {
     "title": "Handverlauf",

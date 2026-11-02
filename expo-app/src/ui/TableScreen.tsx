@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { activePlayers, syncClock, type TournamentState } from '@holdem/shared/engine';
 import type { GameAction } from '@holdem/shared/state/gameReducer';
 import { useKeepAwake } from '../platform';
@@ -88,16 +88,16 @@ export function TableScreen({
         )}
 
         <Row>
-          <Btn flex disabled={!canUndo} onPress={() => dispatch({ type: 'undo' })} textStyle={{ fontSize: 14 }} testID="tool-undo">
+          <Btn flex disabled={!canUndo} onPress={() => dispatch({ type: 'undo' })} style={styles.tool} textStyle={styles.toolText} testID="tool-undo">
             {t('table.undo')}
           </Btn>
-          <Btn flex onPress={() => setModal('history')} textStyle={{ fontSize: 14 }} testID="tool-history">
+          <Btn flex onPress={() => setModal('history')} style={styles.tool} textStyle={styles.toolText} testID="tool-history">
             {t('table.history')}
           </Btn>
-          <Btn flex onPress={() => setModal('players')} textStyle={{ fontSize: 14 }} testID="tool-standings">
+          <Btn flex onPress={() => setModal('players')} style={styles.tool} textStyle={styles.toolText} testID="tool-standings">
             {t('table.standings')}
           </Btn>
-          <Btn flex onPress={onHome} textStyle={{ fontSize: 14 }} testID="tool-home">
+          <Btn flex onPress={onHome} style={styles.tool} textStyle={styles.toolText} testID="tool-home">
             {t('table.home')}
           </Btn>
         </Row>
@@ -116,3 +116,9 @@ export function TableScreen({
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  // 4つ並ぶので、言葉の長い言語でも収まるよう左右の余白を小さくする（Vite版と同じ 6）
+  tool: { paddingHorizontal: 6 },
+  toolText: { fontSize: 14 },
+});

@@ -126,7 +126,7 @@
     "onBreak": "On break. Deal the next hand when play resumes.",
     "oneLeft": "Only one player is left. Re-entries can be made from Standings.",
     "startHand": "Deal Hand #{{n}}",
-    "undo": "↶ Undo",
+    "undo": "Undo",
     "history": "History",
     "standings": "Standings",
     "home": "Home"

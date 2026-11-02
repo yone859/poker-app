@@ -126,7 +126,7 @@
     "onBreak": "Intervalo. Distribua a próxima mão quando o jogo voltar.",
     "oneLeft": "Só resta um jogador. As reentradas são feitas em Classificação.",
     "startHand": "Distribuir mão #{{n}}",
-    "undo": "↶ Desfazer",
+    "undo": "Desfazer",
     "history": "Histórico",
     "standings": "Classificação",
     "home": "Início"

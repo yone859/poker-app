@@ -36,11 +36,14 @@ export function ClockBar({ tournament, now, soundOn, onToggleSound, dispatch }: 
   return (
     <header className="clock-bar">
       <div className="clock-main">
-        <div className="clock-level">
-          {item.type === 'break' ? t('clock.break') : t('clock.level', { n: lvNo })}
-        </div>
-        <div className={`clock-time ${clock.running ? '' : 'paused'} ${lastMinute ? 'last-minute' : ''}`}>
-          {clockText(clock.remainingMs)}
+        {/* レベル名は言語によって長いので、時間の上に置いてボタンに横幅を譲る */}
+        <div className="clock-readout">
+          <div className="clock-level">
+            {item.type === 'break' ? t('clock.break') : t('clock.level', { n: lvNo })}
+          </div>
+          <div className={`clock-time ${clock.running ? '' : 'paused'} ${lastMinute ? 'last-minute' : ''}`}>
+            {clockText(clock.remainingMs)}
+          </div>
         </div>
         <div className="clock-buttons">
           <button

@@ -126,7 +126,7 @@
     "onBreak": "Pausa. Distribuisci la prossima mano quando si riprende a giocare.",
     "oneLeft": "È rimasto un solo giocatore. I re-entry si fanno da Classifica.",
     "startHand": "Distribuisci mano #{{n}}",
-    "undo": "↶ Annulla",
+    "undo": "Annulla",
     "history": "Cronologia",
     "standings": "Classifica",
     "home": "Home"

@@ -39,15 +39,18 @@ export function ClockBar({ tournament, now, soundOn, onToggleSound, dispatch }: 
   return (
     <View style={styles.bar} testID="clock-bar">
       <View style={styles.main}>
-        <T style={styles.level} testID="clock-level">
-          {item.type === 'break' ? t('clock.break') : t('clock.level', { n: lvNo })}
-        </T>
-        <T
-          testID="clock-time"
-          style={[styles.time, !clock.running && { color: colors.muted }, lastMinute && { color: colors.warn }]}
-        >
-          {clockText(clock.remainingMs)}
-        </T>
+        {/* レベル名は言語によって長いので、時間の上に置いてボタンに横幅を譲る */}
+        <View style={styles.readout}>
+          <T style={styles.level} testID="clock-level">
+            {item.type === 'break' ? t('clock.break') : t('clock.level', { n: lvNo })}
+          </T>
+          <T
+            testID="clock-time"
+            style={[styles.time, !clock.running && { color: colors.muted }, lastMinute && { color: colors.warn }]}
+          >
+            {clockText(clock.remainingMs)}
+          </T>
+        </View>
         <View style={styles.buttons}>
           <Btn
             variant="icon"
@@ -112,8 +115,9 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   main: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  level: { fontWeight: '700', color: colors.accent, minWidth: 64 },
-  time: { flex: 1, fontSize: 32, lineHeight: 40, fontWeight: '700', textAlign: 'center', fontVariant: ['tabular-nums'] },
+  readout: { flex: 1, minWidth: 0 },
+  level: { fontWeight: '700', color: colors.accent, lineHeight: 20 },
+  time: { fontSize: 32, lineHeight: 38, fontWeight: '700', fontVariant: ['tabular-nums'] },
   buttons: { flexDirection: 'row', gap: 4 },
   info: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12, rowGap: 2, alignItems: 'center' },
   toggles: { flexDirection: 'row', gap: 12, marginLeft: 'auto' },

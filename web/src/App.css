@@ -302,18 +302,22 @@ label.stacked {
   gap: 12px;
 }
 
+.clock-readout {
+  flex: 1;
+  min-width: 0;
+}
+
 .clock-level {
   font-weight: 700;
   color: var(--accent);
-  min-width: 64px;
+  line-height: 1.2;
 }
 
 .clock-time {
-  flex: 1;
   font-size: 32px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-  text-align: center;
+  line-height: 1.15;
 }
 
 .clock-time.paused {

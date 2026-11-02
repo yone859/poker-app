@@ -96,7 +96,7 @@ export function ActionPanel({ hand, players, dispatch }: Props) {
               onChange={(e) => setAmount(Number(e.target.value))}
             />
             <button className="icon" aria-label={t('action.increase')} onClick={() => setAmount(clamp(amount + hand.level.bigBlind))}>
-              ＋
+              +
             </button>
           </div>
           <div className="row gap">

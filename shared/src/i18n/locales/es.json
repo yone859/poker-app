@@ -126,7 +126,7 @@
     "onBreak": "Descanso. Reparte la siguiente mano cuando se reanude el juego.",
     "oneLeft": "Solo queda un jugador. Las reentradas se hacen desde Clasificación.",
     "startHand": "Repartir mano #{{n}}",
-    "undo": "↶ Deshacer",
+    "undo": "Deshacer",
     "history": "Historial",
     "standings": "Clasificación",
     "home": "Inicio"

@@ -9,7 +9,8 @@
     "test:vite": "playwright test --project=vite",
     "test:expo": "playwright test --project=expo",
     "report": "playwright show-report",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "icons": "node scripts/icons.mjs"
   },
   "devDependencies": {
     "@fontsource/noto-sans": "^5.3.0",

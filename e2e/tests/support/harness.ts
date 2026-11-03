@@ -20,7 +20,19 @@ export const norm = (s: string | null | undefined) => (s ?? '').trim().replace(/
  * @param fontSelector スクリーンショット用のフォントを当てる CSS セレクタ。
  *   端末によってフォントが違うと文字の幅も変わるので、どの環境でも同じフォントで確かめる
  */
-export async function createHarness(browser: Browser, lang: Lang, testInfo: TestInfo, fontSelector: string) {
+/** テーブルの部品の場所（Vite版は CSS のクラス、Expo版は testID で探す） */
+export interface TableSelectors {
+  table: string;
+  seat: string;
+}
+
+export async function createHarness(
+  browser: Browser,
+  lang: Lang,
+  testInfo: TestInfo,
+  fontSelector: string,
+  tableSelectors: TableSelectors,
+) {
   const ctx = await browser.newContext({
     viewport: { width: 390, height: 844 },
     deviceScaleFactor: 2,
@@ -120,6 +132,21 @@ export async function createHarness(browser: Browser, lang: Lang, testInfo: Test
       return out;
     });
     if (clipped.length) failures.push(`[${step}] ボタンの文字がはみ出している: ${[...new Set(clipped)].join(' | ')}`);
+
+    // 席がテーブルの枠からはみ出していないか（はみ出すと、下のパネルや上のタイマーに重なる）
+    checks++;
+    const seatsOut = await page.evaluate(({ table, seat }) => {
+      const area = document.querySelector(table);
+      if (!area) return [];
+      const a = area.getBoundingClientRect();
+      return [...area.querySelectorAll(seat)].flatMap((el) => {
+        const r = el.getBoundingClientRect();
+        return r.top < a.top - 1 || r.bottom > a.bottom + 1
+          ? [`${(el.textContent ?? '').trim().slice(0, 20)}: ${Math.round(r.top - a.top)}〜${Math.round(r.bottom - a.top)}（枠は 0〜${Math.round(a.height)}）`]
+          : [];
+      });
+    }, tableSelectors);
+    if (seatsOut.length) failures.push(`[${step}] 席がテーブルの枠からはみ出している: ${seatsOut.join(' | ')}`);
   }
 
   let shotNo = 0;

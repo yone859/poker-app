@@ -11,7 +11,7 @@ for (const LANG of LANGS) {
     const URL = baseURL!;
     const E = await expectationsFor(LANG);
     const f = E.f;
-    const { page, check, shot, finish } = await createHarness(browser, LANG, testInfo, '*');
+    const { page, check, scan, shot, finish } = await createHarness(browser, LANG, testInfo, '*', { table: '[data-testid="table"]', seat: '[data-testid^="seat-"]' });
 
     const id = (testId) => page.locator(`[data-testid="${testId}"]`);
     const tx = async (testId) => norm(await id(testId).first().textContent());
@@ -97,6 +97,8 @@ for (const LANG of LANGS) {
     await click('quick-0');
     check('min raise label', await tx('act-raise'), E.raise('400'));
     await click('act-raise');
+    // 下の席（プレイヤー1）が「レイズ」とベット額を出して、いちばん背が高くなったところ
+    await scan('preflop-after-raise');
     await click('act-fold');
     await click('act-call');
     await click('act-call');
